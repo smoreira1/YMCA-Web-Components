@@ -1,0 +1,130 @@
+.ymca-shopping-cart {
+  position: absolute;
+  overscroll-behavior: contain;
+  
+  .ymca-quick-cart {
+    height: 100%;
+    position: fixed;
+    z-index: 999999;
+    top: 0;
+    right: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin-top: 0px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+    display: flex;
+    flex-flow: column;
+    text-align: left;
+    justify-content: flex-start;
+    color: black;
+  }
+
+  @media screen and (max-width: 700px) {
+    .ymca-quick-cart {
+      width: 0;
+    }
+  }
+
+  @media screen and (min-width: 701px) {
+    .ymca-quick-cart {
+      width: 0;
+    }
+  }
+
+  .ymca-quickcart-header {
+    display: flex;
+    flex-flow: row;
+    background-color: white;
+    color: #231f20;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+    flex-grow: 1;
+    min-height: 68px;
+    max-height: 68px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+  }
+
+  .ymca-quickcart-body {
+    overflow-y: auto;
+    flex-grow: 1;
+    padding: 20px;
+    padding-top: 5px;
+  }
+
+  .ymca-shopping-cart-title {
+    border-color: rgb(26, 26, 26);
+    color: rgb(26, 26, 26);
+    font-size: 18.7px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 27.5px;
+    padding-bottom: 16.5px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .ymca-quickcart-footer {
+    display: flex;
+    flex-flow: row;
+    background-color: white;
+    color: #231f20;
+    box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 20px 0px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, ;
+    flex-grow: 1;
+    min-height: 68px;
+    max-height: 68px;
+    //padding-left:20px;
+    //padding-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+      width: 100%;
+      height: 50px !important;
+      margin: 20px !important;
+      text-align: center;
+      background-color: blue;
+      border-radius: 5px;
+    }
+
+    a:hover {
+      text-decoration: none;
+      color: white;
+      width: 100%;
+      height: 100%;
+      background-color: #20bdbe;
+      border-color: transparent !important;
+    }
+
+    .ymca-footer-top {
+      align-self: flex-start;
+    }
+
+    .ymca-footer-bottom {
+      align-self: flex-end;
+    }
+  }
+
+  .ymca-quick-cart .ymca-close-button {
+    float: left;
+    margin-left: 5px;
+    margin-top: 5px;
+
+    svg {
+      height: 25px;
+      width: 25px;
+    }
+  }
+
+  .ymca-disabled-link {
+    background-color: lightgray;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+}
