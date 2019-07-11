@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "docs": "compodoc -p src/tsconfig.app.json -s --customLogo src/assets/images/ymca-logo-sm.png --customFavicon src/favicon.ico -w"
+    "docs": "compodoc -p src/tsconfig.app.json -s --customLogo src/assets/images/ymca-logo-sm.png --customFavicon src/favicon.ico -w",
+    "build:prod": "ng build --single-bundle --aot=true --prod=true"
   },
   "private": true,
   "dependencies": {

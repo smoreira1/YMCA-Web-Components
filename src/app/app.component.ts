@@ -9,9 +9,9 @@ export class AppComponent implements OnInit {
   title = 'ebiz-elements';
 
     ngOnInit():void{
-      // const eventCard = document.createElement('app-ymca-event-card');
-      // const content = document.getElementById('custom-elements');
-      // content.appendChild(eventCard);
+      const eventCard = document.createElement('app-ymca-event-card');
+      const content = document.getElementById('custom-elements');
+      content.appendChild(eventCard);
 
     }
 
