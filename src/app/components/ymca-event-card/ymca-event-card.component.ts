@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CartService } from '../../services/cart.service';
-import { YMCAEvent } from '../../interfaces/ymca-event.interface';
 
 @Component({
   selector: 'app-ymca-event-card',
@@ -9,42 +8,42 @@ import { YMCAEvent } from '../../interfaces/ymca-event.interface';
 })
 export class YmcaEventCardComponent implements OnInit {
 
-  @Input() ymcaEvent: YMCAEvent;
-
   @Input() id: string;
-  // id: string;
   @Input() description: string;
-  // createdDate: string;
-  @Input() startDate: Date;
-  @Input() endDate: Date;
+  @Input() createdDate: string;
+  @Input() startDate: string;
+  @Input() endDate: string;
   @Input() startDateTime: string;
   @Input() endDateTime: string;
   @Input() location: string;
-  // memberOnly: boolean;
+  @Input() memberOnly: string;
   @Input() memberPrice: string;
-  // startingAge: number;
-  // startingAgeType: string;
-  // endingAge: number;
-  // endingAgeType: string;
-  // highGrade: string;
-  // lowGrade: string;
-  // nonMemberPrice: string;
-  // gender: string;
-  // remainingSlots: number;
-  // dayAvailability: DayAvailability;
-  // season: string;
-  // zipcode: string;
-  // distanceToEvent: number;
+  @Input() startingAge: string;
+  @Input() startingAgeType: string;
+  @Input() endingAge: string;
+  @Input() endingAgeType: string;
+  @Input() highGrade: string;
+  @Input() lowGrade: string;
+  @Input() nonMemberPrice: string;
+  @Input() gender: string;
+  @Input() remainingSlots: string;
+  @Input() monday: string;
+  @Input() season: string;
+  @Input() zipcode: string;
+  @Input() distanceToEvent: string;
   @Input() parentProduct: string;
-  // numberOfClassesPerWeek: number;
+  @Input() numberOfClassesPerWeek: string;
+
+
   @Output() addItemToCart = new EventEmitter();
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
   }
 
-  addToCart(itemId: string){
-    this.cartService.addCartItem(itemId);
+  addToCart(){
+    console.log(this.id);
+    this.cartService.addCartItem(this.id);
   }
 
 }

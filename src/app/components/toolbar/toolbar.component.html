@@ -1,39 +1,72 @@
-<div>
-  
-</div>
-<!-- <div id='${ToolbarIds.CONTAINER}'>
-  <div class='ymca-toolbar' id='${ToolbarDesktopIds.CONTAINER}'>
-    <input type='hidden' value='' id='ymca-geo-lat-input' />
-    <input type='hidden' value='' id='ymca-geo-lon-input' />
-    <input type='hidden' value='false' id='ymca-geo-flag-input' />
-    <form class='ymca-form'>
-      <span class='ymca-flex-row'>
-        <span class='ymca-flex-end'>${this.renderGeoLocation()}</span>
-        <span class="ymca-postal-code ymca-input-group" id='${ToolbarDesktopIds.ZIPCODE}'>
-          ${this.renderZipCode()}
-        </span>
+<mat-toolbar color="primary" class='ymca-toolbar'>
+  <mat-toolbar-row class='ymca-toolbar-row'>
+    <form class="ymca-reactive-form">
+      <span class='zip-code-entry'>
+        <mat-form-field class="ymca-zipcode-field">
+          <input matInput placeholder="ZipCode" [value]="zipcode" autocomplete="off" maxlength='5'>
+        </mat-form-field>
       </span>
-      <span class='ymca-distance-filter ymca-input-group' id='${ToolbarDesktopIds.DISTANCE}'>
-        ${this.renderDistanceSelect()}
+      <span class='ymca-spacer'></span>
+      <mat-form-field>
+          <mat-label>Favorite food</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      <span class='ymca-distance-flex-item'>
+        <mat-form-field class='ymca-distance-field'>
+          <mat-label>Distance</mat-label>
+          <mat-select>
+            <mat-option [value]="Any">Any</mat-option>
+            <mat-option [value]="5">5</mat-option>
+            <mat-option [value]="10">10</mat-option>
+            <mat-option [value]="15">15</mat-option>
+            <mat-option [value]="20">20</mat-option>
+            <mat-option [value]="50">50</mat-option>
+          </mat-select>
+        </mat-form-field>
       </span>
-      <span class="ymca-ages ymca-input-group" id='${ToolbarDesktopIds.AGES}'>
-        ${this.renderAgeSelect()}
+      <span class='ymca-spacer'></span>
+      <span class='zip-code-entry'>
+        <mat-form-field class='ymca-distance-field'>
+          <mat-label>Age</mat-label>
+          <mat-select>
+            <mat-option>Any</mat-option>
+            <mat-option>5</mat-option>
+            <mat-option>10</mat-option>
+            <mat-option>15</mat-option>
+            <mat-option>20</mat-option>
+            <mat-option>50</mat-option>
+          </mat-select>
+        </mat-form-field>
       </span>
-      <span class="ymca-times ymca-input-group" id='${ToolbarDesktopIds.TIMES}'>
-        ${this.renderYmcaTimes()}
+      <span class='ymca-spacer'></span>
+      <span class='zip-code-entry'>
+        <mat-form-field class='ymca-distance-field'>
+          <mat-label>Time</mat-label>
+          <mat-select>
+            <mat-option>Any</mat-option>
+            <mat-option>5</mat-option>
+            <mat-option>10</mat-option>
+            <mat-option>15</mat-option>
+            <mat-option>20</mat-option>
+            <mat-option>50</mat-option>
+          </mat-select>
+        </mat-form-field>
       </span>
-      <span class='ymca-days' id='${ToolbarDesktopIds.DAYS}'>
-        ${this.renderDays()}
+      <span class='ymca-spacer'></span>
+      <span class='zip-code-entry'>
+        <mat-slide-toggle>MON</mat-slide-toggle>
+        <mat-slide-toggle>TUE</mat-slide-toggle>
+        <mat-slide-toggle>WED</mat-slide-toggle>
+        <mat-slide-toggle>THU</mat-slide-toggle>
+        <mat-slide-toggle>FRI</mat-slide-toggle>
+        <mat-slide-toggle>SAT</mat-slide-toggle>
+        <mat-slide-toggle>SUN</mat-slide-toggle>
       </span>
-      <span class="ymca-input-group ymca-filter">
-        <label class='ymca-label'>&nbsp;</label>
-        <button class='ymca-more-filters ymca-button ymca-filters-unchecked' type='button' aria-label="Open Filter"
-          id='${ToolbarDesktopIds.MOBILE_FILTER_BUTTON}'>
-          Filters
-        </button>
-      </span>
-      ${ this.tagInput()}
+       <span class='model-filter'></span>
     </form>
-  </div>
-  ${Progressbar.render('ymca-action-progress')}
-</div> -->
+  </mat-toolbar-row>
+</mat-toolbar>

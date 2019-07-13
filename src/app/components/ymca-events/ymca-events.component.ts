@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { YMCAEvent } from 'src/app/interfaces/ymca-event.interface';
+import { YMCAEventsService } from 'src/app/services/ymca-events.service';
 
 @Component({
   selector: 'app-ymca-events',
@@ -25,7 +26,7 @@ export class YmcaEventsComponent implements OnInit {
 
   public events: Array<YMCAEvent>;
 
-  constructor() { }
+  constructor(private eventsService: YMCAEventsService) { }
 
   ngOnInit() {
   }

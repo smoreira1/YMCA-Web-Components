@@ -7,14 +7,15 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class EventsService {
+export class YMCAEventsService {
 
-  private endpoint = ''
+  private endpoint = '';
   @Output() change: EventEmitter<Array<YMCAEvent>> = new EventEmitter();
   constructor() { }
 
-  // refreshEvents(): Observable<any>{
+  // getEvents(): Observable<any>{
   //   // return this.http.get(endpoint + 'products').pipe(
   //   //   map(this.extractData));
   // }
+
 }

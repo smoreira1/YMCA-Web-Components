@@ -1,0 +1,12 @@
+.ymca-toolbar{
+
+    font-size:12px;
+
+    .ymca-reactive-form{
+        display:flex;
+        justify-content: space-between;
+        .ymca-spacer{
+            flex-grow:1;
+        }
+    }
+}

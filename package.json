@@ -8,12 +8,12 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "docs": "compodoc -p src/tsconfig.app.json -s --customLogo src/assets/images/ymca-logo-sm.png --customFavicon src/favicon.ico -w",
+    "docs": "compodoc -p src/tsconfig.app.json -s",
     "build:prod": "ng build --single-bundle --aot=true --prod=true"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^8.1.0",
+    "@angular/animations": "^8.1.1",
     "@angular/cdk": "^8.0.2",
     "@angular/common": "~8.1.0",
     "@angular/compiler": "~8.1.0",

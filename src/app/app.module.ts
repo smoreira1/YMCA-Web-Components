@@ -9,11 +9,21 @@ import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { YmcaEventsComponent } from './components/ymca-events/ymca-events.component';
 import { YmcaEventCardComponent } from './components/ymca-event-card/ymca-event-card.component';
 import { MobileFilterModalComponent } from './components/mobile-filter-modal/mobile-filter-modal.component';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
 import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+// Material Design Modules
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -30,17 +40,22 @@ import { BrowserModule } from '@angular/platform-browser';
   imports: [
     BrowserModule,
     CommonModule,
-    MatSidenavModule,
     MatToolbarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatInputModule,
+    MatSelectModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatSidenavModule
   ],
   entryComponents: [
-    YmcaEventCardComponent
+    YmcaEventCardComponent,
+    ToolbarComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
-  exports: [ShoppingCartComponent, YmcaEventCardComponent],
+  exports: [ShoppingCartComponent, YmcaEventCardComponent, ToolbarComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { EventsService } from './events.service';
+import { YMCAEventsService } from './ymca-events.service';
 
 describe('EventsService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: EventsService = TestBed.get(EventsService);
+    const service: YMCAEventsService = TestBed.get(YMCAEventsService);
     expect(service).toBeTruthy();
   });
 });
