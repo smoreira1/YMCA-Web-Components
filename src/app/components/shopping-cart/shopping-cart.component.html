@@ -1,42 +1,20 @@
-<mat-sidenav-container class="example-container"  *ngIf='!state.loaded'>
+<mat-sidenav-container class="ymca-shopping-cart"  *ngIf='!state.loaded'>
   <mat-sidenav #appsettings position="end" mode="over" opened="true" class='ymca-app-settings'>
     <mat-toolbar>
       <span>Shopping Cart</span>
     </mat-toolbar>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          This is the expansion title
+        </mat-panel-title>
+        <mat-panel-description>
+          This is a summary of the content
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>This is the primary content of the panel.</p>
+    </mat-expansion-panel>
   </mat-sidenav>
-
-  <!-- <mat-sidenav-content>
-    <p><button mat-button (click)="sidenav.open()">Open</button></p>
-    <p>Closed due to: {{reason}}</p>
-  </mat-sidenav-content> -->
+  <a mat-raised-button href="{{ communityURL }}">Check Out</a>
 </mat-sidenav-container>
-
-
-<!-- <div class='ymca-shopping-cart' *ngIf='!state.loaded'>
-  <span></span>
-  <div class='ymca-quickcart-header' id='ymca-shopping-cart-header'>
-    <span class='ymca-shopping-cart-title'>Your Shopping Cart</span>
-    <span class='ymca-spacer'></span>
-    <button class='ymca-close-button' type='button' id='ymca-close-shopping-cart-button' aria-label='Close Cart'>
-      <span class='ymca-icon'>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-          <path
-            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-          <path d="M0 0h24v24H0z" fill="none" />
-        </svg>
-      </span>
-    </button>
-  </div>
-  <div class="ymca-quickcart-body" id='ymca-shopping-cart-body'>
-    <div *ngFor="let item of cartItems">
-
-    </div>
-  </div>
-  <div class="ymca-quickcart-footer">
-    <div class='ymca-footer-top'></div>
-    <a class='ymca-active' href='' id='ymca-check-out-button'>
-      <span class='ymca-center'>CheckOut</span>
-    </a>
-    <div class='ymca-footer-bottom'></div>
-  </div>
-</div> -->

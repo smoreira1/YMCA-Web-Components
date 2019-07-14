@@ -11,6 +11,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { CartService } from '../../services/cart.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -28,7 +29,8 @@ export class ShoppingCartComponent implements OnInit {
     visible: false,
     loaded: false
   };
-
+  
+  public communityURL = environment.communityURL;
   constructor(private el: ElementRef, private cd: ChangeDetectorRef, private cartService: CartService) {
     this.cartService.change.subscribe(isOpen => {
       this.state.visible = isOpen;

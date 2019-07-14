@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiPath: 'https://ebiz-ymcacf.cs7.force.com/services/apexrest/',
+  communityURL: 'https://ebiz-ymcacentralflorida.cs7.force.com/ebiz/s/previewcart'
 };
 
 /*

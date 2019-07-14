@@ -21,7 +21,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,7 @@ import { MatButtonModule } from '@angular/material/button';
     SnackBarComponent,
     YmcaEventsComponent,
     YmcaEventCardComponent,
-    MobileFilterModalComponent
+    MobileFilterModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,16 +47,23 @@ import { MatButtonModule } from '@angular/material/button';
     MatSelectModule,
     MatSlideToggleModule,
     MatSidenavModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    MatProgressBarModule,
+    MatExpansionModule,
   ],
   entryComponents: [
     YmcaEventCardComponent,
-    ToolbarComponent
+    ToolbarComponent,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
-  exports: [ShoppingCartComponent, YmcaEventCardComponent, ToolbarComponent],
+  exports: [
+    ShoppingCartComponent,
+    YmcaEventCardComponent,
+    ToolbarComponent,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,10 +1,8 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { YMCAEventsService } from 'src/app/services/ymca-events.service';
-
-export interface SelectDropDown {
-  value: string;
-  viewValue: string;
-}
+import { FiltersConfigService } from 'src/app/services/filters-config.service';
+import { SelectDropDown } from 'src/app/interfaces/selectValue.interface';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-toolbar',
@@ -27,47 +25,21 @@ export class ToolbarComponent implements OnInit {
   @Input() saturday: string;
   @Input() sunday: string;
 
-  
-  foods: SelectDropDown[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
-  ];
+  distances: SelectDropDown[];
+  ages: SelectDropDown[];
+  times: SelectDropDown[];
 
-  distances: SelectDropDown[] = [
-    {value: 'Any', viewValue: 'Any'},
-    {value: '5', viewValue: '5'},
-    {value: '10', viewValue: '10'},
-    {value: '15', viewValue: '15'},
-    {value: '20', viewValue: '20'},
-    {value: '50', viewValue: '50'},
-  ];
-
-  ages: SelectDropDown[] = [
-    {value: 'Any', viewValue: 'Any'},
-    {value: '5', viewValue: '5'},
-    {value: '10', viewValue: '10'},
-    {value: '15', viewValue: '15'},
-    {value: '20', viewValue: '20'},
-    {value: '50', viewValue: '50'},
-  ]
-
-  times: SelectDropDown[] = [
-    {value: '12:00 AM-11:59 PM', viewValue: 'Any'},
-    {value: '5:00 AM-9:00 AM', viewValue: '5AM - 9AM'},
-    {value: '9:00 AM-12:00 PM', viewValue: '9AM - 12PM'},
-    {value: '12:00 PM-3:00 PM', viewValue: '12PM - 3PM'},
-    {value: '3:00 PM-6:00 PM', viewValue: '3PM - 6PM'},
-    {value: '6:00 PM-10:00 PM', viewValue: '6PM - 10PM'},
-  ]
-
-  constructor(private ymcaEventsService: YMCAEventsService) { }
+  constructor(
+    private ymcaEventsService: YMCAEventsService, 
+    private filtersConfigService: FiltersConfigService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit() {
+    this.distances = this.filtersConfigService.distances();
+    this.ages = this.filtersConfigService.ages(99, true);
+    this.times = this.filtersConfigService.times();
     this.zipcode = this.zipcode || '';
-    this.distance = this.distance || '5';
-    this.age = this.age || 'Any';
-    this.time = this.time || '';
     this.monday = this.monday || 'false';
     this.tuesday = this.tuesday || 'false';
     this.wednesday = this.wednesday || 'false';

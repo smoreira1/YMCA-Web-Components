@@ -2,6 +2,7 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { CartItem } from '../interfaces/cart-item.interface';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ export class CartService {
   private cartItems: CartItem[];
   isOpen = false;
   @Output() change: EventEmitter<boolean> = new EventEmitter();
+  private endpoint = environment.apiPath;
+  
   constructor(private http: HttpClient) { }
 
   getCartItems(): Observable<CartItem[]> {

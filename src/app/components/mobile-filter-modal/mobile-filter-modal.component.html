@@ -1,32 +1,56 @@
-<!-- <div class='ymca-toolmobile' id='${ToolbarMobileIds.CONTAINER}'>
-    <form class='ymca-form'>
-        <span class='ymca-tool-mobile-form-header'>
-            <span class='ymca-tool-mobile-title'>Additional Filters</span>
-            <span class='ymca-spacer'></span>
-            <button class='ymca-close-button' type='button' id='ymca-close-toolmobile' aria-label="Close">
-                <span>
-                    ${closeIcon()}
+<div class='ymca-mobile-filter-modal'>
+    <h1 mat-dialog-title>Additional Filters</h1>
+    <div mat-dialog-content>
+        <form>
+            <div class="ymca-reactive-form">
+                <span class='zip-code-entry'>
+                    <mat-form-field class="ymca-zipcode-field">
+                        <input matInput placeholder="ZipCode" [value]="zipcode" autocomplete="off" maxlength='5'>
+                    </mat-form-field>
                 </span>
-            </button>
-        </span>
-        <span class='ymca-input-group' id='${ToolbarMobileIds.ZIPCODE}'>
-            ${this.renderZipCode()}
-        </span>
-        </span>
-        <span class='ymca-input-group' id='${ToolbarMobileIds.DISTANCE}'>
-            ${this.renderDistanceSelect()}
-        </span>
-        <span class='ymca-input-group' id='${ToolbarMobileIds.AGES}'>
-            ${this.renderAgeSelect()}
-        </span>
-        <span class='ymca-input-group' id='${ToolbarMobileIds.TIMES}'>
-            ${this.renderYmcaTimes()}
-        </span>
-        <span class='ymca-toolmobile-days' id='${ToolbarMobileIds.DAYS}'>
-            ${this.renderDays()}
-        </span>
-        <span class='ymca-additional-filter-search'></span>
-        <button class='ymca-button' type='button' id='${ToolbarMobileIds.MOBILE_FILTER_SEARCH}'>Search</button>
-    </form>
-</div> -->
-<div></div>
+                <span class='ymca-spacer'></span>
+                <span class='ymca-distance-flex-item'>
+                    <mat-form-field class='ymca-distance-field'>
+                        <mat-label>Distance</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let distance of distances" [value]="distance.value">
+                                {{distance.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </span>
+                <span class='ymca-spacer'></span>
+                <span class='ymca-age-entry'>
+                    <mat-form-field class='ymca-age-field'>
+                        <mat-label>Age</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let age of ages" [value]="age.value">{{age.viewValue}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </span>
+                <span class='ymca-spacer'></span>
+                <span class='ymca-time-entry'>
+                    <mat-form-field class='ymca-time-field'>
+                        <mat-label>Time</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let time of times" [value]="time.value">{{time.viewValue}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </span>
+                <span class='ymca-spacer'></span>
+                <span class='ymca-days-entry'>
+                    <mat-slide-toggle>MON</mat-slide-toggle>
+                    <mat-slide-toggle>TUE</mat-slide-toggle>
+                    <mat-slide-toggle>WED</mat-slide-toggle>
+                    <mat-slide-toggle>THU</mat-slide-toggle>
+                    <mat-slide-toggle>FRI</mat-slide-toggle>
+                    <mat-slide-toggle>SAT</mat-slide-toggle>
+                    <mat-slide-toggle>SUN</mat-slide-toggle>
+                </span>
+            </div>
+        </form>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="search()">Search</button>
+    </div>
+</div>

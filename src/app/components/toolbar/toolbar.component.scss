@@ -1,21 +1,36 @@
-.ymca-toolbar{
-    font-size:12px;
-    form{
-        width:100%;
-    }
+.ymca-toolbar {
+  font-size: 12px;
+  position:sticky;
+  form {
+    width: 100%;
+  }
 }
 
-.ymca-reactive-form{
-    display:flex;
-    justify-content: center;
-    flex-direction: row;
-    width:100%;
+.ymca-reactive-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
 }
 
-.ymca-spacer{
-    flex-grow:1;
+.ymca-spacer {
+  flex-grow: 1;
 }
 
-.ymca-days-entry{
-    align-self:center;
+.ymca-days-entry, .ymca-modal-filter {
+  align-self: center;
+}
+
+@media only screen and (min-width: 1250px) {
+  .ymca-modal-filter {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+  .ymca-age-entry,
+  .ymca-time-entry,
+  .ymca-days-entry {
+    display: none;
+  }
 }
