@@ -1,12 +1,21 @@
 .ymca-toolbar{
-
     font-size:12px;
-
-    .ymca-reactive-form{
-        display:flex;
-        justify-content: space-between;
-        .ymca-spacer{
-            flex-grow:1;
-        }
+    form{
+        width:100%;
     }
+}
+
+.ymca-reactive-form{
+    display:flex;
+    justify-content: center;
+    flex-direction: row;
+    width:100%;
+}
+
+.ymca-spacer{
+    flex-grow:1;
+}
+
+.ymca-days-entry{
+    align-self:center;
 }

@@ -12,7 +12,7 @@ import { MobileFilterModalComponent } from './components/mobile-filter-modal/mob
 import { HttpClientModule } from '@angular/common/http';
 import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Material Design Modules
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -20,9 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
-
-
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -40,13 +38,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
   imports: [
     BrowserModule,
     CommonModule,
+    BrowserAnimationsModule,
     MatToolbarModule,
     HttpClientModule,
     MatInputModule,
     MatSelectModule,
-    BrowserAnimationsModule,
     MatSlideToggleModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatButtonModule
   ],
   entryComponents: [
     YmcaEventCardComponent,
