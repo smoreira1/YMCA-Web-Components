@@ -17,7 +17,7 @@ export class YMCAEventsService {
   @Output() change: EventEmitter<Array<YMCAEvent>> = new EventEmitter();
   constructor(private http: HttpClient) { }
 
-  getEvents(
+  public getEvents(
     tag: string,
     geoFlag: string,
     geoCode: GeoCode,
@@ -29,11 +29,11 @@ export class YMCAEventsService {
     endingTime?: string): Observable<any>{
     return this
     .http
-    .get(`${this.endpoint}/YMCAEvents?tag=${tag}&zipcode=${zipcode}&distance=${distance}&age=${age}&startingTime=${startingTime}&endingTime=${endingTime}&monday=${dayAvaliability.Monday}&tuesday=${dayAvaliability.Tuesday}&wednesday=${dayAvaliability.Wednesday}&thursday=${dayAvaliability.Thursday}&friday=${dayAvaliability.Friday}&saturday=${dayAvaliability.Saturday}&sunday=${dayAvaliability.Sunday}&geoFlag=${geoFlag}&lat=${geoCode.latitude}&lon=${geoCode.longitude}`)
+    .get(`${this.endpoint}/YmcaEvents?tag=${tag}&zipcode=${zipcode}&distance=${distance}&age=${age}&startingTime=${startingTime}&endingTime=${endingTime}&monday=${dayAvaliability.Monday}&tuesday=${dayAvaliability.Tuesday}&wednesday=${dayAvaliability.Wednesday}&thursday=${dayAvaliability.Thursday}&friday=${dayAvaliability.Friday}&saturday=${dayAvaliability.Saturday}&sunday=${dayAvaliability.Sunday}&geoFlag=${geoFlag}&lat=${geoCode.latitude}&lon=${geoCode.longitude}`)
     .pipe(
       retry(1),
       catchError(this.handleError)
-    );;
+    );
   }
 
   handleError(error) {

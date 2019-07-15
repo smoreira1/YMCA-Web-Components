@@ -53,20 +53,22 @@ export class YmcaEventsComponent implements OnInit {
   constructor(private eventsService: YMCAEventsService) { }
 
   ngOnInit() {
+    this.tag = 'Parent Child Swim B';
     this.configureDays();
-    this.geoCode.latitude = '80';
-    this.geoCode.longitude = '30';
-    this.events = this.eventsService.getEvents(
+    const geoCode = {
+      latitude: '80',
+      longitude: '20',
+    }
+    this.eventsService.getEvents(
       this.tag,
       this.geoCodeFlag,
-      this.geoCode,
+      geoCode,
       this.dayAvailability,
       this.zipcode,
       this.distance,
       this.age,
       this.startingTime,
-      this.endingTime,
-    );
+      this.endingTime).subscribe(res => this.events = res.data);
   }
 
   getEvents(){
