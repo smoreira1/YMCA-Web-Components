@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-alert-message',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlertMessageComponent implements OnInit {
 
+  @Input() alertMessage: string;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  closeAlert(): void {
+
   }
 
 }

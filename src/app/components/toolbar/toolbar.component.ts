@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { YMCAEventsService } from 'src/app/services/ymca-events.service';
 import { FiltersConfigService } from 'src/app/services/filters-config.service';
 import { SelectDropDown } from 'src/app/interfaces/selectValue.interface';
@@ -11,7 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 
 
-export class ToolbarComponent implements OnInit {
+export class ToolbarComponent implements OnInit, OnChanges {
 
   @Input() zipcode: string;
   @Input() distance: string;
