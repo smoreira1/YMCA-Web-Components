@@ -35,14 +35,14 @@ export class YmcaEventsComponent implements OnInit {
   };
 
   public filters = {
-    zipcode: '',
-    age: '',
-    distance: '',
+    zipcode: '32825',
+    age: '99',
+    distance: '50',
     time: '',
     dayAvailability: '',
     tag: '',
-    startingTime: '',
-    endingTime: '',
+    startingTime: '12:00 AM',
+    endingTime: '11:59 PM',
   }
 
   public events: Observable<YMCAEvent>;
@@ -53,7 +53,7 @@ export class YmcaEventsComponent implements OnInit {
   constructor(private eventsService: YMCAEventsService) { }
 
   ngOnInit() {
-    this.tag = 'Parent Child Swim B';
+    this.tag = 'Parent Child Swim A';
     this.configureDays();
     const geoCode = {
       latitude: '80',
@@ -64,11 +64,11 @@ export class YmcaEventsComponent implements OnInit {
       this.geoCodeFlag,
       geoCode,
       this.dayAvailability,
-      this.zipcode,
-      this.distance,
-      this.age,
-      this.startingTime,
-      this.endingTime).subscribe(res => this.events = res.data);
+      this.filters.zipcode,
+      this.filters.distance,
+      this.filters.age,
+      this.filters.startingTime,
+      this.filters.endingTime).subscribe(res => this.events = res.data);
   }
 
   getEvents(){

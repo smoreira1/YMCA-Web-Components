@@ -8,6 +8,11 @@ import { Component, OnInit, Input } from '@angular/core';
 export class AlertMessageComponent implements OnInit {
 
   @Input() alertMessage: string;
+
+  public state = {
+    visible: false,
+  };
+
   constructor() { }
 
   ngOnInit() {

@@ -4,11 +4,11 @@
     description='{{ event.description }}'
     startDate='{{ event.startDate }}'
   ></app-ymca-event-card>
-  <div class='ymca-empty-events-result'>
+  <div class='ymca-empty-events-result' *ngIf='events?.length === 0'>
     <h1 class='ymca-events-empty-msg'>No events were returned, try another filter setting.</h1>
     <div class='ymca-scaling-svg-container'><span class='ymca-scaling-svg'></span></div>
   </div>
-  <div class="ymca-maintenance">
+  <div class="ymca-maintenance" *ngIf='state.maintenance'>
     <h2 class='ymca-motto'>Honesty. Respect. Caring. Faith. Responsibility</h2>
     <p>We are excited to see you.</p>
     <p> Please check back soon.</p>

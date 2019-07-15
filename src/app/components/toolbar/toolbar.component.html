@@ -1,51 +1,53 @@
-<mat-toolbar color="primary" class='ymca-toolbar'>
-  <mat-toolbar-row class='ymca-toolbar-row'>
-    <form>
-      <div class="ymca-reactive-form">
-        <span class='zip-code-entry'>
-          <mat-form-field class="ymca-zipcode-field">
-            <input matInput placeholder="ZipCode" [value]="zipcode" autocomplete="off" maxlength='5'>
-          </mat-form-field>
-        </span>
-        <span class='ymca-distance-flex-item'>
-          <mat-form-field class='ymca-distance-field'>
-            <mat-label>Distance</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let distance of distances" [value]="distance.value">{{distance.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </span>
-        <span class='ymca-age-entry'>
-          <mat-form-field class='ymca-age-field'>
-            <mat-label>Age</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let age of ages" [value]="age.value">{{age.viewValue}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </span>
-        <span class='ymca-time-entry'>
-          <mat-form-field class='ymca-time-field'>
-            <mat-label>Time</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let time of times" [value]="time.value">{{time.viewValue}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </span>
-        <span class='ymca-days-entry'>
-          <mat-slide-toggle>MON</mat-slide-toggle>
-          <mat-slide-toggle>TUE</mat-slide-toggle>
-          <mat-slide-toggle>WED</mat-slide-toggle>
-          <mat-slide-toggle>THU</mat-slide-toggle>
-          <mat-slide-toggle>FRI</mat-slide-toggle>
-          <mat-slide-toggle>SAT</mat-slide-toggle>
-          <mat-slide-toggle>SUN</mat-slide-toggle>
-        </span>
-        <span class='ymca-modal-filter'>
-          <button mat-raised-button (click)='openFiltersModal()' type='button'>Filters</button>
-        </span>
-      </div>
-    </form>
-  </mat-toolbar-row>
-</mat-toolbar>
-<mat-progress-bar mode="indeterminate" color=""></mat-progress-bar>
+<div class=''>
+    <mat-toolbar color="primary" class='ymca-toolbar'>
+        <mat-toolbar-row class='ymca-toolbar-row'>
+          <form>
+            <div class="ymca-reactive-form">
+              <span class='zip-code-entry'>
+                <mat-form-field class="ymca-zipcode-field">
+                  <input matInput placeholder="ZipCode" [value]="zipcode" autocomplete="off" maxlength='5'>
+                </mat-form-field>
+              </span>
+              <span class='ymca-distance-flex-item'>
+                <mat-form-field class='ymca-distance-field'>
+                  <mat-label>Distance</mat-label>
+                  <mat-select>
+                    <mat-option *ngFor="let distance of distances" [value]="distance.value">{{distance.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </span>
+              <span class='ymca-age-entry'>
+                <mat-form-field class='ymca-age-field'>
+                  <mat-label>Age</mat-label>
+                  <mat-select>
+                    <mat-option *ngFor="let age of ages" [value]="age.value">{{age.viewValue}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </span>
+              <span class='ymca-time-entry'>
+                <mat-form-field class='ymca-time-field'>
+                  <mat-label>Time</mat-label>
+                  <mat-select>
+                    <mat-option *ngFor="let time of times" [value]="time.value">{{time.viewValue}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </span>
+              <span class='ymca-days-entry'>
+                <mat-slide-toggle>MON</mat-slide-toggle>
+                <mat-slide-toggle>TUE</mat-slide-toggle>
+                <mat-slide-toggle>WED</mat-slide-toggle>
+                <mat-slide-toggle>THU</mat-slide-toggle>
+                <mat-slide-toggle>FRI</mat-slide-toggle>
+                <mat-slide-toggle>SAT</mat-slide-toggle>
+                <mat-slide-toggle>SUN</mat-slide-toggle>
+              </span>
+              <span class='ymca-modal-filter'>
+                <button mat-raised-button (click)='openFiltersModal()' type='button'>Filters</button>
+              </span>
+            </div>
+          </form>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <mat-progress-bar mode="indeterminate" color=""></mat-progress-bar>
+</div>

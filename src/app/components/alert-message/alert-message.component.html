@@ -1,5 +1,5 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
+<mat-toolbar color="primary" *ngIf="state.visible">
+  <mat-toolbar-row class='ymca-alert-row'>
     <span>!</span>
     <span>{{ alertMessage }}</span>
     <button mat-raised-button>X</button>

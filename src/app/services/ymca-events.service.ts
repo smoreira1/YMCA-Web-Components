@@ -7,7 +7,6 @@ import { DayAvailability } from '../interfaces/day-availability.interface';
 import { retry, catchError } from 'rxjs/operators';
 import { GeoCode } from '../interfaces/geocode.interface';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -26,14 +25,14 @@ export class YMCAEventsService {
     distance?: string,
     age?: string,
     startingTime?: string,
-    endingTime?: string): Observable<any>{
+    endingTime?: string): Observable<any> {
     return this
-    .http
-    .get(`${this.endpoint}/YmcaEvents?tag=${tag}&zipcode=${zipcode}&distance=${distance}&age=${age}&startingTime=${startingTime}&endingTime=${endingTime}&monday=${dayAvaliability.Monday}&tuesday=${dayAvaliability.Tuesday}&wednesday=${dayAvaliability.Wednesday}&thursday=${dayAvaliability.Thursday}&friday=${dayAvaliability.Friday}&saturday=${dayAvaliability.Saturday}&sunday=${dayAvaliability.Sunday}&geoFlag=${geoFlag}&lat=${geoCode.latitude}&lon=${geoCode.longitude}`)
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    );
+      .http
+      .get(`${this.endpoint}/YmcaEvents?tag=${tag}&zipcode=${zipcode}&distance=${distance}&age=${age}&startingTime=${startingTime}&endingTime=${endingTime}&monday=${dayAvaliability.Monday}&tuesday=${dayAvaliability.Tuesday}&wednesday=${dayAvaliability.Wednesday}&thursday=${dayAvaliability.Thursday}&friday=${dayAvaliability.Friday}&saturday=${dayAvaliability.Saturday}&sunday=${dayAvaliability.Sunday}&geoFlag=${geoFlag}&lat=${geoCode.latitude}&lon=${geoCode.longitude}`)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
   }
 
   handleError(error) {
