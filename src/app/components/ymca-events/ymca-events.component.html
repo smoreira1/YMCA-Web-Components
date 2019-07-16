@@ -1,10 +1,10 @@
-<div class='ymca-events'>
-  <app-ymca-event-card *ngFor='let event of events'
-    id='{{ event.id }}'
-    description='{{ event.description }}'
-    startDate='{{ event.startDate }}'
-  ></app-ymca-event-card>
-  <div class='ymca-empty-events-result' *ngIf='events?.length === 0'>
+<div class='ymca-events-component'>
+  <button mat-raised-button (click)='test()'>Events</button>
+  <div class='ymca-events'>
+    <app-ymca-event-card *ngFor='let event of events | async' id='{{ event.id }}' description='{{ event.description }}'
+      startDate='{{ event.startDate }}'></app-ymca-event-card>
+  </div>
+  <div class='ymca-empty-events-result' *ngIf='false'>
     <h1 class='ymca-events-empty-msg'>No events were returned, try another filter setting.</h1>
     <div class='ymca-scaling-svg-container'><span class='ymca-scaling-svg'></span></div>
   </div>

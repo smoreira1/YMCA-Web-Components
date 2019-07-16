@@ -1,12 +1,12 @@
 <div class="ymca-event-card">
-  <h2 class="ymca-event-card-title ymca-event-divide">Parent/Child Swim - A - Water Discovery 4 Lessons</h2>
+  <h2 class="ymca-event-card-title ymca-event-divide">{{ parentProduct }}</h2>
   <div class="ymca-event-info-section ymca-event-divide">
     <p>
       <label>START - END DATE</label>
     </p>
-    <p class="ymca-event-info"><span class="ymca-event-info-high-light">Sep-7-2019 {{ description }}</span>
+    <p class="ymca-event-info"><span class="ymca-event-info-high-light">{{ startDate }}</span>
       <span>→</span>
-      <span class="ymca-event-info-high-light">Sep-28-2019</span>
+      <span class="ymca-event-info-high-light">{{ endDate }}</span>
     </p>
   </div>
   <div class="ymca-event-info-section ymca-event-divide">
@@ -14,9 +14,9 @@
       <label>START - END TIME</label>
     </p>
     <p class="ymca-event-info">
-      <span class="ymca-event-info-high-light">09:00 am</span>
+      <span class="ymca-event-info-high-light">{{ startTime }}</span>
       <span>→</span>
-      <span class="ymca-event-info-high-light">09:30 am</span>
+      <span class="ymca-event-info-high-light">{{ endTime }}</span>
     </p>
   </div>
   <div class="ymca-event-info-section ymca-event-divide">
@@ -32,7 +32,7 @@
       <label>CLASSES PER WEEK</label>
     </p>
     <p class="ymca-event-info">
-      <span class="ymca-event-info-high-light">1</span>
+      <span class="ymca-event-info-high-light">{{ numberOfClassesPerWeek }}</span>
     </p>
   </div>
   <div class="ymca-event-info-section ymca-event-divide">
@@ -40,8 +40,8 @@
       <label>AGE</label>
     </p>
     <p class="ymca-event-info">
-      <span class="ymca-event-info-high-light">6 months</span>
-      <span>→</span><span class="ymca-event-info-high-light">3 years</span>
+      <span class="ymca-event-info-high-light">{{ lowAge }}</span>
+      <span>→</span><span class="ymca-event-info-high-light">{{ highAge }}</span>
     </p>
   </div>
   <div class="ymca-event-info-section ymca-event-divide">
@@ -49,7 +49,7 @@
       <label>MEMBER/NON-MEMBER</label>
     </p>
     <p class="ymca-event-info">
-      <span>$38.00</span> / <span>$75.00</span>
+      <span>{{ memberPrice }}</span> / <span>{{ nonMemberPrice }}</span>
     </p>
   </div>
   <div class="ymca-event-info-section ymca-event-divide">
@@ -58,13 +58,13 @@
     </p>
     <h3>
       <span class="ymca-event-location">
-        Downtown
+        {{ location }}
       </span>
     </h3>
   </div>
   <span class="ymca-spacer"></span>
   <div class="ymca-event-card-actions">
-    <p class="ymca-extra-details">ONLY 10 SLOTS LEFT</p>
+    <p class="ymca-extra-details">ONLY {{ remainingSlots }} SLOTS LEFT</p>
     <button class="ymca-button ymca-add-to-cart" (click)="addToCart()">Add to Cart</button>
   </div>
 </div>

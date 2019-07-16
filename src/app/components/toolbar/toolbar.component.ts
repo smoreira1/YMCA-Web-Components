@@ -61,4 +61,8 @@ export class ToolbarComponent implements OnInit, OnChanges {
     console.log('Open filters button');
   }
 
+  search(){
+    console.log('Searching...');
+  }
+
 }

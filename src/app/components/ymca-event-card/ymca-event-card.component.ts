@@ -1,10 +1,21 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
+  ChangeDetectorRef,
+  ElementRef, } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-ymca-event-card',
   templateUrl: './ymca-event-card.component.html',
-  styleUrls: ['./ymca-event-card.component.scss']
+  styleUrls: ['./ymca-event-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class YmcaEventCardComponent implements OnInit {
 
@@ -36,14 +47,25 @@ export class YmcaEventCardComponent implements OnInit {
 
 
   @Output() addItemToCart = new EventEmitter();
-  constructor(private cartService: CartService) { }
+
+  public state = {
+    visible: true,
+    addToCartEnabled: true,
+  };
+
+  constructor(private el: ElementRef, private cd: ChangeDetectorRef, private cartService: CartService) { }
 
   ngOnInit() {
   }
 
-  addToCart(){
+  addToCart() {
     console.log(this.id);
     this.cartService.addCartItem(this.id);
+  }
+
+  public setState(key, value) {
+    this.state = { ...this.state, [key]: value };
+    this.cd.detectChanges();
   }
 
 }

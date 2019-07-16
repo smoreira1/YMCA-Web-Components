@@ -1,11 +1,12 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { YMCAEvent } from '../interfaces/ymca-event.interface';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { DayAvailability } from '../interfaces/day-availability.interface';
-import { retry, catchError } from 'rxjs/operators';
+import { retry, catchError, map, tap } from 'rxjs/operators';
 import { GeoCode } from '../interfaces/geocode.interface';
+import { APIResponse } from '../interfaces/api-response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -28,24 +29,35 @@ export class YMCAEventsService {
     endingTime?: string): Observable<any> {
     return this
       .http
-      .get(`${this.endpoint}/YmcaEvents?tag=${tag}&zipcode=${zipcode}&distance=${distance}&age=${age}&startingTime=${startingTime}&endingTime=${endingTime}&monday=${dayAvaliability.Monday}&tuesday=${dayAvaliability.Tuesday}&wednesday=${dayAvaliability.Wednesday}&thursday=${dayAvaliability.Thursday}&friday=${dayAvaliability.Friday}&saturday=${dayAvaliability.Saturday}&sunday=${dayAvaliability.Sunday}&geoFlag=${geoFlag}&lat=${geoCode.latitude}&lon=${geoCode.longitude}`)
+      .get<any>(`${this.endpoint}/YmcaEvents?tag=${tag}&zipcode=${zipcode}&distance=${distance}&age=${age}&startingTime=${startingTime}&endingTime=${endingTime}&monday=${dayAvaliability.Monday}&tuesday=${dayAvaliability.Tuesday}&wednesday=${dayAvaliability.Wednesday}&thursday=${dayAvaliability.Thursday}&friday=${dayAvaliability.Friday}&saturday=${dayAvaliability.Saturday}&sunday=${dayAvaliability.Sunday}&geoFlag=${geoFlag}&lat=${geoCode.latitude}&lon=${geoCode.longitude}`)
       .pipe(
-        retry(1),
+        tap(data => console.log(JSON.parse(data))),
+        map(response => {  // NOTE: response is of type SomeType
+          // Does something on response.data
+          // modify the response.data as you see fit.
+          // return the modified data:
+          const newResponse = JSON.parse(response);
+          return newResponse.data; // kind of useless
+      }),
         catchError(this.handleError)
-      );
-  }
-
-  handleError(error) {
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      // client-side error
-      errorMessage = `Error: ${error.error.message}`;
-    } else {
-      // server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+     ); // end of pipe
+    
     }
-    window.alert(errorMessage);
-    return throwError(errorMessage);
-  }
+
+    private handleError<T> (operation = 'operation', result?: T) {
+      return (error: any): Observable<T> => {
+        // TODO: send the error to remote logging infrastructure
+        console.error(error); // log to console instead
+        // TODO: better job of transforming error for user consumption
+        this.log(`${operation} failed: ${error.message}`);
+        // Let the app keep running by returning an empty result.
+        return of(result as T);
+      };
+    }
+
+    private log(message: string) {
+      console.log('test');
+      //this.messageService.add(`HeroService: ${message}`);
+    }
 
 }

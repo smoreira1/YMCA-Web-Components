@@ -1,14 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, ElementRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { YMCAEvent } from 'src/app/interfaces/ymca-event.interface';
 import { YMCAEventsService } from 'src/app/services/ymca-events.service';
 import { GeoCode } from 'src/app/interfaces/geocode.interface';
 import { DayAvailability } from 'src/app/interfaces/day-availability.interface';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { APIResponse } from 'src/app/interfaces/api-response.interface';
 
 @Component({
   selector: 'app-ymca-events',
   templateUrl: './ymca-events.component.html',
-  styleUrls: ['./ymca-events.component.scss']
+  styleUrls: ['./ymca-events.component.scss'],
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class YmcaEventsComponent implements OnInit {
 
@@ -45,12 +48,12 @@ export class YmcaEventsComponent implements OnInit {
     endingTime: '11:59 PM',
   }
 
-  public events: Observable<YMCAEvent>;
+  public events: Observable<YMCAEvent[]>;
   public geoCode: GeoCode;
   public dayAvailability: DayAvailability;
   public geoCodeFlag: string;
 
-  constructor(private eventsService: YMCAEventsService) { }
+  constructor(private el: ElementRef, private cd: ChangeDetectorRef, private eventsService: YMCAEventsService) { }
 
   ngOnInit() {
     this.tag = 'Parent Child Swim A';
@@ -59,7 +62,7 @@ export class YmcaEventsComponent implements OnInit {
       latitude: '80',
       longitude: '20',
     }
-    this.eventsService.getEvents(
+   this.events = this.eventsService.getEvents(
       this.tag,
       this.geoCodeFlag,
       geoCode,
@@ -68,7 +71,7 @@ export class YmcaEventsComponent implements OnInit {
       this.filters.distance,
       this.filters.age,
       this.filters.startingTime,
-      this.filters.endingTime).subscribe(res => this.events = res.data);
+      this.filters.endingTime);
   }
 
   getEvents(){
@@ -85,6 +88,15 @@ export class YmcaEventsComponent implements OnInit {
       Saturday: false,
       Sunday: false,
     }
+  }
+
+  test(){
+    console.log(this.events);
+  }
+
+  public setState(key, value) {
+    this.state = { ...this.state, [key]: value };
+    this.cd.detectChanges();
   }
 
 }
