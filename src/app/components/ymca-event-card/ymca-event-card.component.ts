@@ -68,4 +68,8 @@ export class YmcaEventCardComponent implements OnInit {
     this.cd.detectChanges();
   }
 
+  public formatData(){
+
+  }
+
 }
