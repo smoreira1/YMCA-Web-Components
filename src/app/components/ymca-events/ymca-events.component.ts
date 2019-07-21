@@ -10,8 +10,7 @@ import { APIResponse } from 'src/app/interfaces/api-response.interface';
 @Component({
   selector: 'app-ymca-events',
   templateUrl: './ymca-events.component.html',
-  styleUrls: ['./ymca-events.component.scss'],
-  encapsulation: ViewEncapsulation.ShadowDom
+  styleUrls: ['./ymca-events.component.scss']
 })
 export class YmcaEventsComponent implements OnInit {
 

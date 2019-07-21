@@ -1,9 +1,17 @@
 .ymca-toolbar {
   font-size: 12px;
+  left:0;
   form {
     width: 100%;
   }
 }
+
+.ymca-toolbar-container{
+  width:100%;
+  left:0;
+  position:sticky;
+}
+
 
 .ymca-reactive-form {
   display: flex;

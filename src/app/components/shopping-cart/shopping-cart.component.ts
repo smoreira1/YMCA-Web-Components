@@ -17,12 +17,11 @@ import { environment } from 'src/environments/environment';
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class ShoppingCartComponent implements OnInit {
 
   @Input() cartNumber: string;
+  @Input() open = false;
   // @Output() rerendered: new EventEmitter();
   // Modify with stState
   public state = {
@@ -53,6 +52,10 @@ export class ShoppingCartComponent implements OnInit {
 
   public deleteCartItem(cartItemId: string): void{
     this.cartService.deleteCartItem(cartItemId);
+  }
+
+  public closeCart(){
+    console.log('closeCart');
   }
 
 }

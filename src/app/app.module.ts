@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ShoppingCartButtonComponent } from './components/shopping-cart-button/shopping-cart-button.component';
+
 
 // Material Design Modules
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -24,6 +26,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
+import {MatBadgeModule} from '@angular/material/badge'; 
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     YmcaEventsComponent,
     YmcaEventCardComponent,
     MobileFilterModalComponent,
+    ShoppingCartButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatDialogModule,
     MatProgressBarModule,
     MatExpansionModule,
+    MatBadgeModule,
   ],
   entryComponents: [
     YmcaEventCardComponent,

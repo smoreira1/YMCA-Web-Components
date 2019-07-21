@@ -1,6 +1,21 @@
+.center-content{
+  width:100%;
+  height:100%;
+  margin:0 auto;
+  background:#f7f7f7;
+  position:fixed;
+  left:20%;
+  top:30%;
+  margin-left:-250px;
+  margin-top:-250px;
+  z-index:2;
+}
+
 .ymca-shopping-cart {
   position: absolute;
   overscroll-behavior: contain;
+  width:100%;
+  z-index:10;
   
   .ymca-quick-cart {
     height: 100%;

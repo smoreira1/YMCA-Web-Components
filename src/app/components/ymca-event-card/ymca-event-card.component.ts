@@ -45,6 +45,10 @@ export class YmcaEventCardComponent implements OnInit {
   @Input() parentProduct: string;
   @Input() numberOfClassesPerWeek: string;
 
+  public lowAge:number;
+  public highAge:number;
+  public endTime:string;
+  public startTime:string;
 
   @Output() addItemToCart = new EventEmitter();
 
@@ -56,6 +60,7 @@ export class YmcaEventCardComponent implements OnInit {
   constructor(private el: ElementRef, private cd: ChangeDetectorRef, private cartService: CartService) { }
 
   ngOnInit() {
+    this.cd.detectChanges();
   }
 
   addToCart() {

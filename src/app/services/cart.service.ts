@@ -33,6 +33,10 @@ export class CartService {
     console.log('Shopping cart is open');
   }
 
+  openShoppingCart(){
+    console.log('Shopping Cart Open');
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

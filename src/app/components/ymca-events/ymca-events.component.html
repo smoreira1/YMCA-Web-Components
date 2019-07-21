@@ -1,5 +1,6 @@
 <div class='ymca-events-component'>
   <button mat-raised-button (click)='test()'>Events</button>
+  <app-shopping-cart-button></app-shopping-cart-button>
   <div class='ymca-events'>
     <app-ymca-event-card *ngFor='let event of events | async' id='{{ event.id }}' description='{{ event.description }}'
       startDate='{{ event.startDate }}'></app-ymca-event-card>
