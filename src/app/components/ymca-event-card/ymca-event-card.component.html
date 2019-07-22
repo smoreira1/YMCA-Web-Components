@@ -24,13 +24,13 @@
       <label>DAYS OF WEEK</label>
     </p>
     <p class="ymca-event-info">
-      <span class="ymca-event-info-high-light" *ngIf='monday'>Mon</span>
-      <span class="ymca-event-info-high-light" *ngIf='tuesday'>Tue</span>
-      <span class="ymca-event-info-high-light" *ngIf='wednesday'>Wed</span>
-      <span class="ymca-event-info-high-light" *ngIf='thursday'>Thu</span>
-      <span class="ymca-event-info-high-light" *ngIf='friday'>Fri</span>
-      <span class="ymca-event-info-high-light" *ngIf='saturday'>Sat</span>
-      <span class="ymca-event-info-high-light" *ngIf='sunday'>Sun</span>
+      <span class="ymca-event-info-high-light">Mon</span>
+      <span class="ymca-event-info-high-light">Tue</span>
+      <span class="ymca-event-info-high-light">Wed</span>
+      <span class="ymca-event-info-high-light">Thu</span>
+      <span class="ymca-event-info-high-light">Fri</span>
+      <span class="ymca-event-info-high-light">Sat</span>
+      <span class="ymca-event-info-high-light">Sun</span>
     </p>
   </div>
   <div class="ymca-event-info-section ymca-event-divide" *ngIf='numberOfClassesPerWeek'>
@@ -46,11 +46,11 @@
       <label>AGE</label>
     </p>
     <p class="ymca-event-info">
-      <span class="ymca-event-info-high-light" *ngIf='lowAge != 0'>{{ lowAge }} {{ startingAgeType}}</span>
+      <span class="ymca-event-info-high-light" *ngIf="lowAge != '0'">{{ lowAge }} {{ startingAgeType}}</span>
       <span *ngIf='!highAge'> or older</span>
-      <span *ngIf='lowAge && lowAge != 0'>→</span>
+      <span *ngIf="lowAge && lowAge != '0'">→</span>
       <span class="ymca-event-info-high-light">{{ highAge }} {{ endingAgeType }}</span>
-      <span *ngIf='!lowAge || lowAge == 0'> or younger</span>
+      <span *ngIf="!lowAge || lowAge == '0'"> or younger</span>
     </p>
   </div>
   <div class="ymca-event-info-section ymca-event-divide">

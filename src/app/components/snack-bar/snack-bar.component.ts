@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-snack-bar',
@@ -8,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 export class SnackBarComponent implements OnInit {
 
   public message: string;
-  constructor() { }
+  public state: {};
+  constructor(private el: ElementRef, private cd: ChangeDetectorRef, ) { }
 
   ngOnInit() {
   }
+
+  public setState(key, value) {
+    this.state = { ...this.state, [key]: value };
+    this.cd.detectChanges();
+  }
+
 
 }

@@ -13,7 +13,7 @@ export class CartService {
   isOpen = false;
   @Output() change: EventEmitter<boolean> = new EventEmitter();
   private endpoint = environment.apiPath;
-  
+
   constructor(private http: HttpClient) { }
 
   getCartItems(): Observable<CartItem[]> {
@@ -25,15 +25,15 @@ export class CartService {
     return true;
   }
 
-  deleteCartItem(cartItemId: string) {}
+  deleteCartItem(cartItemId: string) { }
 
-  toggleDisplay(){
+  toggleDisplay() {
     this.isOpen = !this.isOpen;
     this.change.emit(this.isOpen);
     console.log('Shopping cart is open');
   }
 
-  openShoppingCart(){
+  openShoppingCart() {
     console.log('Shopping Cart Open');
   }
 

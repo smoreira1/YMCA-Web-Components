@@ -1,15 +1,16 @@
 .ymca-toolbar {
   font-size: 12px;
-  left:0;
+  left: 0;
+
   form {
     width: 100%;
   }
 }
 
-.ymca-toolbar-container{
-  width:100%;
-  left:0;
-  position:sticky;
+.ymca-toolbar-container {
+  width: 100%;
+  left: 0;
+  position: sticky;
 }
 
 
@@ -24,20 +25,41 @@
   flex-grow: 1;
 }
 
-.ymca-days-entry, .ymca-modal-filter {
+.ymca-days-entry,
+.ymca-modal-filter {
   align-self: center;
 }
 
-@media only screen and (min-width: 1250px) {
-  .ymca-modal-filter {
-    display: none;
+.ymca-reactive-form {
+  @media only screen and (min-width: 1250px) {
+    .ymca-modal-filter {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: 1250px) {
+
+    .ymca-age-entry,
+    .ymca-time-entry,
+    .ymca-days-entry {
+      display: none;
+    }
   }
 }
 
-@media only screen and (max-width: 1250px) {
-  .ymca-age-entry,
-  .ymca-time-entry,
-  .ymca-days-entry {
-    display: none;
-  }
+.ymca-filters-form {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  height: 100%;
+}
+
+
+.ymca-days-filter-entry{
+  display:flex;
+  flex-flow: column;
+}
+
+.ymca-filters-side-nav{
+  padding:10px;
 }

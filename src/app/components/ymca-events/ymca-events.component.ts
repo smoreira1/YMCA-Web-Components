@@ -67,8 +67,7 @@ export class YmcaEventsComponent implements OnInit {
       dateRange: 'Woot Date Range',
       description: 'ready description'
     },
-
-  ]
+  ];
 
   constructor(private el: ElementRef, private cd: ChangeDetectorRef, private eventsService: YMCAEventsService) { }
 

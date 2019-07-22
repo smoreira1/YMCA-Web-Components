@@ -1,53 +1,104 @@
 <div class='ymca-toolbar-container'>
-    <mat-toolbar color="primary" class='ymca-toolbar'>
-        <mat-toolbar-row class='ymca-toolbar-row'>
-          <form>
-            <div class="ymca-reactive-form">
-              <span class='zip-code-entry'>
-                <mat-form-field class="ymca-zipcode-field">
-                  <input matInput placeholder="ZipCode" [value]="zipcode" autocomplete="off" maxlength='5' (input)="search()" #zipCode>
-                </mat-form-field>
-              </span>
-              <span class='ymca-distance-flex-item'>
-                <mat-form-field class='ymca-distance-field'>
-                  <mat-label>Distance</mat-label>
-                  <mat-select>
-                    <mat-option *ngFor="let distance of distances" [value]="distance.value">{{distance.viewValue}}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </span>
-              <span class='ymca-age-entry'>
-                <mat-form-field class='ymca-age-field'>
-                  <mat-label>Age</mat-label>
-                  <mat-select>
-                    <mat-option *ngFor="let age of ages" [value]="age.value">{{age.viewValue}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </span>
-              <span class='ymca-time-entry'>
-                <mat-form-field class='ymca-time-field'>
-                  <mat-label>Time</mat-label>
-                  <mat-select>
-                    <mat-option *ngFor="let time of times" [value]="time.value">{{time.viewValue}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </span>
-              <span class='ymca-days-entry'>
-                <mat-slide-toggle (click)="search()">MON</mat-slide-toggle>
-                <mat-slide-toggle (click)="search()">TUE</mat-slide-toggle>
-                <mat-slide-toggle (click)="search()">WED</mat-slide-toggle>
-                <mat-slide-toggle (click)="search()">THU</mat-slide-toggle>
-                <mat-slide-toggle (click)="search()">FRI</mat-slide-toggle>
-                <mat-slide-toggle (click)="search()">SAT</mat-slide-toggle>
-                <mat-slide-toggle (click)="search()">SUN</mat-slide-toggle>
-              </span>
-              <span class='ymca-modal-filter'>
-                <button mat-raised-button (click)='openFiltersModal()' type='button'>Filters</button>
-              </span>
-            </div>
-          </form>
-        </mat-toolbar-row>
-      </mat-toolbar>
-      <mat-progress-bar mode="indeterminate" color=""></mat-progress-bar>
+  <mat-toolbar color="primary" class='ymca-toolbar'>
+    <mat-toolbar-row class='ymca-toolbar-row'>
+      <form>
+        <app-shopping-cart></app-shopping-cart>
+        <div class="ymca-reactive-form">
+          <span class='zip-code-entry'>
+            <mat-form-field class="ymca-zipcode-field">
+              <input matInput placeholder="ZipCode" [value]="zipcode" autocomplete="off" maxlength='5'
+                (input)="search()" #zipCode>
+            </mat-form-field>
+          </span>
+          <span class='ymca-distance-flex-item'>
+            <mat-form-field class='ymca-distance-field'>
+              <mat-label>Distance</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let distance of distances" [value]="distance.value">{{distance.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </span>
+          <span class='ymca-age-entry'>
+            <mat-form-field class='ymca-age-field'>
+              <mat-label>Age</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let age of ages" [value]="age.value">{{age.viewValue}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </span>
+          <span class='ymca-time-entry'>
+            <mat-form-field class='ymca-time-field'>
+              <mat-label>Time</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let time of times" [value]="time.value">{{time.viewValue}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </span>
+          <span class='ymca-days-entry'>
+            <mat-slide-toggle (click)="search()">MON</mat-slide-toggle>
+            <mat-slide-toggle (click)="search()">TUE</mat-slide-toggle>
+            <mat-slide-toggle (click)="search()">WED</mat-slide-toggle>
+            <mat-slide-toggle (click)="search()">THU</mat-slide-toggle>
+            <mat-slide-toggle (click)="search()">FRI</mat-slide-toggle>
+            <mat-slide-toggle (click)="search()">SAT</mat-slide-toggle>
+            <mat-slide-toggle (click)="search()">SUN</mat-slide-toggle>
+          </span>
+          <span class='ymca-modal-filter'>
+            <button mat-raised-button (click)="sidenav.toggle()" type='button'>Filters</button>
+          </span>
+        </div>
+      </form>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-progress-bar mode="indeterminate" color=""></mat-progress-bar>
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="over" false class="ymca-filters-side-nav">
+      <div class="ymca-filters-form">
+        <span class='zip-code-entry'>
+          <mat-form-field class="ymca-zipcode-field">
+            <input matInput placeholder="ZipCode" [value]="zipcode" autocomplete="off" maxlength='5' (input)="search()"
+              #zipCode>
+          </mat-form-field>
+        </span>
+        <span class='ymca-distance-flex-item'>
+          <mat-form-field class='ymca-distance-field'>
+            <mat-label>Distance</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let distance of distances" [value]="distance.value">{{distance.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </span>
+        <span class='ymca-age-entry'>
+          <mat-form-field class='ymca-age-field'>
+            <mat-label>Age</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let age of ages" [value]="age.value">{{age.viewValue}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </span>
+        <span class='ymca-time-entry'>
+          <mat-form-field class='ymca-time-field'>
+            <mat-label>Time</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let time of times" [value]="time.value">{{time.viewValue}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </span>
+        <span class='ymca-days-filter-entry'>
+          <mat-slide-toggle (click)="search()">MON</mat-slide-toggle>
+          <mat-slide-toggle (click)="search()">TUE</mat-slide-toggle>
+          <mat-slide-toggle (click)="search()">WED</mat-slide-toggle>
+          <mat-slide-toggle (click)="search()">THU</mat-slide-toggle>
+          <mat-slide-toggle (click)="search()">FRI</mat-slide-toggle>
+          <mat-slide-toggle (click)="search()">SAT</mat-slide-toggle>
+          <mat-slide-toggle (click)="search()">SUN</mat-slide-toggle>
+        </span>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <app-ymca-events></app-ymca-events>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

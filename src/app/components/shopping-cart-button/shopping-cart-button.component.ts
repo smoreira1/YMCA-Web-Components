@@ -1,5 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { YMCAEventsService } from 'src/app/services/ymca-events.service';
+import { Component, OnInit, Output, EventEmitter, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { CartService } from 'src/app/services/cart.service';
 export class ShoppingCartButtonComponent implements OnInit {
 
   public amountOfItemsInCart: number;
-  constructor(private ymcaEventsService: YMCAEventsService, private cartService: CartService) { }
+  constructor(private el: ElementRef, private cd: ChangeDetectorRef, private cartService: CartService) { }
 
   ngOnInit() {
   }
@@ -18,4 +17,5 @@ export class ShoppingCartButtonComponent implements OnInit {
   openShoppingCart(){
     this.cartService.openShoppingCart();
   }
+  
 }
