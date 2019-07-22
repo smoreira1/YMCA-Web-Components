@@ -24,10 +24,16 @@
       <label>DAYS OF WEEK</label>
     </p>
     <p class="ymca-event-info">
-      <span class="ymca-event-info-high-light">Sat</span>
+      <span class="ymca-event-info-high-light" *ngIf='monday'>Mon</span>
+      <span class="ymca-event-info-high-light" *ngIf='tuesday'>Tue</span>
+      <span class="ymca-event-info-high-light" *ngIf='wednesday'>Wed</span>
+      <span class="ymca-event-info-high-light" *ngIf='thursday'>Thu</span>
+      <span class="ymca-event-info-high-light" *ngIf='friday'>Fri</span>
+      <span class="ymca-event-info-high-light" *ngIf='saturday'>Sat</span>
+      <span class="ymca-event-info-high-light" *ngIf='sunday'>Sun</span>
     </p>
   </div>
-  <div class="ymca-event-info-section ymca-event-divide">
+  <div class="ymca-event-info-section ymca-event-divide" *ngIf='numberOfClassesPerWeek'>
     <p>
       <label>CLASSES PER WEEK</label>
     </p>
@@ -40,8 +46,11 @@
       <label>AGE</label>
     </p>
     <p class="ymca-event-info">
-      <span class="ymca-event-info-high-light">{{ lowAge }}</span>
-      <span>→</span><span class="ymca-event-info-high-light">{{ highAge }}</span>
+      <span class="ymca-event-info-high-light" *ngIf='lowAge != 0'>{{ lowAge }} {{ startingAgeType}}</span>
+      <span *ngIf='!highAge'> or older</span>
+      <span *ngIf='lowAge && lowAge != 0'>→</span>
+      <span class="ymca-event-info-high-light">{{ highAge }} {{ endingAgeType }}</span>
+      <span *ngIf='!lowAge || lowAge == 0'> or younger</span>
     </p>
   </div>
   <div class="ymca-event-info-section ymca-event-divide">
@@ -49,7 +58,7 @@
       <label>MEMBER/NON-MEMBER</label>
     </p>
     <p class="ymca-event-info">
-      <span>{{ memberPrice }}</span> / <span>{{ nonMemberPrice }}</span>
+      <span>${{ memberPrice }}</span> / <span>${{ nonMemberPrice }}</span>
     </p>
   </div>
   <div class="ymca-event-info-section ymca-event-divide">
@@ -58,13 +67,13 @@
     </p>
     <h3>
       <span class="ymca-event-location">
-        {{ location }}
+        {{ locationName }}
       </span>
     </h3>
   </div>
   <span class="ymca-spacer"></span>
   <div class="ymca-event-card-actions">
-    <p class="ymca-extra-details">ONLY {{ remainingSlots }} SLOTS LEFT</p>
+    <p class="ymca-extra-details" *ngIf='remainingSlots'>ONLY {{ remainingSlots }} SLOTS LEFT</p>
     <button class="ymca-button ymca-add-to-cart" (click)="addToCart()" mat-raised-button>Add to Cart</button>
   </div>
 </div>

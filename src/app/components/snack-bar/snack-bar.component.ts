@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SnackBarComponent implements OnInit {
 
+  public message: string;
   constructor() { }
 
   ngOnInit() {

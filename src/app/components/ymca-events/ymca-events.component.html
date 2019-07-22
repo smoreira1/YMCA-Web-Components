@@ -1,17 +1,59 @@
-<div class='ymca-events-component'>
-  <button mat-raised-button (click)='test()'>Events</button>
-  <app-shopping-cart-button></app-shopping-cart-button>
-  <div class='ymca-events'>
-    <app-ymca-event-card *ngFor='let event of events | async' id='{{ event.id }}' description='{{ event.description }}'
-      startDate='{{ event.startDate }}'></app-ymca-event-card>
-  </div>
-  <div class='ymca-empty-events-result' *ngIf='false'>
-    <h1 class='ymca-events-empty-msg'>No events were returned, try another filter setting.</h1>
-    <div class='ymca-scaling-svg-container'><span class='ymca-scaling-svg'></span></div>
-  </div>
-  <div class="ymca-maintenance" *ngIf='state.maintenance'>
-    <h2 class='ymca-motto'>Honesty. Respect. Caring. Faith. Responsibility</h2>
-    <p>We are excited to see you.</p>
-    <p> Please check back soon.</p>
-  </div>
-</div>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav-content>
+    <div class='ymca-events-component'>
+      <button mat-raised-button (click)='test()'>Events</button>
+      <button mat-button (click)="sidenav.toggle()">Toggle</button>
+      <app-shopping-cart-button></app-shopping-cart-button>
+      <div class='ymca-events'>
+        <app-ymca-event-card *ngFor='let event of events | async' id='{{ event.id }}'
+          description='{{ event.description }}' startDate='{{ event.startDate }}' endDate='{{ event.endDate }}'
+          startTime='{{ event.startTime }}' endTime='{{ event.endTime }}' locationName='{{ event.locationName }}'
+          memberOnly='{{ event.memberOnly }}' memberPrice='{{ event.memberPrice }}'
+          startingAge='{{ event.startingAge }}' startingAgeType='{{ event.lowAgeType }}'
+          endingAge='{{ event.endingAge }}' endingAgeType='{{ event.highAgeType }}' highGrade='{{ event.highGrade }}'
+          lowGrade='{{ event.lowGrade }}' nonMemberPrice='{{ event.nonMemberPrice }}' gender='{{ event.gender }}'
+          remainingSlots='{{ event.openSlots }}' zipcode='{{ event.zipcode }}'
+          distanceToEvent='{{ event.distanceToEvent }}' parentProduct='{{ event.parentProduct }}'
+          numberOfClassesPerWeek='{{ event.numberOfClassesPerWeek }}' lowAge='{{ event.lowAge }}'
+          highAge='{{ event.highAge }}' monday='{{ event.monday }}' tuesday='{{ event.tuesday }}'
+          wednesday='{{ event.wednesday }}' thursday='{{ event.thursday }}' friday='{{ event.friday }}'
+          saturday='{{ event.saturday }}' sunday='{{ event.sunday }}'>
+        </app-ymca-event-card>
+      </div>
+      <div class='ymca-empty-events-result' *ngIf='false'>
+        <h1 class='ymca-events-empty-msg'>No events were returned, try another filter setting.</h1>
+        <div class='ymca-scaling-svg-container'><span class='ymca-scaling-svg'></span></div>
+      </div>
+      <div class="ymca-maintenance" *ngIf='state.maintenance'>
+        <h2 class='ymca-motto'>Honesty. Respect. Caring. Faith. Responsibility</h2>
+        <p>We are excited to see you.</p>
+        <p> Please check back soon.</p>
+      </div>
+    </div>
+  </mat-sidenav-content>
+  <mat-sidenav #sidenav [mode]="over" class='ymca-shopping-cart'>
+    <div class='ymca-cart-header'><button mat-button (click)="sidenav.toggle()">Toggle</button></div>
+    <span class='ymca-spacer'></span>
+    <mat-accordion class='ymca-cart-body'>
+      <mat-expansion-panel *ngFor="let item of cartItems" class='ymca-shopping-cart-item'>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <button mat-button>X</button>
+            <p>{{ item.parentProduct }} </p>
+            <p>{{ item.dateRange }}</p>
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ item.description }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <div class='ymca-shopping-cart-empty-message' *ngIf='cartItems.length === 0'>
+      Your Cart is Empty.
+    </div>
+    <span class='ymca-spacer'></span>
+    <div class='ymca-cart-footer'>
+      <a mat-button class='ymca-checkout' color='primary'>CheckOut</a>
+    </div>
+  </mat-sidenav>
+</mat-sidenav-container>

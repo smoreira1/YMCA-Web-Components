@@ -6,9 +6,9 @@ export interface YMCAEvent {
     createdDate: string;
     startDate: Date;
     endDate: Date;
-    startDateTime: string;
-    endDateTime: string;
-    location: string;
+    startTime: string;
+    endTime: string;
+    locationName: string;
     memberOnly: boolean;
     memberPrice: string;
     startingAge: number;

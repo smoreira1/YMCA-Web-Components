@@ -1,7 +1,25 @@
-.ymca-events{
-    display:flex;
-    max-width:100%;
-    flex-flow:row;
+.ymca-events {
+    display: flex;
+    max-width: 100%;
+    flex-flow: row;
     flex-wrap: wrap;
-    justify-content:center;
+    justify-content: center;
+}
+
+.ymca-checkout {
+    width: 100%;
+}
+
+.ymca-shopping-cart {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+}
+
+.ymca-shopping-cart-empty-message {
+    text-align: center;
+}
+
+.ymca-spacer{
+    flex-grow:1;
 }

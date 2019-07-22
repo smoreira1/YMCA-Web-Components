@@ -1,6 +1,12 @@
 import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+import { createCustomElement } from '@angular/elements';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// YMCA Components 
+import { ShoppingCartButtonComponent } from './components/shopping-cart-button/shopping-cart-button.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { BrowserWarningComponent } from './components/browser-warning/browser-warning.component';
@@ -9,13 +15,6 @@ import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { YmcaEventsComponent } from './components/ymca-events/ymca-events.component';
 import { YmcaEventCardComponent } from './components/ymca-event-card/ymca-event-card.component';
 import { MobileFilterModalComponent } from './components/mobile-filter-modal/mobile-filter-modal.component';
-import { HttpClientModule } from '@angular/common/http';
-import { createCustomElement } from '@angular/elements';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ShoppingCartButtonComponent } from './components/shopping-cart-button/shopping-cart-button.component';
-
-
 // Material Design Modules
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
@@ -26,7 +25,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
-import {MatBadgeModule} from '@angular/material/badge'; 
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -56,10 +56,12 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatProgressBarModule,
     MatExpansionModule,
     MatBadgeModule,
+    MatSnackBarModule
   ],
   entryComponents: [
     YmcaEventCardComponent,
     ToolbarComponent,
+    SnackBarComponent,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -68,6 +70,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     ShoppingCartComponent,
     YmcaEventCardComponent,
     ToolbarComponent,
+    SnackBarComponent,
   ],
   bootstrap: [AppComponent]
 })

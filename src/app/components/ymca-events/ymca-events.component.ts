@@ -51,6 +51,24 @@ export class YmcaEventsComponent implements OnInit {
   public geoCode: GeoCode;
   public dayAvailability: DayAvailability;
   public geoCodeFlag: string;
+  public cartItems = [
+    {
+      parentProduct: 'Parent Product',
+      dateRange: 'Woot Date Range',
+      description: 'ready description'
+    },
+    {
+      parentProduct: 'Parent Product',
+      dateRange: 'Woot Date Range',
+      description: 'ready description'
+    },
+    {
+      parentProduct: 'Parent Product',
+      dateRange: 'Woot Date Range',
+      description: 'ready description'
+    },
+
+  ]
 
   constructor(private el: ElementRef, private cd: ChangeDetectorRef, private eventsService: YMCAEventsService) { }
 
@@ -61,7 +79,7 @@ export class YmcaEventsComponent implements OnInit {
       latitude: '80',
       longitude: '20',
     }
-   this.events = this.eventsService.getEvents(
+    this.events = this.eventsService.getEvents(
       this.tag,
       this.geoCodeFlag,
       geoCode,
@@ -73,11 +91,11 @@ export class YmcaEventsComponent implements OnInit {
       this.filters.endingTime);
   }
 
-  getEvents(){
+  getEvents() {
     this.events = null;
   }
 
-  configureDays(){
+  configureDays() {
     this.dayAvailability = {
       Monday: false,
       Tuesday: false,
@@ -89,7 +107,7 @@ export class YmcaEventsComponent implements OnInit {
     }
   }
 
-  test(){
+  test() {
     console.log(this.events);
   }
 
