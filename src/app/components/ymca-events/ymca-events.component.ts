@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectorRef, ElementRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, ElementRef, ChangeDetectionStrategy, ViewEncapsulation, ViewChild } from '@angular/core';
 import { YMCAEvent } from 'src/app/interfaces/ymca-event.interface';
 import { YMCAEventsService } from 'src/app/services/ymca-events.service';
 import { GeoCode } from 'src/app/interfaces/geocode.interface';
@@ -6,6 +6,8 @@ import { DayAvailability } from 'src/app/interfaces/day-availability.interface';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { APIResponse } from 'src/app/interfaces/api-response.interface';
+import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-ymca-events',
@@ -68,10 +70,17 @@ export class YmcaEventsComponent implements OnInit {
       description: 'ready description'
     },
   ];
+  @ViewChild('filtersnav', { static: false }) public sidenav: MatSidenav;
 
-  constructor(private el: ElementRef, private cd: ChangeDetectorRef, private eventsService: YMCAEventsService) { }
+  constructor(
+    private el: ElementRef,
+    private cd: ChangeDetectorRef,
+    private eventsService: YMCAEventsService,
+    private shoppingCartService: ShoppingCartService) { }
 
   ngOnInit() {
+    this.shoppingCartService.setSidenav(this.sidenav);
+
     this.tag = 'Parent Child Swim A';
     this.configureDays();
     const geoCode = {
