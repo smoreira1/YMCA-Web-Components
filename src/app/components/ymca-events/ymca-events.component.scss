@@ -23,3 +23,9 @@
 .ymca-spacer{
     flex-grow:1;
 }
+
+.ymca-cart-header{
+    display:flex;
+    flex-flow:space-between;
+    flex-direction:row;
+}

@@ -14,8 +14,8 @@ export class ShoppingCartButtonComponent implements OnInit {
   ngOnInit() {
   }
 
-  openShoppingCart(){
+  openShoppingCart() {
     this.cartService.openShoppingCart();
   }
-  
+
 }

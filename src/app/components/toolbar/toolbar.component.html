@@ -2,8 +2,8 @@
   <mat-toolbar color="primary" class='ymca-toolbar'>
     <mat-toolbar-row class='ymca-toolbar-row'>
       <form>
-        <app-shopping-cart></app-shopping-cart>
         <div class="ymca-reactive-form">
+            <app-shopping-cart-button></app-shopping-cart-button>
           <span class='zip-code-entry'>
             <mat-form-field class="ymca-zipcode-field">
               <input matInput placeholder="ZipCode" [value]="zipcode" autocomplete="off" maxlength='5'

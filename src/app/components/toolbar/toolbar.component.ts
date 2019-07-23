@@ -3,6 +3,7 @@ import { YMCAEventsService } from 'src/app/services/ymca-events.service';
 import { FiltersConfigService } from 'src/app/services/filters-config.service';
 import { SelectDropDown } from 'src/app/interfaces/selectValue.interface';
 import { MatDialog } from '@angular/material/dialog';
+import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -30,9 +31,10 @@ export class ToolbarComponent implements OnInit, OnChanges {
   times: SelectDropDown[];
 
   constructor(
-    private ymcaEventsService: YMCAEventsService, 
+    private ymcaEventsService: YMCAEventsService,
     private filtersConfigService: FiltersConfigService,
-    public dialog: MatDialog
+    private shoppinhCartService: ShoppingCartService,
+    public dialog: MatDialog,
   ) {}
 
   ngOnInit() {
