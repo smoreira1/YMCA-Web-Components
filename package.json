@@ -7,6 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
+    "dev": "ng serve --aot --open",
     "e2e": "ng e2e",
     "docs": "compodoc -p src/tsconfig.app.json -s",
     "build:prod": "ng build --single-bundle --aot=true --prod=true"
@@ -32,6 +33,7 @@
     "document-register-element": "^1.8.1",
     "hammerjs": "^2.0.8",
     "ngx-build-plus": "^8.1.1",
+    "ngx-infinite-scroll": "^7.2.0",
     "rxjs": "~6.5.2",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"

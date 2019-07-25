@@ -29,6 +29,9 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ShoppingCartService } from './components/shopping-cart/shopping-cart.service';
 
+// Other
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +60,8 @@ import { ShoppingCartService } from './components/shopping-cart/shopping-cart.se
     MatProgressBarModule,
     MatExpansionModule,
     MatBadgeModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    InfiniteScrollModule
   ],
   entryComponents: [
     YmcaEventCardComponent,

@@ -2,8 +2,8 @@
   <mat-sidenav-content>
     <div class='ymca-events-component'>
       <button mat-raised-button (click)='test()'>Events</button>
-      <button mat-button (click)="sidenav.toggle()">Toggle</button>
-      <div class='ymca-events'>
+      <button mat-button (click)="sidenav.toggle()">Cart</button>
+      <div class='ymca-events' infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50">
         <app-ymca-event-card *ngFor='let event of events | async' id='{{ event.id }}'
           description='{{ event.description }}' startDate='{{ event.startDate }}' endDate='{{ event.endDate }}'
           startTime='{{ event.startTime }}' endTime='{{ event.endTime }}' locationName='{{ event.locationName }}'
@@ -30,7 +30,8 @@
       </div>
     </div>
   </mat-sidenav-content>
-  <mat-sidenav #sidenav mode="over" class='ymca-shopping-cart'>
+  <mat-sidenav #sidenav mode="over" class='ymca-shopping-cart' [fixedInViewport]="true" [fixedTopGap]="0"
+    [fixedBottomGap]="0" position="end">
     <div class='ymca-cart-header'>
       <span>Your Shopping Cart</span>
       <button mat-icon-button (click)="sidenav.toggle()"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -43,7 +44,8 @@
     </div>
     <span class='ymca-spacer'></span>
     <mat-accordion class='ymca-cart-body'>
-      <mat-expansion-panel *ngFor="let item of cartItems; let i = index" [attr.data-index]="i" class='ymca-shopping-cart-item'>
+      <mat-expansion-panel *ngFor="let item of cartItems; let i = index" [attr.data-index]="i"
+        class='ymca-shopping-cart-item'>
         <mat-expansion-panel-header>
           <mat-panel-title>
             <span>{{i + 1}}</span>
