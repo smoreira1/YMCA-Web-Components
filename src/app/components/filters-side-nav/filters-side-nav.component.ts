@@ -1,17 +1,13 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
-import { YMCAEventsService } from 'src/app/services/ymca-events.service';
+import { Component, OnInit, Input } from '@angular/core';
 import { FiltersConfigService } from 'src/app/services/filters-config.service';
-import { MatDialogRef} from '@angular/material/dialog';
 import { SelectDropDown } from 'src/app/interfaces/selectValue.interface';
 
-
-
 @Component({
-  selector: 'app-mobile-filter-modal',
-  templateUrl: './mobile-filter-modal.component.html',
-  styleUrls: ['./mobile-filter-modal.component.scss']
+  selector: 'app-filters-side-nav',
+  templateUrl: './filters-side-nav.component.html',
+  styleUrls: ['./filters-side-nav.component.scss']
 })
-export class MobileFilterModalComponent implements OnInit {
+export class FiltersSideNavComponent implements OnInit {
 
   @Input() zipcode: string;
   @Input() distance: string;
@@ -29,11 +25,9 @@ export class MobileFilterModalComponent implements OnInit {
   ages: SelectDropDown[];
   times: SelectDropDown[];
   
-  constructor(
-    private ymcaEventsService: YMCAEventsService, 
-    private filtersConfigService: FiltersConfigService,
-    public dialogRef: MatDialogRef<MobileFilterModalComponent>
-  ) {}
+  constructor(private filtersConfigService: FiltersConfigService) { 
+
+  }
 
   ngOnInit() {
     this.distances = this.filtersConfigService.distances();
@@ -49,8 +43,8 @@ export class MobileFilterModalComponent implements OnInit {
     this.sunday = this.sunday || 'false';
   }
 
+
   search(){
     
   }
-
 }

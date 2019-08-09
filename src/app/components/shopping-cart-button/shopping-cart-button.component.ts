@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter, ElementRef, ChangeDetectorRef } from '@angular/core';
-import { CartService } from 'src/app/services/cart.service';
 import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 
 @Component({

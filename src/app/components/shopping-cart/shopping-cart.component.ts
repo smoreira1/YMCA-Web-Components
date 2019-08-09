@@ -13,12 +13,33 @@ import {
 import { CartService } from '../../services/cart.service';
 import { environment } from 'src/environments/environment';
 
+
+
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.scss'],
 })
 export class ShoppingCartComponent implements OnInit {
+
+
+  public cartItems = [
+    {
+      parentProduct: 'Parent Product',
+      dateRange: 'Woot Date Range',
+      description: 'ready description'
+    },
+    {
+      parentProduct: 'Parent Product',
+      dateRange: 'Woot Date Range',
+      description: 'ready description'
+    },
+    {
+      parentProduct: 'Parent Product',
+      dateRange: 'Woot Date Range',
+      description: 'ready description'
+    },
+  ];
 
   @Input() cartNumber: string;
   @Input() open = false;
@@ -47,7 +68,9 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   public getCartItems(): void {
-   this.cartService.getCartItems();
+    if(localStorage.getItem('cartId')){
+      this.cartService.getCartItems(localStorage.getItem('cartId'));
+    }
   }
 
   public deleteCartItem(cartItemId: string): void{

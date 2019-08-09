@@ -1,8 +1,47 @@
-<!-- <mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav mode="side" closed class="example-sidenav"
-               [fixedInViewport]="true" [fixedTopGap]="0"
-               [fixedBottomGap]="0">
-     Sidenav
+<mat-sidenav-container class="ymca-shopping-cart-container">
+  <mat-sidenav-content>
+  </mat-sidenav-content>
+  <mat-sidenav #sidenav mode="over" class='ymca-shopping-cart' [fixedInViewport]="true" [fixedTopGap]="0"
+    [fixedBottomGap]="0" position="end">
+    <div class='ymca-cart-header'>
+      <span>Your Shopping Cart</span>
+      <button mat-icon-button (click)="sidenav.toggle()"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24">
+          <path
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+          <path d="M0 0h24v24H0z" fill="none" />
+        </svg>
+      </button>
+    </div>
+    <span class='ymca-spacer'></span>
+    <mat-accordion class='ymca-cart-body'>
+      <mat-expansion-panel *ngFor="let item of cartItems; let i = index" [attr.data-index]="i"
+        class='ymca-shopping-cart-item'>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span>{{i + 1}}</span>
+            <button mat-icon-button>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path
+                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                <path d="M0 0h24v24H0z" fill="none" />
+              </svg>
+            </button>
+            <p>{{ item.parentProduct }} </p>
+            <p>{{ item.dateRange }}</p>
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ item.description }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <div class='ymca-shopping-cart-empty-message' *ngIf='cartItems.length === 0'>
+      Your Cart is Empty.
+    </div>
+    <span class='ymca-spacer'></span>
+    <div class='ymca-cart-footer'>
+      <a mat-button class='ymca-checkout' color='primary'>CheckOut</a>
+    </div>
   </mat-sidenav>
-  <mat-sidenav-content></mat-sidenav-content>
-</mat-sidenav-container> -->
+</mat-sidenav-container>

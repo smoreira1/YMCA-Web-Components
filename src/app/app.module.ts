@@ -14,7 +14,7 @@ import { AlertMessageComponent } from './components/alert-message/alert-message.
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { YmcaEventsComponent } from './components/ymca-events/ymca-events.component';
 import { YmcaEventCardComponent } from './components/ymca-event-card/ymca-event-card.component';
-import { MobileFilterModalComponent } from './components/mobile-filter-modal/mobile-filter-modal.component';
+
 // Material Design Modules
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
@@ -31,6 +31,7 @@ import { ShoppingCartService } from './components/shopping-cart/shopping-cart.se
 
 // Other
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { FiltersSideNavComponent } from './components/filters-side-nav/filters-side-nav.component';
 
 @NgModule({
   declarations: [
@@ -42,8 +43,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     SnackBarComponent,
     YmcaEventsComponent,
     YmcaEventCardComponent,
-    MobileFilterModalComponent,
     ShoppingCartButtonComponent,
+    FiltersSideNavComponent,
   ],
   imports: [
     BrowserModule,

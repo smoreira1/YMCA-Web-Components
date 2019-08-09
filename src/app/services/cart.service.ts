@@ -3,6 +3,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { CartItem } from '../interfaces/cart-item.interface';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,20 @@ export class CartService {
 
   constructor(private http: HttpClient) { }
 
-  getCartItems(): Observable<CartItem[]> {
-    return of(this.cartItems);
+  getCartItems(cartId: string): Observable<CartItem[]> {
+    return this.http
+      .get<any>(`${this.endpoint}/services/apexrest/ShoppingCart?cartId=${cartId}`)
+      .pipe(
+        tap(data => console.log(JSON.parse(data))),
+        map(response => {  // NOTE: response is of type SomeType
+          // Does something on response.data
+          // modify the response.data as you see fit.
+          // return the modified data:
+          const newResponse = JSON.parse(response);
+          return newResponse.data; // kind of useless
+        }),
+        catchError(this.handleError)
+      );
   }
 
   addCartItem(itemNumber: string): boolean {

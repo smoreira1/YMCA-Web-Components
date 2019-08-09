@@ -3,14 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "dev": "ng serve --aot --open",
     "e2e": "ng e2e",
     "docs": "compodoc -p src/tsconfig.app.json -s",
-    "build:prod": "ng build --single-bundle --aot=true --prod=true"
+    "build:prod": "ng build --single-bundle --aot=true --prod=true",
+    "start": "ng serve --ssl --ssl-key c:\\certificates\\localhost.key  --ssl-cert c:\\certificates\\localhost.crt"
   },
   "private": true,
   "dependencies": {

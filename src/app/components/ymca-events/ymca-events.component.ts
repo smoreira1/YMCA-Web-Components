@@ -53,23 +53,6 @@ export class YmcaEventsComponent implements OnInit {
   public geoCode: GeoCode;
   public dayAvailability: DayAvailability;
   public geoCodeFlag: string;
-  public cartItems = [
-    {
-      parentProduct: 'Parent Product',
-      dateRange: 'Woot Date Range',
-      description: 'ready description'
-    },
-    {
-      parentProduct: 'Parent Product',
-      dateRange: 'Woot Date Range',
-      description: 'ready description'
-    },
-    {
-      parentProduct: 'Parent Product',
-      dateRange: 'Woot Date Range',
-      description: 'ready description'
-    },
-  ];
   @ViewChild('filtersnav', { static: false }) public sidenav: MatSidenav;
 
   constructor(
