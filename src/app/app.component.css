@@ -2,3 +2,13 @@
     font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
     font-size: 16px;
 }
+
+.ymca-other-content{
+    height:100vh;
+}
+
+.ymca-top-navigation{
+    display:flex;
+    justify-content: space-between;
+    flex-flow:row;
+}

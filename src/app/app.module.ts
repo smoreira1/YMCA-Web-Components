@@ -87,7 +87,7 @@ export class AppModule {
 
   constructor(private injector: Injector) {
     const ymcaEventCard = createCustomElement(YmcaEventCardComponent, { injector: this.injector });
-    customElements.define('app-ymca-event-card', ymcaEventCard);
+    customElements.define('ymca-event-card', ymcaEventCard);
   }
 
 }

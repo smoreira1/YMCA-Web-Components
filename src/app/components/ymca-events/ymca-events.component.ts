@@ -8,6 +8,7 @@ import { tap } from 'rxjs/operators';
 import { APIResponse } from 'src/app/interfaces/api-response.interface';
 import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 import { MatSidenav } from '@angular/material';
+import { BrowserConfigService } from 'src/app/services/browser-config.service';
 
 @Component({
   selector: 'app-ymca-events',
@@ -53,33 +54,46 @@ export class YmcaEventsComponent implements OnInit {
   public geoCode: GeoCode;
   public dayAvailability: DayAvailability;
   public geoCodeFlag: string;
+  public browserErrorInternetExplorer: boolean;
+  public browserErrorCookiesDisabled: boolean;
   @ViewChild('filtersnav', { static: false }) public sidenav: MatSidenav;
 
   constructor(
     private el: ElementRef,
     private cd: ChangeDetectorRef,
     private eventsService: YMCAEventsService,
-    private shoppingCartService: ShoppingCartService) { }
+    private shoppingCartService: ShoppingCartService,
+    private browserConfigService: BrowserConfigService) {
+      this.browserErrorCookiesDisabled = false;
+      this.browserErrorInternetExplorer = false;
+    }
 
   ngOnInit() {
-    this.shoppingCartService.setSidenav(this.sidenav);
-
-    this.tag = 'Parent Child Swim A';
-    this.configureDays();
-    const geoCode = {
-      latitude: '80',
-      longitude: '20',
+    if (this.browserConfigService.isInternetExplorer()) {
+      this.browserErrorInternetExplorer = true;
     }
-    this.events = this.eventsService.getEvents(
-      this.tag,
-      this.geoCodeFlag,
-      geoCode,
-      this.dayAvailability,
-      this.filters.zipcode,
-      this.filters.distance,
-      this.filters.age,
-      this.filters.startingTime,
-      this.filters.endingTime);
+    else if (!this.browserConfigService.isCookiesEnabled()) {
+      this.browserErrorCookiesDisabled = true;
+    }
+    else {
+      this.shoppingCartService.setSidenav(this.sidenav);
+      this.tag = 'Parent Child Swim A';
+      this.configureDays();
+      const geoCode = {
+        latitude: '80',
+        longitude: '20',
+      }
+      this.events = this.eventsService.getEvents(
+        this.tag,
+        this.geoCodeFlag,
+        geoCode,
+        this.dayAvailability,
+        this.filters.zipcode,
+        this.filters.distance,
+        this.filters.age,
+        this.filters.startingTime,
+        this.filters.endingTime);
+    }
   }
 
   getEvents() {
@@ -98,7 +112,7 @@ export class YmcaEventsComponent implements OnInit {
     }
   }
 
-  test() {
+  public test() {
     console.log(this.events);
   }
 
@@ -106,5 +120,6 @@ export class YmcaEventsComponent implements OnInit {
     this.state = { ...this.state, [key]: value };
     this.cd.detectChanges();
   }
+
 
 }

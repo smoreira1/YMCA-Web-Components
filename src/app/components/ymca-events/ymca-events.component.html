@@ -1,8 +1,8 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav-content>
     <div class='ymca-events-component'>
-      <button mat-raised-button (click)='test()'>Events</button>
-      <button mat-button (click)="sidenav.toggle()">Cart</button>
+      <!-- <button mat-raised-button (click)='test()'>Events</button>
+      <button mat-button (click)="sidenav.toggle()">Cart</button> -->
       <div class='ymca-events' infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50">
         <app-ymca-event-card *ngFor='let event of events | async' id='{{ event.id }}'
           description='{{ event.description }}' startDate='{{ event.startDate }}' endDate='{{ event.endDate }}'
@@ -27,6 +27,16 @@
         <h2 class='ymca-motto'>Honesty. Respect. Caring. Faith. Responsibility</h2>
         <p>We are excited to see you.</p>
         <p> Please check back soon.</p>
+      </div>
+    </div>
+    <div class='ymca-browser-error' *ngIf='browserErrorInternetExplorer'>
+      <div class=''>
+          oh oh we do not support your browser.
+      </div>
+    </div>
+    <div class='ymca-browser-error' *ngIf='browserErrorCookiesDisabled'>
+      <div class=''>
+          oh oh your cookies are disabled.
       </div>
     </div>
   </mat-sidenav-content>

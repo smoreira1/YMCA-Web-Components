@@ -1,11 +1,15 @@
 .ymca-toolbar {
   font-size: 12px;
   left: 0;
-  right:0;
-  padding-left:0px;
-  padding-right:0px;
-  margin-right:0px;
-  margin-left:0px;
+  right: 0;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-right: 0px;
+  margin-left: 0px;
+  position:sticky;
+  position: -webkit-sticky;
+  //top: 0;
+
   form {
     width: 100%;
   }
@@ -53,17 +57,17 @@
 
 .ymca-filters-form {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   flex-direction: column;
   height: 100%;
 }
 
 
-.ymca-days-filter-entry{
-  display:flex;
+.ymca-days-filter-entry {
+  display: flex;
   flex-flow: column;
 }
 
-.ymca-filters-side-nav{
-  padding:10px;
+.ymca-filters-side-nav {
+  padding: 10px;
 }

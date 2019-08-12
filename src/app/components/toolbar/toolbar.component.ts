@@ -67,4 +67,8 @@ export class ToolbarComponent implements OnInit, OnChanges {
     console.log('Searching...');
   }
 
+  private scrollToFilterNavigation(){
+
+  }
+
 }
