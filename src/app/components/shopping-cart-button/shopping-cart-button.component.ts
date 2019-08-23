@@ -9,7 +9,11 @@ import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 export class ShoppingCartButtonComponent implements OnInit {
 
   public amountOfItemsInCart: number;
-  constructor(private el: ElementRef, private cd: ChangeDetectorRef, private shoppingCartService: ShoppingCartService) { }
+  constructor(
+    private el: ElementRef, 
+    private cd: ChangeDetectorRef, 
+    private shoppingCartService: ShoppingCartService
+  ) { }
 
   ngOnInit() {
   }

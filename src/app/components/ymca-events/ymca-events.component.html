@@ -1,5 +1,6 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav-content>
+    <mat-spinner *ngIf='!state.loaded'></mat-spinner>
     <div class='ymca-events-component'>
       <!-- <button mat-raised-button (click)='test()'>Events</button>
       <button mat-button (click)="sidenav.toggle()">Cart</button> -->
@@ -39,5 +40,10 @@
           oh oh your cookies are disabled.
       </div>
     </div>
+    <div class='ymca-empty-events' *ngIf='false'>
+        <div class=''>
+            No events were returned. Try expanding your filtering. 
+        </div>
+      </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
