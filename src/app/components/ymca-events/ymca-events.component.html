@@ -32,18 +32,21 @@
     </div>
     <div class='ymca-browser-error' *ngIf='browserErrorInternetExplorer'>
       <div class=''>
-          oh oh we do not support your browser.
+        oh oh we do not support your browser.
       </div>
     </div>
     <div class='ymca-browser-error' *ngIf='browserErrorCookiesDisabled'>
       <div class=''>
-          oh oh your cookies are disabled.
+        oh oh your cookies are disabled.
       </div>
     </div>
     <div class='ymca-empty-events' *ngIf='false'>
-        <div class=''>
-            No events were returned. Try expanding your filtering. 
-        </div>
+      <div class=''>
+        No events were returned. Try expanding your filtering.
       </div>
+    </div>
+    <div class='ymca-something-went-wrong' *ngIf='false'>
+
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
