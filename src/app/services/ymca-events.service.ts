@@ -4,7 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { DayAvailability } from '../interfaces/day-availability.interface';
-import { retry, catchError, map, tap } from 'rxjs/operators';
+import { retry, catchError, map, tap, timeout } from 'rxjs/operators';
 import { GeoCode } from '../interfaces/geocode.interface';
 import { APIResponse } from '../interfaces/api-response.interface';
 
@@ -31,6 +31,7 @@ export class YMCAEventsService {
       .http
       .get<any>(`${this.endpoint}/YmcaEvents?tag=${tag}&zipcode=${zipcode}&distance=${distance}&age=${age}&startingTime=${startingTime}&endingTime=${endingTime}&monday=${dayAvaliability.Monday}&tuesday=${dayAvaliability.Tuesday}&wednesday=${dayAvaliability.Wednesday}&thursday=${dayAvaliability.Thursday}&friday=${dayAvaliability.Friday}&saturday=${dayAvaliability.Saturday}&sunday=${dayAvaliability.Sunday}&geoFlag=${geoFlag}&lat=${geoCode.latitude}&lon=${geoCode.longitude}`)
       .pipe(
+        timeout(30000),
         tap(data => console.log(JSON.parse(data))),
         map(response => {  // NOTE: response is of type SomeType
           // Does something on response.data
@@ -39,9 +40,14 @@ export class YMCAEventsService {
           const newResponse = JSON.parse(response);
           return newResponse.data; // kind of useless
       }),
-        catchError(this.handleError)
+        catchError(
+          e => {
+        // do something on a timeout
+        console.log(e);
+        return this.handleError();
+      }
+          )
      ); // end of pipe
-    
     }
 
     private handleError<T> (operation = 'operation', result?: T) {

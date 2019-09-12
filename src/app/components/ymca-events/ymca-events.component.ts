@@ -79,25 +79,25 @@ export class YmcaEventsComponent implements OnInit {
       this.shoppingCartService.setSidenav(this.sidenav);
       this.tag = 'Parent Child Swim A';
       this.configureDays();
-      const geoCode = {
-        latitude: '80',
-        longitude: '20',
-      }
-      this.events = this.eventsService.getEvents(
-        this.tag,
-        this.geoCodeFlag,
-        geoCode,
-        this.dayAvailability,
-        this.filters.zipcode,
-        this.filters.distance,
-        this.filters.age,
-        this.filters.startingTime,
-        this.filters.endingTime);
+      this.getEvents();
     }
   }
 
-  getEvents() {
-    this.events = null;
+  public getEvents() {
+    const geoCode = {
+      latitude: '80',
+      longitude: '20',
+    }
+    this.events = this.eventsService.getEvents(
+      this.tag,
+      this.geoCodeFlag,
+      geoCode,
+      this.dayAvailability,
+      this.filters.zipcode,
+      this.filters.distance,
+      this.filters.age,
+      this.filters.startingTime,
+      this.filters.endingTime);
   }
 
   configureDays() {
