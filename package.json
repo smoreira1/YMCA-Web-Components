@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "docs": "compodoc -p src/tsconfig.app.json -s",
     "build:prod": "ng build --single-bundle --aot=true --prod=true",
-    "start": "ng serve --aot --open --ssl --ssl-key c:\\certificates\\localhost.key  --ssl-cert c:\\certificates\\localhost.crt"
+    "start": "ng serve --aot --open --ssl --ssl-key c:\\certificates\\localhost.key  --ssl-cert c:\\certificates\\localhost.crt --port 3000"
   },
   "private": true,
   "dependencies": {
