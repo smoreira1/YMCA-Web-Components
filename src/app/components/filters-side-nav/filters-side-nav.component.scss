@@ -3,14 +3,17 @@
     justify-content: flex-start;
     flex-direction: column;
     height: 100%;
-  }
+
+    .ymca-days-filter-entry{
+      display:flex;
+      flex-flow: column;
+      border-style: dashed;
+      border-width: 2px;
+    }
+    
+    .ymca-filters-side-nav{
+      padding:10px;
+    }
+
+}
   
-  
-  .ymca-days-filter-entry{
-    display:flex;
-    flex-flow: column;
-  }
-  
-  .ymca-filters-side-nav{
-    padding:10px;
-  }

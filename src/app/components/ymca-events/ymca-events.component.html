@@ -1,9 +1,9 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav-content>
-    <mat-spinner *ngIf='!state.loaded'></mat-spinner>
+    <mat-spinner *ngIf='state.loaded'></mat-spinner>
     <div class='ymca-events-component'>
-      <button mat-raised-button (click)='test()'>Events</button>
-      <button mat-button (click)="sidenav.toggle()">Cart</button>
+      <!-- <button mat-raised-button (click)='test()'>Events</button>
+      <button mat-button (click)="sidenav.toggle()">Cart</button> -->
       <div class='ymca-events' infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50">
         <app-ymca-event-card *ngFor='let event of events | async' id='{{ event.id }}'
           description='{{ event.description }}' startDate='{{ event.startDate }}' endDate='{{ event.endDate }}'

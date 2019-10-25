@@ -14,8 +14,9 @@ import { AlertMessageComponent } from './components/alert-message/alert-message.
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { YmcaEventsComponent } from './components/ymca-events/ymca-events.component';
 import { YmcaEventCardComponent } from './components/ymca-event-card/ymca-event-card.component';
-
+import { FiltersSideNavComponent } from './components/filters-side-nav/filters-side-nav.component';
 // Material Design Modules
+// Note: We could export these into their own module.
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -27,11 +28,11 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
+// YMCA Components Services
 import { ShoppingCartService } from './components/shopping-cart/shopping-cart.service';
-
 // Other
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { FiltersSideNavComponent } from './components/filters-side-nav/filters-side-nav.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { FiltersSideNavComponent } from './components/filters-side-nav/filters-s
     MatExpansionModule,
     MatBadgeModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
     InfiniteScrollModule
   ],
   entryComponents: [

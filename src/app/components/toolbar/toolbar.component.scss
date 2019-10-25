@@ -19,8 +19,21 @@
   width: 100%;
   left: 0;
   position: sticky;
+
+  .geolocation-button{
+    font-size:11px;
+    text-align:left!important;
+  }
+
 }
 
+
+.zip-code-entry{
+  display:flex;
+  flex-flow:column;
+  justify-content: center;
+  align-items: center;
+}
 
 .ymca-reactive-form {
   display: flex;

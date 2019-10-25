@@ -1,7 +1,7 @@
 <button mat-icon-button 
         color="primary" 
         aria-label="shopping-cart-icon-button" 
-        matBadge="2" 
+        matBadge="{{amountOfItemsInCart}}" 
         (click)="openShoppingCart()" type='button'>
   <mat-icon
   matbadgeoverlap="false"

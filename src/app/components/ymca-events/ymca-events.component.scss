@@ -1,34 +1,35 @@
 .ymca-events {
-    display: flex;
-    max-width: 100%;
-    flex-flow: row;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  max-width: 100%;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height:100vh;
 }
 
 .ymca-checkout {
-    width: 100%;
+  width: 100%;
 }
 
 .ymca-shopping-cart {
-    display: flex;
-    flex-flow: column;
-    justify-content: space-between;
-    margin-right:0;
-    right:0;
-    padding-right:0;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  margin-right: 0;
+  right: 0;
+  padding-right: 0;
 }
 
 .ymca-shopping-cart-empty-message {
-    text-align: center;
+  text-align: center;
 }
 
-.ymca-spacer{
-    flex-grow:1;
+.ymca-spacer {
+  flex-grow: 1;
 }
 
-.ymca-cart-header{
-    display:flex;
-    flex-flow:space-between;
-    flex-direction:row;
+.ymca-cart-header {
+  display: flex;
+  flex-flow: space-between;
+  flex-direction: row;
 }

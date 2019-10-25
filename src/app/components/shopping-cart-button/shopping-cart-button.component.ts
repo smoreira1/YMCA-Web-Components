@@ -8,7 +8,8 @@ import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 })
 export class ShoppingCartButtonComponent implements OnInit {
 
-  public amountOfItemsInCart: number;
+  // Note: this is of type string so we may easily interpolate empty string in the scenario of a zero item cart.
+  public amountOfItemsInCart: string;
   constructor(
     private el: ElementRef, 
     private cd: ChangeDetectorRef, 
@@ -16,6 +17,7 @@ export class ShoppingCartButtonComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.amountOfItemsInCart = this.shoppingCartService.getItemsInShoppingCart() || '';
   }
 
   openShoppingCart() {
