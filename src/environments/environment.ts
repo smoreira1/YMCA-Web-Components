@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiPath: 'https://ebiz-ymcacf.cs7.force.com/services/apexrest',
-  communityURL: 'https://ebiz-ymcacentralflorida.cs7.force.com/ebiz/s/previewcart'
+  apiPath: 'https://build-ymcacf.cs17.force.com/services/apexrest',
+  communityURL: 'https://build-ymcacf.cs17.force.com/ebiz/s/previewcart'
 };
 
 /*
