@@ -9,9 +9,9 @@ import {
   ChangeDetectorRef,
   ElementRef,
 } from '@angular/core';
-import { CartService } from '../../services/cart.service';
+import { CartService } from '../../../services/cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnackBarComponent } from '../snack-bar/snack-bar.component';
+import { SnackBarComponent } from '../../snack-bar/snack-bar.component';
 
 @Component({
   selector: 'app-ymca-event-card',

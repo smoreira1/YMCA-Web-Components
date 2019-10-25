@@ -13,7 +13,7 @@ import { BrowserWarningComponent } from './components/browser-warning/browser-wa
 import { AlertMessageComponent } from './components/alert-message/alert-message.component';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { YmcaEventsComponent } from './components/ymca-events/ymca-events.component';
-import { YmcaEventCardComponent } from './components/ymca-event-card/ymca-event-card.component';
+import { YmcaEventCardComponent } from './components/ymca-event-cards/ymca-event-card/ymca-event-card.component';
 import { FiltersSideNavComponent } from './components/filters-side-nav/filters-side-nav.component';
 // Material Design Modules
 // Note: We could export these into their own module.
@@ -33,6 +33,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ShoppingCartService } from './components/shopping-cart/shopping-cart.service';
 // Other
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { CampCardComponent } from './components/ymca-event-cards/camp-card/camp-card.component';
+import { SportCardComponent } from './components/ymca-event-cards/sport-card/sport-card.component';
+import { AquaticCardComponent } from './components/ymca-event-cards/aquatic-card/aquatic-card.component';
+import { FamilyLifeCardComponent } from './components/ymca-event-cards/family-life-card/family-life-card.component';
+import { SchoolCardComponent } from './components/ymca-event-cards/school-card/school-card.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +51,11 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     YmcaEventCardComponent,
     ShoppingCartButtonComponent,
     FiltersSideNavComponent,
+    CampCardComponent,
+    SportCardComponent,
+    AquaticCardComponent,
+    FamilyLifeCardComponent,
+    SchoolCardComponent,
   ],
   imports: [
     BrowserModule,

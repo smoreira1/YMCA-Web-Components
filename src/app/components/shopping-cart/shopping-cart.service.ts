@@ -23,6 +23,6 @@ export class ShoppingCartService {
     }
 
     public getItemsInShoppingCart(): string{
-        return '3';
+        return '0';
     }
 }

@@ -17,7 +17,8 @@ export class ShoppingCartButtonComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.amountOfItemsInCart = this.shoppingCartService.getItemsInShoppingCart() || '';
+    const itemsInCart = this.shoppingCartService.getItemsInShoppingCart() || '';
+    this.amountOfItemsInCart = itemsInCart == '0' ? '' : itemsInCart;
   }
 
   openShoppingCart() {
