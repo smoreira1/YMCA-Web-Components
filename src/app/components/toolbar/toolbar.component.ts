@@ -4,6 +4,7 @@ import { FiltersConfigService } from 'src/app/services/filters-config.service';
 import { SelectDropDown } from 'src/app/interfaces/selectValue.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
+import * as Sticky from 'sticky-js';
 
 @Component({
   selector: 'app-toolbar',
@@ -14,6 +15,8 @@ import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 
 export class ToolbarComponent implements OnInit, OnChanges {
 
+  public loadingDataFromServer = false;
+  
   @Input() zipcode: string;
   @Input() distance: string;
   @Input() age: string;
@@ -36,9 +39,12 @@ export class ToolbarComponent implements OnInit, OnChanges {
     private filtersConfigService: FiltersConfigService,
     private shoppingCartService: ShoppingCartService,
     public dialog: MatDialog,
-  ) {}
+  ) {
+      var sticky = new Sticky('.sticky');
+  }
 
   ngOnInit() {
+
     this.distances = this.filtersConfigService.distances();
     this.ages = this.filtersConfigService.ages(99, true);
     this.times = this.filtersConfigService.times();

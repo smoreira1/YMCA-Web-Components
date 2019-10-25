@@ -1,4 +1,4 @@
-<div class='ymca-toolbar-container'>
+<div class='ymca-toolbar-container sticky'>
   <mat-toolbar color="primary" class='ymca-toolbar'>
     <mat-toolbar-row class='ymca-toolbar-row'>
       <form>
@@ -51,7 +51,7 @@
       </form>
     </mat-toolbar-row>
   </mat-toolbar>
-  <mat-progress-bar mode="indeterminate" color=""></mat-progress-bar>
+  <mat-progress-bar *ngIf='loadingDataFromServer' mode="indeterminate" color=""></mat-progress-bar>
   <mat-sidenav-container class="example-container">
     <mat-sidenav #filtersnav mode="over" false class="ymca-filters-side-nav" position="end">
       <app-filters-side-nav></app-filters-side-nav>

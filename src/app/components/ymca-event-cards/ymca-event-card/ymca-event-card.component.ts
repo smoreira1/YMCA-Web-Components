@@ -57,6 +57,10 @@ export class YmcaEventCardComponent implements OnInit {
   @Input() satruday: string;
   @Input() sunday: string;
 
+  @Input() earlyRegistration: string;
+  @Input() earlyRegistrationNonMemberPrice: string;
+  @Input() earlyRegistrationMemberPrice: string;
+
   private durationInSeconds = 5;
 
 
@@ -94,6 +98,13 @@ export class YmcaEventCardComponent implements OnInit {
       duration: this.durationInSeconds * 1000,
       horizontalPosition: 'start',
     });
+  }
+
+  public earlyRegistrationStrike(){
+    if(this.earlyRegistration === 'true'){
+      return 'strike';
+    }
+    return '';
   }
 
 }
