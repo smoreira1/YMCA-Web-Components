@@ -25,6 +25,7 @@ export class ToolbarComponent implements OnInit, OnChanges {
   @Input() friday: string;
   @Input() saturday: string;
   @Input() sunday: string;
+  @Input() toolbarConfiguration: string;
 
   distances: SelectDropDown[];
   ages: SelectDropDown[];
@@ -33,7 +34,7 @@ export class ToolbarComponent implements OnInit, OnChanges {
   constructor(
     private ymcaEventsService: YMCAEventsService,
     private filtersConfigService: FiltersConfigService,
-    private shoppinhCartService: ShoppingCartService,
+    private shoppingCartService: ShoppingCartService,
     public dialog: MatDialog,
   ) {}
 
@@ -49,6 +50,7 @@ export class ToolbarComponent implements OnInit, OnChanges {
     this.friday = this.friday || 'false';
     this.saturday = this.saturday || 'false';
     this.sunday = this.sunday || 'false';
+    this.toolbarConfiguration = this.toolbarConfiguration || '';
   }
 
   changedValue(){
