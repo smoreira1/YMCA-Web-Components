@@ -50,11 +50,11 @@ export class YmcaEventsComponent implements OnInit {
     endingTime: '11:59 PM',
   }
 
-  public events: Observable<YMCAEvent[]>;
+  public events$: Observable<YMCAEvent[]>;
   public geoCode: GeoCode;
   public dayAvailability: DayAvailability;
   public geoCodeFlag: string;
-  public browserErrorInternetExplorer: boolean;
+  public browserNotSupported: boolean;
   public browserErrorCookiesDisabled: boolean;
   @ViewChild('filtersnav', { static: false }) public sidenav: MatSidenav;
 
@@ -65,19 +65,19 @@ export class YmcaEventsComponent implements OnInit {
     private shoppingCartService: ShoppingCartService,
     private browserConfigService: BrowserConfigService) {
       this.browserErrorCookiesDisabled = false;
-      this.browserErrorInternetExplorer = false;
+      this.browserNotSupported = false;
     }
 
   ngOnInit() {
     if (this.browserConfigService.isInternetExplorer()) {
-      this.browserErrorInternetExplorer = true;
+      this.browserNotSupported = true;
     }
     else if (!this.browserConfigService.isCookiesEnabled()) {
       this.browserErrorCookiesDisabled = true;
     }
     else {
       this.shoppingCartService.setSidenav(this.sidenav);
-      this.tag = 'Parent Child Swim A';
+      this.tag = 'Preschool Swim Stage 3';
       this.configureDays();
       this.getEvents();
     }
@@ -88,7 +88,8 @@ export class YmcaEventsComponent implements OnInit {
       latitude: '80',
       longitude: '20',
     }
-    this.events = this.eventsService.getEvents(
+    console.log('Getting Events:');
+    this.events$ = this.eventsService.getEvents(
       this.tag,
       this.geoCodeFlag,
       geoCode,
@@ -98,7 +99,9 @@ export class YmcaEventsComponent implements OnInit {
       this.filters.age,
       this.filters.startingTime,
       this.filters.endingTime);
+      console.log(this.events$);
   }
+
 
   configureDays() {
     this.dayAvailability = {
@@ -113,7 +116,7 @@ export class YmcaEventsComponent implements OnInit {
   }
 
   public test() {
-    console.log(this.events);
+    console.log(this.events$);
   }
 
   public setState(key, value) {

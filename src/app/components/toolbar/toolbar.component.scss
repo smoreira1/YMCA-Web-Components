@@ -6,9 +6,6 @@
   padding-right: 0px;
   margin-right: 0px;
   margin-left: 0px;
-  position:sticky;
-  position: -webkit-sticky;
-  //top: 0;
 
   form {
     width: 100%;
@@ -17,10 +14,24 @@
 
 .ymca-toolbar-container {
   width: 100%;
-  left: 0;
-  position: sticky;
+  position:sticky;
+  position: -webkit-sticky;
+  top: 0;
+  
+  .geolocation-button{
+    font-size:11px;
+    text-align:left!important;
+  }
+
 }
 
+
+.zip-code-entry{
+  display:flex;
+  flex-flow:column;
+  justify-content: center;
+  align-items: center;
+}
 
 .ymca-reactive-form {
   display: flex;

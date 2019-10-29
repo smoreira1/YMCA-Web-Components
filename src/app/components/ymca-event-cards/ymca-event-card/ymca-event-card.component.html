@@ -54,12 +54,18 @@
     </p>
   </div>
   <div class="ymca-event-info-section ymca-event-divide">
-    <p>
+    <p class='ymca-event-prices'>
       <label>MEMBER/NON-MEMBER</label>
+      <label *ngIf="earlyRegistration">EARLY REGISTRATION!</label>
     </p>
-    <p class="ymca-event-info">
-      <span>${{ memberPrice }}</span> / <span>${{ nonMemberPrice }}</span>
-    </p>
+    <div class="ymca-event-info ymca-event-prices">
+      <div>
+          <span [ngClass]='earlyRegistrationStrike()'>${{ memberPrice }}</span> / <span [ngClass]='earlyRegistrationStrike()'>${{ nonMemberPrice }}</span>
+      </div>
+      <div *ngIf="earlyRegistration">
+          <span>${{ memberPrice }}</span> / <span>${{ nonMemberPrice }}</span>
+      </div>
+    </div>
   </div>
   <div class="ymca-event-info-section ymca-event-divide">
     <p>
@@ -74,6 +80,6 @@
   <span class="ymca-spacer"></span>
   <div class="ymca-event-card-actions">
     <p class="ymca-extra-details" *ngIf='remainingSlots'>ONLY {{ remainingSlots }} SLOTS LEFT</p>
-    <button class="ymca-button ymca-add-to-cart" (click)="addToCart()" mat-raised-button>Add to Cart</button>
+    <button class="ymca-button ymca-add-to-cart" (click)="addToCart()" mat-raised-button mat-button>Add to Cart</button>
   </div>
 </div>

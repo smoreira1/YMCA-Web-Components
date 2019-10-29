@@ -1,0 +1,234 @@
+.ymca-event-card {
+
+    .ymca-label {
+      font-size: 12px;
+      padding-bottom: 2px;
+      color: black;
+    }
+  
+    .ymca-event-info {
+      padding: 0;
+    }
+  
+    p {
+      margin: 0;
+    }
+  
+    h2{
+        margin:0;
+        padding:0;
+    }
+  
+    display: flex;
+    flex-flow: column;
+    border-color: rgb(26, 26, 26);
+    border-left-style: none;
+    border-left-width: 0px;
+    border-right-style: none;
+    border-right-width: 0px;
+    border-top-style: none;
+    border-top-width: 0px;
+    box-shadow: rgb(217, 217, 217) 0px 0px 0px 1px inset;
+    box-sizing: border-box;
+    color: rgb(26, 26, 26);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    min-height: 400px;
+    line-height: 22px;
+    outline-style: none;
+    outline-width: 0px;
+    padding-bottom: 11px;
+    padding-left: 44px;
+    padding-right: 44px;
+    min-width: 250px;
+    width: 400px;
+    max-width: 400px;
+    margin: 20px;
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+  
+    label {
+      border-color: rgb(128, 128, 128);
+      color: rgb(128, 128, 128);
+      font-size: 11.1167px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 17.6px;
+    }
+  
+  
+    .ymca-header {
+      text-align: center;
+    }
+  
+    .ymca-footer-actions {
+      display: flex;
+    }
+  
+    .ymca-add-to-cart {
+      background-color: #01a490;
+      border-bottom-left-radius: 3.3px;
+      border-bottom-right-radius: 3.3px;
+      border-top-left-radius: 3.3px;
+      border-top-right-radius: 3.3px;
+      color: rgb(255, 255, 255);
+      cursor: pointer;
+      font-size: 14.2167px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 22px;
+      list-style-type: none;
+      padding-bottom: 5.5px;
+      padding-left: 5.5px;
+      padding-right: 5.5px;
+      padding-top: 5.5px;
+    }
+  
+    .ymca-add-to-cart:hover {
+      background-color: #20bdbe;
+      border-color: transparent !important;
+    }
+  
+    .ymca-event-card-title {
+      border-color: rgb(26, 26, 26);
+      color: rgb(26, 26, 26);
+      font-size: 18.7px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 27.5px;
+      padding-bottom: 16.5px;
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 23.1px;
+    }
+  
+    .ymca-event-info-section {
+      border-color: rgb(26, 26, 26);
+      color: rgb(26, 26, 26);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 22px;
+    }
+  
+    .ymca-event-info {
+      border-color: rgb(26, 26, 26);
+      color: rgb(26, 26, 26);
+      font-size: 14.2167px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 22px;
+      list-style-type: none;
+      margin-bottom: 2px;
+      margin-left: 0px;
+      margin-right: 0px;
+      margin-top: 2px;
+      outline-color: rgb(26, 26, 26);
+      outline-style: none;
+      outline-width: 0px;
+      padding-bottom: 11px;
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 5.5px;
+    }
+  
+    .ymca-event-info-high-light {
+      background-color: rgba(0, 0, 0, 0.05);
+      border-bottom-color: rgb(26, 26, 26);
+      border-radius: 5px;
+      color: rgb(26, 26, 26);
+      cursor: default;
+      font-size: 14.2167px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 22px;
+      list-style-type: none;
+      margin-bottom: 7px;
+      margin-left: 0px;
+      margin-right: 7px;
+      margin-top: 7px;
+      outline-color: rgb(26, 26, 26);
+      outline-style: none;
+      outline-width: 0px;
+      padding-bottom: 6.6px;
+      padding-left: 6.6px;
+      padding-right: 6.6px;
+      padding-top: 6.6px;
+    }
+  
+    .ymca-event-card-actions {
+      text-align: right;
+      align-self: flex-end;
+  
+      p {
+        border-color: rgb(128, 128, 128);
+        color: rgb(128, 128, 128);
+        font-size: 12px;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 17.6px;
+        list-style-type: none;
+        outline-color: rgb(128, 128, 128);
+        outline-style: none;
+        outline-width: 0px;
+        padding-bottom: 2.2px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 9.9px;
+        text-align: right;
+      }
+    }
+  
+    .ymca-event-location {
+      border-color: rgb(26, 26, 26);
+      color: rgb(26, 26, 26);
+      cursor: pointer;
+      font-size: 14.2167px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 22px;
+      padding-bottom: 11px;
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 5.5px;
+    }
+  
+    .ymca-event-divide {
+      border-bottom: 1px solid lightgray;
+    }
+  
+    h3 {
+      margin: 0;
+    }
+  
+    @keyframes strike {
+      0% {
+        width: 0;
+      }
+      100% {
+        width: 100%;
+      }
+    }
+    .strike {
+      position: relative;
+    }
+    .strike::after {
+      content: " ";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: black;
+      animation-name: strike;
+      animation-duration: 1s;
+      animation-timing-function: linear;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+    
+  
+  }
+  

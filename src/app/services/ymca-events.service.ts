@@ -27,6 +27,7 @@ export class YMCAEventsService {
     age?: string,
     startingTime?: string,
     endingTime?: string): Observable<any> {
+      console.log(arguments);
     return this
       .http
       .get<any>(`${this.endpoint}/YmcaEvents?tag=${tag}&zipcode=${zipcode}&distance=${distance}&age=${age}&startingTime=${startingTime}&endingTime=${endingTime}&monday=${dayAvaliability.Monday}&tuesday=${dayAvaliability.Tuesday}&wednesday=${dayAvaliability.Wednesday}&thursday=${dayAvaliability.Thursday}&friday=${dayAvaliability.Friday}&saturday=${dayAvaliability.Saturday}&sunday=${dayAvaliability.Sunday}&geoFlag=${geoFlag}&lat=${geoCode.latitude}&lon=${geoCode.longitude}`)
@@ -37,6 +38,8 @@ export class YMCAEventsService {
           // Does something on response.data
           // modify the response.data as you see fit.
           // return the modified data:
+          console.log('Events!:');
+          console.log(response);
           const newResponse = JSON.parse(response);
           return newResponse.data; // kind of useless
       }),

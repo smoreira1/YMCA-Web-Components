@@ -21,4 +21,8 @@ export class ShoppingCartService {
     public toggle(): void {
         this.sidenav.toggle();
     }
+
+    public getItemsInShoppingCart(): string{
+        return '0';
+    }
 }

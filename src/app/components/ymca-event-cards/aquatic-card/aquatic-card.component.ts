@@ -9,18 +9,18 @@ import {
   ChangeDetectorRef,
   ElementRef,
 } from '@angular/core';
-import { CartService } from '../../services/cart.service';
+import { CartService } from '../../../services/cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnackBarComponent } from '../snack-bar/snack-bar.component';
+import { SnackBarComponent } from '../../snack-bar/snack-bar.component';
 
 @Component({
-  selector: 'app-ymca-event-card',
-  templateUrl: './ymca-event-card.component.html',
-  styleUrls: ['./ymca-event-card.component.scss'],
+  selector: 'app-aquatic-card',
+  templateUrl: './aquatic-card.component.html',
+  styleUrls: ['./aquatic-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.ShadowDom
 })
-export class YmcaEventCardComponent implements OnInit {
+export class AquaticCardComponent implements OnInit {
 
   @Input() id: string;
   @Input() description: string;

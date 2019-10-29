@@ -26,4 +26,7 @@ export interface YMCAEvent {
     distanceToEvent: number;
     parentProduct: string;
     numberOfClassesPerWeek: number;
+    earlyRegistration: boolean;
+    earlyRegistrationNonMemberPrice: string;
+    earlyRegistrationMemberPrice: string;
 }

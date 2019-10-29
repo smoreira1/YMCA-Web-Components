@@ -1,4 +1,4 @@
-<div class='ymca-toolbar-container'>
+<div class='ymca-toolbar-container sticky'>
   <mat-toolbar color="primary" class='ymca-toolbar'>
     <mat-toolbar-row class='ymca-toolbar-row'>
       <form>
@@ -6,8 +6,9 @@
           <span class='zip-code-entry'>
             <mat-form-field class="ymca-zipcode-field">
               <input matInput placeholder="ZipCode" [value]="zipcode" autocomplete="off" maxlength='5'
-                (input)="search()" #zipCode>
+                (input)="search()" #zipCode />
             </mat-form-field>
+            <!-- <button mat-button type='button' class='geolocation-button'>Use current location</button> -->
           </span>
           <span class='ymca-distance-flex-item'>
             <mat-form-field class='ymca-distance-field'>
@@ -18,7 +19,7 @@
               </mat-select>
             </mat-form-field>
           </span>
-          <span class='ymca-age-entry'>
+          <span class='ymca-age-entry' *ngIf="toolbarConfiguration != 'Sports'">
             <mat-form-field class='ymca-age-field'>
               <mat-label>Age</mat-label>
               <mat-select>
@@ -26,7 +27,7 @@
               </mat-select>
             </mat-form-field>
           </span>
-          <span class='ymca-time-entry'>
+          <span class='ymca-time-entry' *ngIf="toolbarConfiguration != 'Sports'">
             <mat-form-field class='ymca-time-field'>
               <mat-label>Time</mat-label>
               <mat-select>
@@ -34,7 +35,7 @@
               </mat-select>
             </mat-form-field>
           </span>
-          <span class='ymca-days-entry'>
+          <span class='ymca-days-entry' *ngIf="toolbarConfiguration != 'Sports'">
             <mat-slide-toggle (click)="search()">MON</mat-slide-toggle>
             <mat-slide-toggle (click)="search()">TUE</mat-slide-toggle>
             <mat-slide-toggle (click)="search()">WED</mat-slide-toggle>
@@ -50,7 +51,7 @@
       </form>
     </mat-toolbar-row>
   </mat-toolbar>
-  <mat-progress-bar mode="indeterminate" color=""></mat-progress-bar>
+  <mat-progress-bar *ngIf='loadingDataFromServer' mode="indeterminate" color=""></mat-progress-bar>
   <mat-sidenav-container class="example-container">
     <mat-sidenav #filtersnav mode="over" false class="ymca-filters-side-nav" position="end">
       <app-filters-side-nav></app-filters-side-nav>
