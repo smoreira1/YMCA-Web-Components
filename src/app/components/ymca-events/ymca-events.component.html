@@ -5,7 +5,7 @@
       <!-- <button mat-raised-button (click)='test()'>Events</button>
       <button mat-button (click)="sidenav.toggle()">Cart</button> -->
       <div class='ymca-events' infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50">
-        <app-ymca-event-card *ngFor='let event of events | async' id='{{ event.id }}'
+        <app-ymca-event-card *ngFor='let event of events$ | async' id='{{ event.id }}'
           description='{{ event.description }}' startDate='{{ event.startDate }}' endDate='{{ event.endDate }}'
           startTime='{{ event.startTime }}' endTime='{{ event.endTime }}' locationName='{{ event.locationName }}'
           memberOnly='{{ event.memberOnly }}' memberPrice='{{ event.memberPrice }}'
@@ -40,7 +40,7 @@
         oh oh your cookies are disabled.
       </div>
     </div>
-    <div class='ymca-empty-events' *ngIf='!browserNotSupported'>
+    <div class='ymca-empty-events' *ngIf="!(events$ | async)?.length">
       <div class=''>
         No events were returned. Try expanding your filtering.
       </div>

@@ -50,7 +50,7 @@ export class YmcaEventsComponent implements OnInit {
     endingTime: '11:59 PM',
   }
 
-  public events: Observable<YMCAEvent[]>;
+  public events$: Observable<YMCAEvent[]>;
   public geoCode: GeoCode;
   public dayAvailability: DayAvailability;
   public geoCodeFlag: string;
@@ -89,7 +89,7 @@ export class YmcaEventsComponent implements OnInit {
       longitude: '20',
     }
     console.log('Getting Events:');
-    this.events = this.eventsService.getEvents(
+    this.events$ = this.eventsService.getEvents(
       this.tag,
       this.geoCodeFlag,
       geoCode,
@@ -99,7 +99,7 @@ export class YmcaEventsComponent implements OnInit {
       this.filters.age,
       this.filters.startingTime,
       this.filters.endingTime);
-      console.log(this.events);
+      console.log(this.events$);
   }
 
 
@@ -116,7 +116,7 @@ export class YmcaEventsComponent implements OnInit {
   }
 
   public test() {
-    console.log(this.events);
+    console.log(this.events$);
   }
 
   public setState(key, value) {

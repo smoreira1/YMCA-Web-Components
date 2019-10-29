@@ -1,4 +1,4 @@
-import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA, Injectable } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,6 +15,11 @@ import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { YmcaEventsComponent } from './components/ymca-events/ymca-events.component';
 import { YmcaEventCardComponent } from './components/ymca-event-cards/ymca-event-card/ymca-event-card.component';
 import { FiltersSideNavComponent } from './components/filters-side-nav/filters-side-nav.component';
+import { CampCardComponent } from './components/ymca-event-cards/camp-card/camp-card.component';
+import { SportCardComponent } from './components/ymca-event-cards/sport-card/sport-card.component';
+import { AquaticCardComponent } from './components/ymca-event-cards/aquatic-card/aquatic-card.component';
+import { FamilyLifeCardComponent } from './components/ymca-event-cards/family-life-card/family-life-card.component';
+import { SchoolCardComponent } from './components/ymca-event-cards/school-card/school-card.component';
 // Material Design Modules
 // Note: We could export these into their own module.
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -33,11 +38,21 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ShoppingCartService } from './components/shopping-cart/shopping-cart.service';
 // Other
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { CampCardComponent } from './components/ymca-event-cards/camp-card/camp-card.component';
-import { SportCardComponent } from './components/ymca-event-cards/sport-card/sport-card.component';
-import { AquaticCardComponent } from './components/ymca-event-cards/aquatic-card/aquatic-card.component';
-import { FamilyLifeCardComponent } from './components/ymca-event-cards/family-life-card/family-life-card.component';
-import { SchoolCardComponent } from './components/ymca-event-cards/school-card/school-card.component';
+import * as Sentry from '@sentry/browser';
+import { ErrorHandler } from '@angular/core';
+
+Sentry.init({
+  dsn: "https://f704f4b6e26b48abbe96280b3ad1f813@sentry.io/1484901"
+});
+
+@Injectable()
+export class SentryErrorHandler implements ErrorHandler {
+  constructor() {}
+  handleError(error) {
+    Sentry.captureException(error.originalError || error);
+    throw error;
+  }
+}
 
 @NgModule({
   declarations: [
@@ -91,7 +106,8 @@ import { SchoolCardComponent } from './components/ymca-event-cards/school-card/s
     SnackBarComponent,
   ],
   providers: [
-    ShoppingCartService
+    ShoppingCartService,
+    { provide: ErrorHandler, useClass: SentryErrorHandler }
   ],
   bootstrap: [AppComponent]
 })
