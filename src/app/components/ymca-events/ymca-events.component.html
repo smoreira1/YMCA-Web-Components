@@ -1,23 +1,41 @@
 <mat-sidenav-container class="example-container">
-  <mat-sidenav-content>
+  <mat-sidenav-content class='ymca-events'>
     <mat-spinner *ngIf='state.loaded'></mat-spinner>
-    <div class='ymca-events-component'>
       <!-- <button mat-raised-button (click)='test()'>Events</button>
       <button mat-button (click)="sidenav.toggle()">Cart</button> -->
-      <div class='ymca-events' infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50">
-        <app-ymca-event-card *ngFor='let event of events$ | async' id='{{ event.id }}'
-          description='{{ event.description }}' startDate='{{ event.startDate }}' endDate='{{ event.endDate }}'
-          startTime='{{ event.startTime }}' endTime='{{ event.endTime }}' locationName='{{ event.locationName }}'
-          memberOnly='{{ event.memberOnly }}' memberPrice='{{ event.memberPrice }}'
-          startingAge='{{ event.startingAge }}' startingAgeType='{{ event.lowAgeType }}'
-          endingAge='{{ event.endingAge }}' endingAgeType='{{ event.highAgeType }}' highGrade='{{ event.highGrade }}'
-          lowGrade='{{ event.lowGrade }}' nonMemberPrice='{{ event.nonMemberPrice }}' gender='{{ event.gender }}'
-          remainingSlots='{{ event.openSlots }}' zipcode='{{ event.zipcode }}'
-          distanceToEvent='{{ event.distanceToEvent }}' parentProduct='{{ event.parentProduct }}'
-          numberOfClassesPerWeek='{{ event.numberOfClassesPerWeek }}' lowAge='{{ event.lowAge }}'
-          highAge='{{ event.highAge }}' monday='{{ event.monday }}' tuesday='{{ event.tuesday }}'
-          wednesday='{{ event.wednesday }}' thursday='{{ event.thursday }}' friday='{{ event.friday }}'
-          saturday='{{ event.saturday }}' sunday='{{ event.sunday }}'>
+      <div class='ymca-filtered-events'infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50" >
+        <app-ymca-event-card *ngFor='let event of events$ | async' 
+          id='{{ event.id }}'
+          description='{{ event.description }}' 
+          startDate='{{ event.startDate }}' 
+          endDate='{{ event.endDate }}'
+          startTime='{{ event.startTime }}' 
+          endTime='{{ event.endTime }}' 
+          locationName='{{ event.locationName }}'
+          memberOnly='{{ event.memberOnly }}'
+          memberPrice='{{ event.memberPrice }}'
+          startingAge='{{ event.startingAge }}' 
+          startingAgeType='{{ event.lowAgeType }}'
+          endingAge='{{ event.endingAge }}' 
+          endingAgeType='{{ event.highAgeType }}' 
+          highGrade='{{ event.highGrade }}'
+          lowGrade='{{ event.lowGrade }}' 
+          nonMemberPrice='{{ event.nonMemberPrice }}' 
+          gender='{{ event.gender }}'
+          remainingSlots='{{ event.openSlots }}' 
+          zipcode='{{ event.zipcode }}'
+          distanceToEvent='{{ event.distanceToEvent }}' 
+          parentProduct='{{ event.parentProduct }}'
+          numberOfClassesPerWeek='{{ event.numberOfClassesPerWeek }}' 
+          lowAge='{{ event.lowAge }}'
+          highAge='{{ event.highAge }}' 
+          monday='{{ event.monday }}' 
+          tuesday='{{ event.tuesday }}'
+          wednesday='{{ event.wednesday }}' 
+          thursday='{{ event.thursday }}' 
+          friday='{{ event.friday }}'
+          saturday='{{ event.saturday }}' 
+          sunday='{{ event.sunday }}'>
         </app-ymca-event-card>
       </div>
       <div class='ymca-empty-events-result' *ngIf='false'>
@@ -29,7 +47,6 @@
         <p>We are excited to see you.</p>
         <p> Please check back soon.</p>
       </div>
-    </div>
     <div class='ymca-browser-error' *ngIf='browserNotSupported'>
       <div class=''>
         oh oh we do not support your browser.
