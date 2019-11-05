@@ -10,6 +10,7 @@ export class ShoppingCartService {
     }
 
     public open() {
+        console.log('Open');
         return this.sidenav.open();
     }
 

@@ -1,7 +1,7 @@
 import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA, Injectable } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,8 +34,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
-// YMCA Components Services
+// YMCA Services
 import { ShoppingCartService } from './components/shopping-cart/shopping-cart.service';
+
 // Other
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import * as Sentry from '@sentry/browser';
@@ -89,7 +90,8 @@ export class SentryErrorHandler implements ErrorHandler {
     MatBadgeModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    HttpClientModule 
   ],
   entryComponents: [
     YmcaEventCardComponent,
