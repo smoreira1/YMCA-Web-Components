@@ -10,7 +10,7 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation
 } from '@angular/core';
-import { CartService } from '../../services/cart.service';
+import { CartService } from '../../../services/cart.service';
 import { environment } from 'src/environments/environment';
 
 

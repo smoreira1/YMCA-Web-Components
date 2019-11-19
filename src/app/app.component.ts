@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
-import { ShoppingCartService } from './components/shopping-cart/shopping-cart.service';
+import { ShoppingCartService } from './components/angular-elements/shopping-cart/shopping-cart.service';
 
 @Component({
   selector: 'app-root',

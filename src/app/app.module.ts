@@ -6,20 +6,20 @@ import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // YMCA Components 
-import { ShoppingCartButtonComponent } from './components/shopping-cart-button/shopping-cart-button.component';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { BrowserWarningComponent } from './components/browser-warning/browser-warning.component';
-import { AlertMessageComponent } from './components/alert-message/alert-message.component';
-import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
-import { YmcaEventsComponent } from './components/ymca-events/ymca-events.component';
-import { YmcaEventCardComponent } from './components/ymca-event-cards/ymca-event-card/ymca-event-card.component';
-import { FiltersSideNavComponent } from './components/filters-side-nav/filters-side-nav.component';
-import { CampCardComponent } from './components/ymca-event-cards/camp-card/camp-card.component';
-import { SportCardComponent } from './components/ymca-event-cards/sport-card/sport-card.component';
-import { AquaticCardComponent } from './components/ymca-event-cards/aquatic-card/aquatic-card.component';
-import { FamilyLifeCardComponent } from './components/ymca-event-cards/family-life-card/family-life-card.component';
-import { SchoolCardComponent } from './components/ymca-event-cards/school-card/school-card.component';
+import { ShoppingCartButtonComponent } from './components/angular-elements/shopping-cart-button/shopping-cart-button.component';
+import { ShoppingCartComponent } from './components/angular-elements/shopping-cart/shopping-cart.component';
+import { ToolbarComponent } from './components/angular-elements/toolbar/toolbar.component';
+import { BrowserWarningComponent } from './components/angular-elements/browser-warning/browser-warning.component';
+import { AlertMessageComponent } from './components/angular-elements/alert-message/alert-message.component';
+import { SnackBarComponent } from './components/angular-elements/snack-bar/snack-bar.component';
+import { YmcaEventsComponent } from './components/angular-elements/ymca-events/ymca-events.component';
+import { YmcaEventCardComponent } from './components/angular-elements/ymca-event-cards/ymca-event-card/ymca-event-card.component';
+import { FiltersSideNavComponent } from './components/angular-elements/filters-side-nav/filters-side-nav.component';
+import { CampCardComponent } from './components/angular-elements/ymca-event-cards/camp-card/camp-card.component';
+import { SportCardComponent } from './components/angular-elements/ymca-event-cards/sport-card/sport-card.component';
+import { AquaticCardComponent } from './components/angular-elements/ymca-event-cards/aquatic-card/aquatic-card.component';
+import { FamilyLifeCardComponent } from './components/angular-elements/ymca-event-cards/family-life-card/family-life-card.component';
+import { SchoolCardComponent } from './components/angular-elements/ymca-event-cards/school-card/school-card.component';
 // Material Design Modules
 // Note: We could export these into their own module.
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -35,7 +35,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
 // YMCA Services
-import { ShoppingCartService } from './components/shopping-cart/shopping-cart.service';
+import { ShoppingCartService } from './components/angular-elements/shopping-cart/shopping-cart.service';
 
 // Other
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
