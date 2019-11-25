@@ -1,59 +1,124 @@
-<div class='ymca-toolbar-container sticky'>
-  <mat-toolbar color="primary" class='ymca-toolbar'>
-    <mat-toolbar-row class='ymca-toolbar-row'>
+<div class="ymca-toolbar-container sticky">
+  <mat-toolbar color="primary" class="ymca-toolbar">
+    <mat-toolbar-row class="ymca-toolbar-row">
       <form>
         <div class="ymca-reactive-form">
-          <span class='zip-code-entry'>
+          <span class="zip-code-entry">
             <mat-form-field class="ymca-zipcode-field">
-              <input matInput placeholder="ZipCode" [value]="zipcode" autocomplete="off" maxlength='5'
-                (input)="search()" #zipCode />
+              <input
+                matInput
+                placeholder="ZipCode"
+                [value]="zipcode"
+                autocomplete="off"
+                maxlength="5"
+                (input)="search()"
+                #zipCode
+              />
             </mat-form-field>
             <!-- <button mat-button type='button' class='geolocation-button'>Use current location</button> -->
           </span>
-          <span class='ymca-distance-flex-item'>
-            <mat-form-field class='ymca-distance-field'>
+          <span class="ymca-distance-flex-item">
+            <mat-form-field class="ymca-distance-field">
               <mat-label>Distance</mat-label>
               <mat-select>
-                <mat-option *ngFor="let distance of distances" [value]="distance.value">{{distance.viewValue}}
+                <mat-option
+                  *ngFor="let distance of distances"
+                  [value]="distance.value"
+                  >{{ distance.viewValue }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
           </span>
-          <span class='ymca-age-entry' *ngIf="toolbarConfiguration != 'Sports'">
-            <mat-form-field class='ymca-age-field'>
+          <span class="ymca-age-entry" *ngIf="toolbarConfiguration != 'Sports'">
+            <mat-form-field class="ymca-age-field">
               <mat-label>Age</mat-label>
               <mat-select>
-                <mat-option *ngFor="let age of ages" [value]="age.value">{{age.viewValue}}</mat-option>
+                <mat-option *ngFor="let age of ages" [value]="age.value">{{
+                  age.viewValue
+                }}</mat-option>
               </mat-select>
             </mat-form-field>
           </span>
-          <span class='ymca-time-entry' *ngIf="toolbarConfiguration != 'Sports'">
-            <mat-form-field class='ymca-time-field'>
+          <span
+            class="ymca-time-entry"
+            *ngIf="toolbarConfiguration != 'Sports'"
+          >
+            <mat-form-field class="ymca-time-field">
               <mat-label>Time</mat-label>
               <mat-select>
-                <mat-option *ngFor="let time of times" [value]="time.value">{{time.viewValue}}</mat-option>
+                <mat-option *ngFor="let time of times" [value]="time.value">{{
+                  time.viewValue
+                }}</mat-option>
               </mat-select>
             </mat-form-field>
           </span>
-          <span class='ymca-days-entry' *ngIf="toolbarConfiguration != 'Sports'">
-            <mat-slide-toggle (click)="search()">MON</mat-slide-toggle>
+          <span
+            class="ymca-gender-entry"
+            *ngIf="toolbarConfiguration != 'Sports'"
+          >
+            <mat-form-field class="ymca-time-field">
+              <mat-label>Gender</mat-label>
+              <mat-select>
+                <mat-option
+                  *ngFor="let gender of genders"
+                  [value]="gender.value"
+                  >{{ gender.viewValue }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </span>
+          <span
+            class="ymca-days-entry"
+            *ngIf="toolbarConfiguration != 'Sports'"
+          >
+            <!-- <mat-slide-toggle (click)="search()">MON</mat-slide-toggle>
             <mat-slide-toggle (click)="search()">TUE</mat-slide-toggle>
             <mat-slide-toggle (click)="search()">WED</mat-slide-toggle>
             <mat-slide-toggle (click)="search()">THU</mat-slide-toggle>
             <mat-slide-toggle (click)="search()">FRI</mat-slide-toggle>
             <mat-slide-toggle (click)="search()">SAT</mat-slide-toggle>
-            <mat-slide-toggle (click)="search()">SUN</mat-slide-toggle>
+            <mat-slide-toggle (click)="search()">SUN</mat-slide-toggle> -->
+          <mat-form-field>
+            <mat-label>Days of the Week</mat-label>
+            <mat-select [formControl]="days" multiple>
+              <!-- <mat-option [value]="Monday">Monday</mat-option>
+              <mat-option [value]="Monday">Tuesday</mat-option>
+              <mat-option [value]="Monday">Wednesday</mat-option>
+              <mat-option [value]="Monday">Thursday</mat-option>
+              <mat-option [value]="Monday">Friday</mat-option>
+              <mat-option [value]="Monday">Saturday</mat-option>
+              <mat-option [value]="Monday">Sunday</mat-option> -->
+              <mat-option *ngFor="let day of daysList" [value]="day">{{day}}</mat-option>
+            </mat-select>
+          </mat-form-field>
           </span>
-          <span class='ymca-modal-filter'>
-            <button mat-raised-button (click)="filtersnav.toggle()" type='button'>Filters</button>
+          <span class="ymca-modal-filter">
+            <button
+              mat-raised-button
+              (click)="filtersnav.toggle()"
+              type="button"
+            >
+              Filters
+            </button>
           </span>
         </div>
       </form>
     </mat-toolbar-row>
   </mat-toolbar>
-  <mat-progress-bar *ngIf='loadingDataFromServer' mode="indeterminate" color=""></mat-progress-bar>
+  <app-view-style-bar></app-view-style-bar>
+  <mat-progress-bar
+    *ngIf="loadingDataFromServer"
+    mode="indeterminate"
+    color=""
+  ></mat-progress-bar>
   <mat-sidenav-container class="example-container">
-    <mat-sidenav #filtersnav mode="over" false class="ymca-filters-side-nav" position="end">
+    <mat-sidenav
+      #filtersnav
+      mode="over"
+      false
+      class="ymca-filters-side-nav"
+      position="end"
+    >
       <app-filters-side-nav></app-filters-side-nav>
     </mat-sidenav>
     <mat-sidenav-content>

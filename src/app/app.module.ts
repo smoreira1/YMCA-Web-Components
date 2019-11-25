@@ -5,7 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// YMCA Components 
+// YMCA Components
 import { ShoppingCartButtonComponent } from './components/angular-elements/shopping-cart-button/shopping-cart-button.component';
 import { ShoppingCartComponent } from './components/angular-elements/shopping-cart/shopping-cart.component';
 import { ToolbarComponent } from './components/angular-elements/toolbar/toolbar.component';
@@ -20,6 +20,9 @@ import { SportCardComponent } from './components/angular-elements/ymca-event-car
 import { AquaticCardComponent } from './components/angular-elements/ymca-event-cards/aquatic-card/aquatic-card.component';
 import { FamilyLifeCardComponent } from './components/angular-elements/ymca-event-cards/family-life-card/family-life-card.component';
 import { SchoolCardComponent } from './components/angular-elements/ymca-event-cards/school-card/school-card.component';
+import { ViewStyleBarComponent } from './components/angular-elements/view-style-bar/view-style-bar.component';
+import { YmcaLoadingGraphicComponent } from './components/angular-elements/ymca-loading-graphic/ymca-loading-graphic.component';
+
 // Material Design Modules
 // Note: We could export these into their own module.
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -33,7 +36,13 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
+
+
 // YMCA Services
 import { ShoppingCartService } from './components/angular-elements/shopping-cart/shopping-cart.service';
 
@@ -41,6 +50,8 @@ import { ShoppingCartService } from './components/angular-elements/shopping-cart
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import * as Sentry from '@sentry/browser';
 import { ErrorHandler } from '@angular/core';
+
+
 
 Sentry.init({
   dsn: "https://f704f4b6e26b48abbe96280b3ad1f813@sentry.io/1484901"
@@ -72,6 +83,8 @@ export class SentryErrorHandler implements ErrorHandler {
     AquaticCardComponent,
     FamilyLifeCardComponent,
     SchoolCardComponent,
+    ViewStyleBarComponent,
+    YmcaLoadingGraphicComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,9 +102,12 @@ export class SentryErrorHandler implements ErrorHandler {
     MatExpansionModule,
     MatBadgeModule,
     MatSnackBarModule,
+    MatButtonToggleModule,
     MatProgressSpinnerModule,
+    MatIconModule,
+    MatTooltipModule,
     InfiniteScrollModule,
-    HttpClientModule 
+    HttpClientModule
   ],
   entryComponents: [
     YmcaEventCardComponent,

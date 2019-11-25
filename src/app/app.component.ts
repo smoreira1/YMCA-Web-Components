@@ -16,8 +16,12 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     const eventCard = document.createElement('app-ymca-event-card');
+    const viewStyleBar = document.createElement('app-view-style-bar');
+
+
     const content = document.getElementById('ymca-components');
     content.appendChild(eventCard);
+    //content.appendChild(viewStyleBar);
 
     const newEventCard = document.createElement('app-ymca-event-card');
     const event = {

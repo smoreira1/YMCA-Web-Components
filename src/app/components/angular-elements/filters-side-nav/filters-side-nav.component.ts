@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FiltersConfigService } from 'src/app/services/filters-config.service';
 import { SelectDropDown } from 'src/app/interfaces/selectValue.interface';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-filters-side-nav',
@@ -24,8 +25,12 @@ export class FiltersSideNavComponent implements OnInit {
   distances: SelectDropDown[];
   ages: SelectDropDown[];
   times: SelectDropDown[];
-  
-  constructor(private filtersConfigService: FiltersConfigService) { 
+
+
+  days = new FormControl();
+  daysList: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+  constructor(private filtersConfigService: FiltersConfigService) {
 
   }
 
@@ -45,6 +50,6 @@ export class FiltersSideNavComponent implements OnInit {
 
 
   search(){
-    
+
   }
 }

@@ -5,6 +5,7 @@ import { SelectDropDown } from 'src/app/interfaces/selectValue.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 import * as Sticky from 'sticky-js';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-toolbar',
@@ -16,7 +17,7 @@ import * as Sticky from 'sticky-js';
 export class ToolbarComponent implements OnInit, OnChanges {
 
   public loadingDataFromServer = false;
-  
+
   @Input() zipcode: string;
   @Input() distance: string;
   @Input() age: string;
@@ -33,6 +34,9 @@ export class ToolbarComponent implements OnInit, OnChanges {
   distances: SelectDropDown[];
   ages: SelectDropDown[];
   times: SelectDropDown[];
+  genders: SelectDropDown[];
+  days = new FormControl();
+  daysList: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   constructor(
     private ymcaEventsService: YMCAEventsService,
@@ -48,6 +52,7 @@ export class ToolbarComponent implements OnInit, OnChanges {
     this.distances = this.filtersConfigService.distances();
     this.ages = this.filtersConfigService.ages(99, true);
     this.times = this.filtersConfigService.times();
+    this.genders = this.filtersConfigService.genders();
     this.zipcode = this.zipcode || '';
     this.monday = this.monday || 'false';
     this.tuesday = this.tuesday || 'false';
