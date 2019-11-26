@@ -31,6 +31,8 @@ export class YmcaEventsComponent implements OnInit {
   @Input() tag: string;
   @Input() startingTime: string;
   @Input() endingTime: string;
+  @Input() cardStyle: string;
+  @Input() cardDensity: string;
 
   public state = {
     visible: false,

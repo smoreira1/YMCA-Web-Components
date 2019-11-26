@@ -1,20 +1,38 @@
 <mat-toolbar class="view-style-bar">
   <div class="card-style-options">
-    <mat-button-toggle-group #group="matButtonToggleGroup">
+    <mat-button-toggle-group #cardStyleToggle="matButtonToggleGroup">
       <mat-button-toggle
         value="left"
         matTooltip="2019 Card Style"
         aria-label="2019 Card Style"
       >
-        <mat-icon>left</mat-icon>
+        <mat-icon>2019</mat-icon>
       </mat-button-toggle>
-      <mat-button-toggle value="center" aria-label="Text align center">
-        <mat-icon>center</mat-icon>
+      <mat-button-toggle
+        value="Material"
+        aria-label="Material Card Style"
+        matTooltip="Material Card Style"
+      >
+        <mat-icon svgIcon="material"></mat-icon>
       </mat-button-toggle>
+      <mat-button-toggle
+      value="Bootstrap"
+      aria-label="Bootstrap Card Style"
+      matTooltip="Bootstrap Card Style"
+    >
+      <mat-icon svgIcon="bootstrap"></mat-icon>
+    </mat-button-toggle>
+    <mat-button-toggle
+    value="lightning"
+    aria-label="Lightning Card Style"
+    matTooltip="Lightning Card Style"
+  >
+    <mat-icon svgIcon="lightning"></mat-icon>
+  </mat-button-toggle>
     </mat-button-toggle-group>
   </div>
   <div class="card-density-options">
-    <mat-button-toggle-group #group="matButtonToggleGroup">
+    <mat-button-toggle-group #cardDensityToggle="matButtonToggleGroup">
       <mat-button-toggle
         value="low"
         matTooltip="Low density card view"

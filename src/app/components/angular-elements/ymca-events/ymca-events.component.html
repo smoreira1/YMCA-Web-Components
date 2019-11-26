@@ -4,7 +4,7 @@
       <!-- <button mat-raised-button (click)='test()'>Events</button>
       <button mat-button (click)="sidenav.toggle()">Cart</button> -->
       <div class='ymca-filtered-events'infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50" >
-        <app-ymca-event-card *ngFor='let event of events$ | async'
+        <app-ng-mat-ymca-event-card *ngFor='let event of events$ | async'
           id='{{ event.id }}'
           description='{{ event.description }}'
           startDate='{{ event.startDate }}'
@@ -36,7 +36,7 @@
           friday='{{ event.friday }}'
           saturday='{{ event.saturday }}'
           sunday='{{ event.sunday }}'>
-        </app-ymca-event-card>
+        </app-ng-mat-ymca-event-card>
       </div>
       <div class='ymca-empty-events-result' *ngIf='false'>
         <h1 class='ymca-events-empty-msg'>No events were returned, try another filter setting.</h1>

@@ -14,7 +14,7 @@ export class FiltersConfigService {
       { value: "9:00 AM-12:00 PM", viewValue: "9AM - 12PM" },
       { value: "12:00 PM-3:00 PM", viewValue: "12PM - 3PM" },
       { value: "3:00 PM-6:00 PM", viewValue: "3PM - 6PM" },
-      { value: "6:00 PM-10:00 PM", viewValue: "6PM - 10PM" }
+      { value: "6:00 PM-10:00 PM", viewValue: "6PM - 10PM" },
     ];
   }
 
@@ -36,14 +36,15 @@ export class FiltersConfigService {
       { value: "10", viewValue: "10" },
       { value: "15", viewValue: "15" },
       { value: "20", viewValue: "20" },
-      { value: "50", viewValue: "50" }
+      { value: "50", viewValue: "50" },
     ];
   }
 
   genders(): Array<SelectDropDown> {
     return [
+      { value: "", viewValue: "Any" },
       { value: "Male", viewValue: "Male" },
-      { value: "Female", viewValue: "Female" }
+      { value: "Female", viewValue: "Female" },
     ];
   }
 }

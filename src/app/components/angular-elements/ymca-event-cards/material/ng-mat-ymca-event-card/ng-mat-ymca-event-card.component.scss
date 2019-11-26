@@ -1,0 +1,12 @@
+.ng-mat.ymca-event-card {
+  .detail {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+  }
+  .actions {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+  }
+}

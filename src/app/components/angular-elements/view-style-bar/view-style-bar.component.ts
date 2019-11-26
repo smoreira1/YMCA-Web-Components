@@ -16,6 +16,44 @@ export class ViewStyleBarComponent implements OnInit {
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer
   ) {
+
+    this.loadCardDensityIcons();
+    this.loadCardStyleIcons();
+  }
+
+  ngOnInit() {}
+
+  switchDensity(){
+
+  }
+
+  switchCardStyle(){
+
+  }
+
+  loadCardStyleIcons(){
+    this.iconRegistry.addSvgIcon(
+      "bootstrap",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/card-style-icons/ng-bootstrap.svg"
+      )
+    );
+    this.iconRegistry.addSvgIcon(
+      "lightning",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/card-style-icons/ng-lightning.svg"
+      )
+    );
+    this.iconRegistry.addSvgIcon(
+      "material",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/card-style-icons/ng-material.svg"
+      )
+    );
+
+  }
+
+  loadCardDensityIcons(){
     this.iconRegistry.addSvgIcon(
       "low-density",
       this.sanitizer.bypassSecurityTrustResourceUrl(
@@ -34,16 +72,6 @@ export class ViewStyleBarComponent implements OnInit {
         "assets/icons/density-icons/high-density.svg"
       )
     );
-  }
-
-  ngOnInit() {}
-
-  switchDensity(){
-
-  }
-
-  switchCardStyle(){
-
   }
 
 }

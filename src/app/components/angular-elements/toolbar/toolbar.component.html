@@ -71,23 +71,9 @@
             class="ymca-days-entry"
             *ngIf="toolbarConfiguration != 'Sports'"
           >
-            <!-- <mat-slide-toggle (click)="search()">MON</mat-slide-toggle>
-            <mat-slide-toggle (click)="search()">TUE</mat-slide-toggle>
-            <mat-slide-toggle (click)="search()">WED</mat-slide-toggle>
-            <mat-slide-toggle (click)="search()">THU</mat-slide-toggle>
-            <mat-slide-toggle (click)="search()">FRI</mat-slide-toggle>
-            <mat-slide-toggle (click)="search()">SAT</mat-slide-toggle>
-            <mat-slide-toggle (click)="search()">SUN</mat-slide-toggle> -->
           <mat-form-field>
             <mat-label>Days of the Week</mat-label>
             <mat-select [formControl]="days" multiple>
-              <!-- <mat-option [value]="Monday">Monday</mat-option>
-              <mat-option [value]="Monday">Tuesday</mat-option>
-              <mat-option [value]="Monday">Wednesday</mat-option>
-              <mat-option [value]="Monday">Thursday</mat-option>
-              <mat-option [value]="Monday">Friday</mat-option>
-              <mat-option [value]="Monday">Saturday</mat-option>
-              <mat-option [value]="Monday">Sunday</mat-option> -->
               <mat-option *ngFor="let day of daysList" [value]="day">{{day}}</mat-option>
             </mat-select>
           </mat-form-field>

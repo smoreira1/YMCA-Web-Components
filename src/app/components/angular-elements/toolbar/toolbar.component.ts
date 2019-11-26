@@ -6,6 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 import * as Sticky from 'sticky-js';
 import { FormControl } from '@angular/forms';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-toolbar',
@@ -35,20 +37,25 @@ export class ToolbarComponent implements OnInit, OnChanges {
   ages: SelectDropDown[];
   times: SelectDropDown[];
   genders: SelectDropDown[];
+  familyCenters: SelectDropDown[];
+  sortEvents: SelectDropDown[];
+  discounts: SelectDropDown[];
+  discountList: string[] = ['Any', 'Only Early Registration'];
   days = new FormControl();
   daysList: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
   constructor(
     private ymcaEventsService: YMCAEventsService,
     private filtersConfigService: FiltersConfigService,
     private shoppingCartService: ShoppingCartService,
     public dialog: MatDialog,
+    private iconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer
+
   ) {
       var sticky = new Sticky('.sticky');
   }
 
   ngOnInit() {
-
     this.distances = this.filtersConfigService.distances();
     this.ages = this.filtersConfigService.ages(99, true);
     this.times = this.filtersConfigService.times();
@@ -82,6 +89,33 @@ export class ToolbarComponent implements OnInit, OnChanges {
 
   private scrollToFilterNavigation(){
 
+  }
+
+  loadEventCardIcons() {
+    this.iconRegistry.addSvgIcon(
+      "time",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/event-card/times.svg"
+      )
+    );
+    this.iconRegistry.addSvgIcon(
+      "gender",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/event-card/gender.svg"
+      )
+    );
+    this.iconRegistry.addSvgIcon(
+      "family-center",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/event-card/family-center.svg"
+      )
+    );
+    this.iconRegistry.addSvgIcon(
+      "days",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/event-card/days.svg"
+      )
+    );
   }
 
 }
