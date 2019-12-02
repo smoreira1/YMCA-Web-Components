@@ -79,7 +79,7 @@ export class YmcaEventsComponent implements OnInit {
     }
     else {
       this.shoppingCartService.setSidenav(this.sidenav);
-      this.tag = 'Preschool Swim Stage 3';
+      this.tag = 'Teen Adult Stroke Technique';
       this.configureDays();
       this.getEvents();
     }

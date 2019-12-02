@@ -52,7 +52,15 @@ export class NgMatYmcaEventCardComponent implements OnInit {
     cardIconService.loadEventCardIcons();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.startDate = this.convertDateToAmericanFormat(this.startDate);
+    this.endDate = this.convertDateToAmericanFormat(this.endDate);
+  }
 
-  loadEventCardIcons() {}
+  convertDateToAmericanFormat(dateString: string) {
+    const date = new Date(dateString);
+     return `${date.toLocaleDateString("EN", {
+        month: "short"
+      })}-${date.getDate()}-${date.getFullYear()}`;
+  }
 }

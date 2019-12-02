@@ -1,12 +1,32 @@
 .ng-mat.ymca-event-card {
+  max-width: 400px;
+  max-height:500px;
   .detail {
     display: flex;
     flex-flow: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top:5px;
+    margin-bottom:5px;
+    text-align: center;
   }
   .actions {
     display: flex;
     flex-flow: row;
     justify-content: space-between;
+  }
+  .details{
+    // display:flex;
+    // flex-flow:column;
+    // justify-content: space-between;
+  }
+  // &:hover {
+  //   transform: scale(1.001);
+  // }
+
+  .location{
+    display:flex;
+    flex-flow: flex-start;
+    align-items: center;
   }
 }

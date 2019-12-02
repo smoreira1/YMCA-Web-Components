@@ -10,7 +10,7 @@ export class CardIconService {
   constructor(    private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer) {
 
-      
+
     }
 
 
@@ -74,6 +74,30 @@ export class CardIconService {
       "price",
       this.sanitizer.bypassSecurityTrustResourceUrl(
         "assets/icons/event-card/price.svg"
+      )
+    );
+    this.iconRegistry.addSvgIcon(
+      "right-arrow",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/event-card/right-arrow.svg"
+      )
+    );
+    this.iconRegistry.addSvgIcon(
+      "right-arrow",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/event-card/right-arrow.svg"
+      )
+    );
+    this.iconRegistry.addSvgIcon(
+      "grade",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/event-card/grade.svg"
+      )
+    );
+    this.iconRegistry.addSvgIcon(
+      "age",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/event-card/age.svg"
       )
     );
   }

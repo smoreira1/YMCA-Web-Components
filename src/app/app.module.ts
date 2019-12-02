@@ -57,6 +57,8 @@ import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import * as Sentry from "@sentry/browser";
 import { ErrorHandler } from "@angular/core";
 import { NgMatYmcaEventCardComponent } from "./components/angular-elements/ymca-event-cards/material/ng-mat-ymca-event-card/ng-mat-ymca-event-card.component";
+import { AgmCoreModule } from '@agm/core';
+
 
 Sentry.init({
   dsn: "https://f704f4b6e26b48abbe96280b3ad1f813@sentry.io/1484901"
@@ -116,7 +118,10 @@ export class SentryErrorHandler implements ErrorHandler {
     MatDividerModule,
     MatChipsModule,
     InfiniteScrollModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: ''
+    })
   ],
   entryComponents: [
     YmcaEventCardComponent,

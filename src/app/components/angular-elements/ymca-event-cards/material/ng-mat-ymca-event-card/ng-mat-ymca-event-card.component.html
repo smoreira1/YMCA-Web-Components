@@ -1,95 +1,115 @@
 <mat-card class="ng-mat ymca-event-card">
   <mat-card-header class="ymca-header">
     <div mat-card-avatar class="ymca-event-card-icon">
-      <mat-icon svgIcon="sports"></mat-icon>
+      <mat-icon class="icon" svgIcon="sports"></mat-icon>
     </div>
     <mat-card-title>{{ parentProduct }}</mat-card-title>
     <mat-card-subtitle>
-      <a mat-button routerLink=".">
-        <mat-icon svgIcon="location"></mat-icon>{{ locationName }}
+      <a mat-button routerLink="." class="location">
+        <mat-icon class="icon" svgIcon="location"></mat-icon>
+        <span class="name">{{ locationName }}</span>
       </a>
     </mat-card-subtitle>
+    <mat-card-subtitle *ngIf="earlyRegistration == 'true'"
+      >Early Registration!</mat-card-subtitle
+    >
   </mat-card-header>
-  <mat-card-content>
+  <mat-card-content class="details">
     <div class="detail date">
-      <mat-icon svgIcon="date"></mat-icon>
-      <span>Date</span>
       <span>
+        <mat-icon class="icon" svgIcon="date"></mat-icon>
+        <span class="label">Date</span>
+      </span>
+      <span class="value">
         <span>{{ startDate }}</span>
-        <mat-icon></mat-icon>
+        <mat-icon class="icon" svgIcon="right-arrow"></mat-icon>
         <span>{{ endDate }}</span>
       </span>
     </div>
     <mat-divider></mat-divider>
     <div class="detail times">
-      <mat-icon svgIcon="time"></mat-icon>
-      <span>Time</span>
       <span>
+        <mat-icon class="icon" svgIcon="time"></mat-icon>
+        <span class="label">Time</span>
+      </span>
+      <span class="value">
         <span>{{ startTime }}</span>
-        <mat-icon></mat-icon>
+        <mat-icon class="icon" svgIcon="right-arrow"></mat-icon>
         <span>{{ endTime }}</span>
       </span>
     </div>
     <mat-divider></mat-divider>
     <div class="detail days">
-      <mat-icon svgIcon="days"></mat-icon>
-      <span>Days</span>
-      <mat-chip-list aria-label="Day selection">
-        <mat-chip color="primary">Mon</mat-chip>
-        <!-- <mat-chip color="primary">Tue</mat-chip>
-        <mat-chip color="primary">Wed</mat-chip>
-        <mat-chip color="primary">Thu</mat-chip>
-        <mat-chip color="primary">Fri</mat-chip>
-        <mat-chip color="primary">Sat</mat-chip>
-        <mat-chip color="primary">Sun</mat-chip> -->
-      </mat-chip-list>
+      <span>
+        <mat-icon class="icon" svgIcon="days"></mat-icon>
+        <span class="label" aria-label="Days for event">Days</span>
+      </span>
+      <span class="value">
+        <mat-chip-list aria-label="Day selection">
+          <mat-chip color="primary">Mon</mat-chip>
+        </mat-chip-list>
+      </span>
     </div>
     <mat-divider></mat-divider>
     <div class="detail age">
-      <mat-icon svgIcon="age"></mat-icon>
-      <span>Age</span>
       <span>
-          <span class="ymca-event-info-high-light" *ngIf="lowAge != '0'">{{ lowAge }} {{ startingAgeType}}</span>
-          <span *ngIf='!highAge'> or older</span>
-          <span *ngIf="lowAge && lowAge != '0'">→</span>
-          <span class="ymca-event-info-high-light">{{ highAge }} {{ endingAgeType }}</span>
-          <span *ngIf="!lowAge || lowAge == '0'"> or younger</span>
+        <mat-icon class="icon" svgIcon="age"></mat-icon>
+        <span class="label">Age</span>
+      </span>
+      <span class="value">
+        <span class="ymca-event-info-high-light" *ngIf="lowAge != '0'"
+          >{{ lowAge }} {{ startingAgeType }}</span
+        >
+        <span *ngIf="!highAge"> or older</span>
+        <span *ngIf="lowAge && lowAge != '0'"
+          ><mat-icon class="icon" svgIcon="right-arrow"></mat-icon
+        ></span>
+        <span class="ymca-event-info-high-light"
+          >{{ highAge }} {{ endingAgeType }}</span
+        >
+        <span *ngIf="!lowAge || lowAge == '0'"> or younger</span>
       </span>
     </div>
     <mat-divider></mat-divider>
     <div class="detail grade">
-      <mat-icon svgIcon="grade"></mat-icon>
-      <span>Grade</span>
       <span>
-        <span>{{ startDate }}</span>
-        <mat-icon></mat-icon>
-        <span>{{ endDate }}</span>
+        <mat-icon class="icon" svgIcon="grade"></mat-icon>
+        <span class="label">Grade</span>
+      </span>
+      <span class="value">
+        <span>{{ lowGrade }}</span>
+        <mat-icon class="icon" svgIcon="right-arrow"></mat-icon>
+        <span>{{ highGrade }}</span>
       </span>
     </div>
     <mat-divider></mat-divider>
-    <div class="detail gender">
-      <mat-icon svgIcon="gender"></mat-icon>
-      <span>Gender</span>
+    <div class="detail gender" *ngIf="gender">
       <span>
-        <span>{{ startDate }}</span>
-        <mat-icon></mat-icon>
-        <span>{{ endDate }}</span>
+        <mat-icon class="icon" svgIcon="gender"></mat-icon>
+        <span class="label" aria-label="Required gender for event">Gender</span>
+      </span>
+      <span class="value">
+        <span>{{ gender }}</span>
       </span>
     </div>
     <mat-divider></mat-divider>
     <div class="detail price">
-      <mat-icon svgIcon="price"></mat-icon>
-      <span>Price</span>
       <span>
-        <span>{{ startDate }}</span>
-        <mat-icon></mat-icon>
-        <span>{{ endDate }}</span>
+        <mat-icon class="icon" svgIcon="price"></mat-icon>
+        <span class="label" aria-label="Price for event">Price</span>
+      </span>
+      <span class="value">
+        <span>${{ nonMemberPrice }}</span> / <span>${{ memberPrice }}</span>
       </span>
     </div>
   </mat-card-content>
   <mat-card-actions class="actions">
-    <button mat-icon-button aria-label="Open Max View">
-      <mat-icon svgIcon="maximize"></mat-icon>
+    <button
+      mat-icon-button
+      matTooltip="Open Full Description"
+      aria-label="Button that opens full description"
+    >
+      <mat-icon class="icon" svgIcon="maximize"></mat-icon>
     </button>
     <button mat-raised-button color="primary">Add</button>
   </mat-card-actions>
