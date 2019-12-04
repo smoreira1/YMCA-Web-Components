@@ -36,7 +36,10 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatButtonModule } from "@angular/material/button";
-import { MatDialogModule } from "@angular/material/dialog";
+import {
+  MatDialogModule,
+  MAT_DIALOG_DEFAULT_OPTIONS
+} from "@angular/material/dialog";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatBadgeModule } from "@angular/material/badge";
@@ -47,7 +50,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatCardModule } from "@angular/material/card";
 import { MatDividerModule } from "@angular/material/divider";
-import {MatChipsModule} from '@angular/material/chips';
+import { MatChipsModule } from "@angular/material/chips";
 
 // YMCA Services
 import { ShoppingCartService } from "./components/angular-elements/shopping-cart/shopping-cart.service";
@@ -56,9 +59,11 @@ import { ShoppingCartService } from "./components/angular-elements/shopping-cart
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import * as Sentry from "@sentry/browser";
 import { ErrorHandler } from "@angular/core";
-import { NgMatYmcaEventCardComponent } from "./components/angular-elements/ymca-event-cards/material/ng-mat-ymca-event-card/ng-mat-ymca-event-card.component";
-import { AgmCoreModule } from '@agm/core';
-
+import {
+  NgMatYmcaEventCardComponent,
+  FullDescriptionDialog
+} from "./components/angular-elements/ymca-event-cards/material/ng-mat-ymca-event-card/ng-mat-ymca-event-card.component";
+import { AgmCoreModule } from "@agm/core";
 
 Sentry.init({
   dsn: "https://f704f4b6e26b48abbe96280b3ad1f813@sentry.io/1484901"
@@ -92,7 +97,8 @@ export class SentryErrorHandler implements ErrorHandler {
     SchoolCardComponent,
     ViewStyleBarComponent,
     YmcaLoadingGraphicComponent,
-    NgMatYmcaEventCardComponent
+    NgMatYmcaEventCardComponent,
+    FullDescriptionDialog
   ],
   imports: [
     BrowserModule,
@@ -120,13 +126,14 @@ export class SentryErrorHandler implements ErrorHandler {
     InfiniteScrollModule,
     HttpClientModule,
     AgmCoreModule.forRoot({
-      apiKey: ''
+      apiKey: ""
     })
   ],
   entryComponents: [
     YmcaEventCardComponent,
     ToolbarComponent,
-    SnackBarComponent
+    SnackBarComponent,
+    FullDescriptionDialog
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [
@@ -137,7 +144,8 @@ export class SentryErrorHandler implements ErrorHandler {
   ],
   providers: [
     ShoppingCartService,
-    { provide: ErrorHandler, useClass: SentryErrorHandler }
+    { provide: ErrorHandler, useClass: SentryErrorHandler },
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }
   ],
   bootstrap: [AppComponent]
 })

@@ -5,6 +5,9 @@
         <div class="ymca-reactive-form">
           <span class="zip-code-entry">
             <mat-form-field class="ymca-zipcode-field">
+              <span matPrefix>
+                <mat-icon svgIcon="geo"></mat-icon>
+              </span>
               <input
                 matInput
                 placeholder="ZipCode"
@@ -19,6 +22,7 @@
           </span>
           <span class="ymca-distance-flex-item">
             <mat-form-field class="ymca-distance-field">
+              <mat-icon svgIcon="distance" matPrefix></mat-icon>
               <mat-label>Distance</mat-label>
               <mat-select>
                 <mat-option
@@ -31,6 +35,9 @@
           </span>
           <span class="ymca-age-entry" *ngIf="toolbarConfiguration != 'Sports'">
             <mat-form-field class="ymca-age-field">
+              <span matPrefix>
+                <mat-icon svgIcon="age"></mat-icon>
+              </span>
               <mat-label>Age</mat-label>
               <mat-select>
                 <mat-option *ngFor="let age of ages" [value]="age.value">{{
@@ -44,6 +51,9 @@
             *ngIf="toolbarConfiguration != 'Sports'"
           >
             <mat-form-field class="ymca-time-field">
+              <span matPrefix>
+                <mat-icon svgIcon="time"></mat-icon>
+              </span>
               <mat-label>Time</mat-label>
               <mat-select>
                 <mat-option *ngFor="let time of times" [value]="time.value">{{
@@ -57,6 +67,9 @@
             *ngIf="toolbarConfiguration != 'Sports'"
           >
             <mat-form-field class="ymca-time-field">
+              <span matPrefix>
+                <mat-icon svgIcon="gender"></mat-icon>
+              </span>
               <mat-label>Gender</mat-label>
               <mat-select>
                 <mat-option
@@ -72,6 +85,9 @@
             *ngIf="toolbarConfiguration != 'Sports'"
           >
           <mat-form-field>
+            <span matPrefix>
+              <mat-icon svgIcon="days"></mat-icon>
+            </span>
             <mat-label>Days of the Week</mat-label>
             <mat-select [formControl]="days" multiple>
               <mat-option *ngFor="let day of daysList" [value]="day">{{day}}</mat-option>

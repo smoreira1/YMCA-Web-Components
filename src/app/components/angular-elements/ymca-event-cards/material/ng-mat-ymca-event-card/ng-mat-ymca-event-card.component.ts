@@ -1,7 +1,17 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { MatIconRegistry } from "@angular/material";
-import { DomSanitizer } from "@angular/platform-browser";
+import { Component, OnInit, Input, Inject } from "@angular/core";
+import {
+  MatIconRegistry,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+  MatDialog
+} from "@angular/material";
 import { CardIconService } from "src/app/services/card-icon.service";
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
+
 
 @Component({
   selector: "app-ng-mat-ymca-event-card",
@@ -48,8 +58,11 @@ export class NgMatYmcaEventCardComponent implements OnInit {
   @Input() earlyRegistrationNonMemberPrice: string;
   @Input() earlyRegistrationMemberPrice: string;
 
-  constructor(private cardIconService: CardIconService) {
-    cardIconService.loadEventCardIcons();
+  constructor(
+    private cardIconService: CardIconService,
+    public dialog: MatDialog
+  ) {
+    this.cardIconService.loadEventCardIcons();
   }
 
   ngOnInit() {
@@ -59,8 +72,35 @@ export class NgMatYmcaEventCardComponent implements OnInit {
 
   convertDateToAmericanFormat(dateString: string) {
     const date = new Date(dateString);
-     return `${date.toLocaleDateString("EN", {
-        month: "short"
-      })}-${date.getDate()}-${date.getFullYear()}`;
+    return `${date.toLocaleDateString("EN", {
+      month: "short"
+    })}-${date.getDate()}-${date.getFullYear()}`;
+  }
+
+  openFullDescription(): void {
+    const dialogRef = this.dialog.open(FullDescriptionDialog, {
+      width: '250px',
+      data: {name: this.parentProduct, animal: this.parentProduct}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+}
+
+@Component({
+  selector: "full-description",
+  templateUrl: "full-description.html"
+})
+
+export class FullDescriptionDialog {
+  constructor(
+    public dialogRef: MatDialogRef<FullDescriptionDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

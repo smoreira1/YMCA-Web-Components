@@ -13,7 +13,22 @@ export class CardIconService {
 
     }
 
+  loadToolbarIcons(){
+    this.iconRegistry.addSvgIcon(
+      "geo",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/toolbar/geo-location-enabled.svg"
+      )
+    );
 
+    this.iconRegistry.addSvgIcon(
+      "distance",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/toolbar/distance-2.svg"
+      )
+    );
+
+  }
 
   loadEventCardIcons() {
     this.iconRegistry.addSvgIcon(

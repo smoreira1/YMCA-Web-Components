@@ -7,9 +7,15 @@
   margin-right: 0px;
   margin-left: 0px;
 
+
+
   form {
     width: 100%;
   }
+}
+
+.mat-icon {
+  vertical-align: middle;
 }
 
 .ymca-toolbar-container {
@@ -17,7 +23,7 @@
   position:sticky;
   position: -webkit-sticky;
   top: 0;
-  
+
   .geolocation-button{
     font-size:11px;
     text-align:left!important;

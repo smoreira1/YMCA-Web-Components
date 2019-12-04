@@ -3,7 +3,7 @@ import { YMCAEvent } from 'src/app/interfaces/ymca-event.interface';
 import { YMCAEventsService } from 'src/app/services/ymca-events.service';
 import { GeoCode } from 'src/app/interfaces/geocode.interface';
 import { DayAvailability } from 'src/app/interfaces/day-availability.interface';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { APIResponse } from 'src/app/interfaces/api-response.interface';
 import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
@@ -53,6 +53,7 @@ export class YmcaEventsComponent implements OnInit {
   }
 
   public events$: Observable<YMCAEvent[]>;
+  public loadingError$ = new Subject<boolean>();
   public geoCode: GeoCode;
   public dayAvailability: DayAvailability;
   public geoCodeFlag: string;
