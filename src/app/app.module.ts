@@ -64,6 +64,7 @@ import {
   FullDescriptionDialog
 } from "./components/angular-elements/ymca-event-cards/material/ng-mat-ymca-event-card/ng-mat-ymca-event-card.component";
 import { AgmCoreModule } from "@agm/core";
+import { RepoInfoToolbarComponent } from './components/repo-info-toolbar/repo-info-toolbar.component';
 
 Sentry.init({
   dsn: "https://f704f4b6e26b48abbe96280b3ad1f813@sentry.io/1484901"
@@ -98,7 +99,8 @@ export class SentryErrorHandler implements ErrorHandler {
     ViewStyleBarComponent,
     YmcaLoadingGraphicComponent,
     NgMatYmcaEventCardComponent,
-    FullDescriptionDialog
+    FullDescriptionDialog,
+    RepoInfoToolbarComponent
   ],
   imports: [
     BrowserModule,

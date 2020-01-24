@@ -73,6 +73,11 @@ export class ToolbarComponent implements OnInit, OnChanges {
     this.times = this.filtersConfigService.times();
     this.genders = this.filtersConfigService.genders();
     this.zipcode = this.zipcode || "";
+    this.toolbarConfiguration = this.toolbarConfiguration || "";
+    this.setDefaultDaysofTheWeek();
+  }
+
+  public setDefaultDaysofTheWeek(){
     this.monday = this.monday || "false";
     this.tuesday = this.tuesday || "false";
     this.wednesday = this.wednesday || "false";
@@ -80,7 +85,6 @@ export class ToolbarComponent implements OnInit, OnChanges {
     this.friday = this.friday || "false";
     this.saturday = this.saturday || "false";
     this.sunday = this.sunday || "false";
-    this.toolbarConfiguration = this.toolbarConfiguration || "";
   }
 
   changedValue() {

@@ -32,11 +32,11 @@ export class FiltersConfigService {
   distances(): Array<SelectDropDown> {
     return [
       { value: "Any", viewValue: "Any" },
-      { value: "5", viewValue: "5" },
-      { value: "10", viewValue: "10" },
-      { value: "15", viewValue: "15" },
-      { value: "20", viewValue: "20" },
-      { value: "50", viewValue: "50" },
+      { value: "5", viewValue: "5 Miles" },
+      { value: "10", viewValue: "10 Miles" },
+      { value: "15", viewValue: "15 Miles" },
+      { value: "20", viewValue: "20 Miles" },
+      { value: "50", viewValue: "50 Miles" },
     ];
   }
 
