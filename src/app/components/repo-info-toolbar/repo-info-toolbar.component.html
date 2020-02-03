@@ -5,5 +5,10 @@
   <button mat-raised-button color='accent'>Test Coverage</button>
   <button mat-raised-button color='accent'>CI/CD</button>
   <button mat-raised-button color='accent'>Code</button>
+  <button mat-button [matMenuTriggerFor]="menu">Layouts</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/original-ymca">Original YMCA</button>
+    <button mat-menu-item routerLink="/air-bnb">Air BnB</button>
+  </mat-menu>
   <app-shopping-cart-button></app-shopping-cart-button>
 </mat-toolbar>

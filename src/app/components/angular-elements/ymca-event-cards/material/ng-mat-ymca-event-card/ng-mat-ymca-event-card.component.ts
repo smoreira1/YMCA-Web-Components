@@ -66,6 +66,7 @@ export class NgMatYmcaEventCardComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('Hellos');
     this.startDate = this.convertDateToAmericanFormat(this.startDate);
     this.endDate = this.convertDateToAmericanFormat(this.endDate);
   }

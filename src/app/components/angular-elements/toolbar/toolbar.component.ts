@@ -12,8 +12,6 @@ import { MatDialog } from "@angular/material/dialog";
 import { ShoppingCartService } from "../shopping-cart/shopping-cart.service";
 import * as Sticky from "sticky-js";
 import { FormControl } from "@angular/forms";
-import { MatIconRegistry } from "@angular/material";
-import { DomSanitizer } from "@angular/platform-browser";
 import { CardIconService } from "src/app/services/card-icon.service";
 
 @Component({

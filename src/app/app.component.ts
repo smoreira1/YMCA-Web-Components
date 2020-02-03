@@ -10,7 +10,7 @@ import { ShoppingCartService } from './components/angular-elements/shopping-cart
 })
 export class AppComponent implements OnInit {
 
-  title = 'ebiz-elements';
+  title = 'YMCA Components';
   @ViewChild('sidenav', { static: false }) public sidenav: MatSidenav;
 
   constructor(private shoppingCartService: ShoppingCartService) { }

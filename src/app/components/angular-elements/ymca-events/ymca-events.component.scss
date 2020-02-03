@@ -1,12 +1,15 @@
 .ymca-events-container {
 
+  margin: 16px;
+
   .ymca-filtered-events{
     display: flex;
     max-width: 100%;
-    flex-flow: row;
+    flex-flow: column;
     flex-wrap: wrap;
     justify-content: center;
     min-height: 100vh;
+    margin: 16px;
   }
 
   .ymca-event{

@@ -7,9 +7,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class CardIconService {
 
-  constructor(private iconRegistry: MatIconRegistry,
+  constructor(
+    private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer) {
-    }
+  }
 
   loadToolbarIcons(){
     this.iconRegistry.addSvgIcon(

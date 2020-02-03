@@ -51,6 +51,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatCardModule } from "@angular/material/card";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatChipsModule } from "@angular/material/chips";
+import { MatMenuModule } from '@angular/material/menu';
 
 // YMCA Services
 import { ShoppingCartService } from "./components/angular-elements/shopping-cart/shopping-cart.service";
@@ -65,6 +66,12 @@ import {
 } from "./components/angular-elements/ymca-event-cards/material/ng-mat-ymca-event-card/ng-mat-ymca-event-card.component";
 import { AgmCoreModule } from "@agm/core";
 import { RepoInfoToolbarComponent } from './components/repo-info-toolbar/repo-info-toolbar.component';
+import { ActionFiltersComponent } from './components/angular-elements/action-filters/action-filters.component';
+import { AirBnbLayoutComponent } from './components/air-bnb-layout/air-bnb-layout.component';
+import { OriginalYmcaLayoutComponent } from './components/original-ymca-layout/original-ymca-layout.component';
+import { AppRoutingModule } from './app-routing.module';
+import { NgMatYmcaEventAbnbComponent } from './components/angular-elements/ymca-event-cards/material/ng-mat-ymca-event-abnb/ng-mat-ymca-event-abnb.component';
+import { SearchResultsMetaDataComponent } from './components/angular-elements/search-results-meta-data/search-results-meta-data.component';
 
 Sentry.init({
   dsn: "https://f704f4b6e26b48abbe96280b3ad1f813@sentry.io/1484901"
@@ -100,7 +107,12 @@ export class SentryErrorHandler implements ErrorHandler {
     YmcaLoadingGraphicComponent,
     NgMatYmcaEventCardComponent,
     FullDescriptionDialog,
-    RepoInfoToolbarComponent
+    RepoInfoToolbarComponent,
+    ActionFiltersComponent,
+    AirBnbLayoutComponent,
+    OriginalYmcaLayoutComponent,
+    NgMatYmcaEventAbnbComponent,
+    SearchResultsMetaDataComponent
   ],
   imports: [
     BrowserModule,
@@ -129,7 +141,9 @@ export class SentryErrorHandler implements ErrorHandler {
     HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: ""
-    })
+    }),
+    MatMenuModule,
+    AppRoutingModule
   ],
   entryComponents: [
     YmcaEventCardComponent,

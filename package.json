@@ -1,7 +1,8 @@
 {
-  "name": "ebiz-elements",
+  "name": "ymca-components",
   "version": "2.0.0",
   "scripts": {
+    "yolo": "ng update --all --force --next",
     "ng": "ng",
     "build": "ng build",
     "test": "ng test",
