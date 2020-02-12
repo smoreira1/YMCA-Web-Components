@@ -59,7 +59,7 @@ export class YmcaEventsComponent implements OnInit {
   public geoCodeFlag: string;
   public browserNotSupported: boolean;
   public browserErrorCookiesDisabled: boolean;
-  @ViewChild('filtersnav', { static: false }) public sidenav: MatSidenav;
+  @ViewChild('filtersnav') public sidenav: MatSidenav;
 
   constructor(
     private el: ElementRef,

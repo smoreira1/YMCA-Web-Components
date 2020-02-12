@@ -11,7 +11,7 @@ import { ShoppingCartService } from './components/angular-elements/shopping-cart
 export class AppComponent implements OnInit {
 
   title = 'YMCA Components';
-  @ViewChild('sidenav', { static: false }) public sidenav: MatSidenav;
+  @ViewChild('sidenav') public sidenav: MatSidenav;
 
   constructor(private shoppingCartService: ShoppingCartService) { }
 
