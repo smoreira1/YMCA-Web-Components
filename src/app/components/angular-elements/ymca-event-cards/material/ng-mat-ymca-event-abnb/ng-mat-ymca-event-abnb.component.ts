@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogData } from '../ng-mat-ymca-event-card/ng-mat-ymca-event-card.component';
 import { CardIconService } from 'src/app/services/card-icon.service';
 

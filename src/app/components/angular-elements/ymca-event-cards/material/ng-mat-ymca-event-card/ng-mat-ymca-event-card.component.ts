@@ -1,10 +1,6 @@
 import { Component, OnInit, Input, Inject } from "@angular/core";
-import {
-  MatIconRegistry,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-  MatDialog
-} from "@angular/material";
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from "@angular/material/dialog";
+import { MatIconRegistry } from "@angular/material/icon";
 import { CardIconService } from "src/app/services/card-icon.service";
 
 export interface DialogData {

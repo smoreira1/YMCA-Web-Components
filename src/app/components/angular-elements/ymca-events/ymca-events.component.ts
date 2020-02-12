@@ -7,7 +7,7 @@ import { Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { APIResponse } from 'src/app/interfaces/api-response.interface';
 import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
-import { MatSidenav } from '@angular/material';
+import { MatSidenav } from '@angular/material/sidenav';
 import { BrowserConfigService } from 'src/app/services/browser-config.service';
 
 @Component({

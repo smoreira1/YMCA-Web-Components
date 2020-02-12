@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material';
+import { MatSidenav } from '@angular/material/sidenav';
 import { ShoppingCartService } from './components/angular-elements/shopping-cart/shopping-cart.service';
 //import { AuthService } from './auth/auth.service';
 
