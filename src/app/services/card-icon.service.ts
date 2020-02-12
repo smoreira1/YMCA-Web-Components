@@ -27,6 +27,13 @@ export class CardIconService {
       )
     );
 
+    this.iconRegistry.addSvgIcon(
+      "Basketball",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/basketball.svg"
+      )
+    );
+
   }
 
   loadEventCardIcons() {

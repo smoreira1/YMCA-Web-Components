@@ -1,4 +1,59 @@
 .ng-mat-ymca-event-abnb{
   display:flex;
-  background-color:red;
+  flex-flow:row;
+  justify-content: space-between;
+
+  .ymca-header{
+    display:flex;
+    flex-flow:column;
+  }
+
+  .location-image{
+    height:auto;
+    width:300px;
+  }
+
+  .details{
+    display:flex;
+    flex-flow:column;
+    justify-content: space-evenly;
+  }
+
+  .actions{
+    display:flex;
+    flex-flow:column;
+    justify-content: space-between;
+  }
+
+  .priority-one{
+    display:flex;
+    flex-flow:row;
+    justify-content: space-between;
+  }
+
+  .priority-two{
+    display:flex;
+    flex-flow:row;
+  }
+
+  .priority-three{
+    display:flex;
+    flex-flow:row;
+    justify-content: space-between;
+  }
+
+  .detail-item{
+    display:flex;
+    flex-flow:column;
+    align-items: center;
+  }
+
+  .priority-one-icon{
+    height:32px;
+    width:32px;
+  }
+
+  .location-image{
+    margin:0;
+  }
 }

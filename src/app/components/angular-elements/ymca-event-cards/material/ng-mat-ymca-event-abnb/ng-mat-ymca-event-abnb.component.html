@@ -1,109 +1,101 @@
-<mat-card class="ng-mat-abnb ymca-event-card">
+<mat-card class="ng-mat-ymca-event-abnb">
   <mat-card-header class="ymca-header">
-    <div mat-card-avatar class="ymca-event-card-icon">
-      <mat-icon class="icon" svgIcon="sports"></mat-icon>
-    </div>
-    <mat-card-title>{{ parentProduct }}</mat-card-title>
+    <mat-card-title>
+      <mat-icon class="icon" svgIcon="Basketball" mat-card-avatar></mat-icon>
+      {{ parentProduct }}
+    </mat-card-title>
     <mat-card-subtitle>
       <a mat-button routerLink="." class="location">
         <mat-icon class="icon" svgIcon="location"></mat-icon>
-        <span class="name">{{ locationName }}</span>
+        <span class="name">{{ locationName }}
+        </span>
       </a>
     </mat-card-subtitle>
-    <mat-card-subtitle *ngIf="earlyRegistration == 'true'"
+    <mat-card-subtitle>
+      <mat-chip-list aria-label="Early Registration">
+        <mat-chip color="warn" selected>3 Slots Remaining</mat-chip>
+      </mat-chip-list>
+    </mat-card-subtitle>
+    <img
+      mat-card-image
+      src="assets/graphics/ymca-locations/oveido.png"
+      alt="Photo of a Shiba Inu"
+      class="location-image"
+    />
+    <!-- <mat-card-subtitle *ngIf="earlyRegistration == 'true'"
       >Early Registration!</mat-card-subtitle
-    >
+    > -->
   </mat-card-header>
   <mat-card-content class="details">
-    <div class="detail date">
-      <span>
-        <mat-icon class="icon" svgIcon="date"></mat-icon>
-        <span class="label">Date</span>
-      </span>
-      <span class="value">
-        <span>{{ startDate }}</span>
-        <mat-icon class="icon" svgIcon="right-arrow"></mat-icon>
-        <span>{{ endDate }}</span>
-      </span>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="detail times">
-      <span>
-        <mat-icon class="icon" svgIcon="time"></mat-icon>
+    <div class="priority-one">
+      <div class="time-range detail-item">
         <span class="label">Time</span>
-      </span>
-      <span class="value">
-        <span>{{ startTime }}</span>
-        <mat-icon class="icon" svgIcon="right-arrow"></mat-icon>
-        <span>{{ endTime }}</span>
-      </span>
+        <mat-icon class="priority-one-icon" svgIcon="time"></mat-icon>
+        <div>
+          <span>{{ startTime }}</span>
+          <mat-icon class="icon" svgIcon="right-arrow"></mat-icon>
+          <span>{{ endTime }}</span>
+        </div>
+      </div>
+      <div class="date-range detail-item">
+        <span class="label">Date</span>
+        <mat-icon class="priority-one-icon" svgIcon="date"></mat-icon>
+        <div>
+          <span>{{ startDate }}</span>
+          <mat-icon class="icon" svgIcon="right-arrow"></mat-icon>
+          <span>{{ endDate }}</span>
+        </div>
+      </div>
     </div>
-    <mat-divider></mat-divider>
-    <div class="detail days">
-      <span>
-        <mat-icon class="icon" svgIcon="days"></mat-icon>
-        <span class="label" aria-label="Days for event">Days</span>
-      </span>
-      <span class="value">
-        <mat-chip-list aria-label="Day selection">
-          <mat-chip color="primary">Mon</mat-chip>
-        </mat-chip-list>
-      </span>
+    <div class="priority-two">
+      <mat-chip-list>
+        <mat-chip>Mon</mat-chip>
+        <mat-chip color="accent">Tue</mat-chip>
+        <mat-chip>Wed</mat-chip>
+        <mat-chip>Thu</mat-chip>
+        <mat-chip color="primary">Fri</mat-chip>
+        <mat-chip>Sat</mat-chip>
+        <mat-chip>Sun</mat-chip>
+      </mat-chip-list>
     </div>
-    <mat-divider></mat-divider>
-    <div class="detail age">
-      <span>
-        <mat-icon class="icon" svgIcon="age"></mat-icon>
+    <div class="priority-three">
+      <div class="age detail-item">
         <span class="label">Age</span>
-      </span>
-      <span class="value">
-        <span class="ymca-event-info-high-light" *ngIf="lowAge != '0'"
-          >{{ lowAge }} {{ startingAgeType }}</span
-        >
-        <span *ngIf="!highAge"> or older</span>
-        <span *ngIf="lowAge && lowAge != '0'"
-          ><mat-icon class="icon" svgIcon="right-arrow"></mat-icon
-        ></span>
-        <span class="ymca-event-info-high-light"
-          >{{ highAge }} {{ endingAgeType }}</span
-        >
-        <span *ngIf="!lowAge || lowAge == '0'"> or younger</span>
-      </span>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="detail grade">
-      <span>
-        <mat-icon class="icon" svgIcon="grade"></mat-icon>
+        <mat-icon class="icon" svgIcon="age"></mat-icon>
+        <span class="value">
+          <span class="ymca-event-info-high-light" *ngIf="lowAge != '0'"
+            >{{ lowAge }} {{ startingAgeType }}</span
+          >
+          <span *ngIf="!highAge"> or older</span>
+          <span *ngIf="lowAge && lowAge != '0'"
+            ><mat-icon class="icon" svgIcon="right-arrow"></mat-icon
+          ></span>
+          <span class="ymca-event-info-high-light"
+            >{{ highAge }} {{ endingAgeType }}</span
+          >
+          <span *ngIf="!lowAge || lowAge == '0'"> or younger</span>
+        </span>
+      </div>
+      <div class="grade detail-item">
         <span class="label">Grade</span>
-      </span>
-      <span class="value">
-        <span>{{ lowGrade }}</span>
-        <mat-icon class="icon" svgIcon="right-arrow"></mat-icon>
-        <span>{{ highGrade }}</span>
-      </span>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="detail gender" *ngIf="gender">
-      <span>
-        <mat-icon class="icon" svgIcon="gender"></mat-icon>
+        <mat-icon class="icon" svgIcon="grade"></mat-icon>
+        <span class="value">
+          <span>{{ lowGrade }}</span>
+          <mat-icon class="icon" svgIcon="right-arrow"></mat-icon>
+          <span>{{ highGrade }}</span>
+        </span>
+      </div>
+      <div class="gender detail-item">
         <span class="label" aria-label="Required gender for event">Gender</span>
-      </span>
-      <span class="value">
-        <span>{{ gender }}</span>
-      </span>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="detail price">
-      <span>
-        <mat-icon class="icon" svgIcon="price"></mat-icon>
-        <span class="label" aria-label="Price for event">Price</span>
-      </span>
-      <span class="value">
-        <span>${{ nonMemberPrice }}</span> / <span>${{ memberPrice }}</span>
-      </span>
+        <mat-icon class="icon" svgIcon="gender"></mat-icon>
+        <span class="value">
+          <span>{{ gender }}</span>
+        </span>
+      </div>
     </div>
   </mat-card-content>
   <mat-card-actions class="actions">
-    <button mat-raised-button color="primary">Add</button>
+    <span class="distance">5 Mi</span>
+    <button mat-raised-button color="primary">Add To Cart</button>
   </mat-card-actions>
 </mat-card>
