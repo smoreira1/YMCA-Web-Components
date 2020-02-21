@@ -1,0 +1,36 @@
+<mat-toolbar color="primary" class="repo-info-toolbar">
+  <mat-toolbar-row class='options'>
+    <img src='./assets/graphics/ymca-logo-sm.png' />
+    <button mat-button [matMenuTriggerFor]="menu">Product Catalog Variants</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/original-ymca">Original</button>
+      <button mat-menu-item routerLink="/air-bnb">Air BnB</button>
+      <button mat-menu-item routerLink="/jupiter">Jupiter</button>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="references">References</button>
+    <mat-menu #references="matMenu">
+      <button  mat-stroked-button color="accent" matTooltip="Documentation">
+        Docs
+      </button>
+      <button  mat-stroked-button color="accent" matTooltip="API Postman">
+        <mat-icon svgIcon="API"></mat-icon>
+      </button>
+      <button  mat-stroked-button color="accent" matTooltip="Storybook">
+        <mat-icon svgIcon="Storybook"></mat-icon>
+      </button>
+      <button  mat-stroked-button color="accent" matTooltip="Unit Tests">
+        <mat-icon svgIcon="Jest"></mat-icon>
+      </button>
+      <button  mat-stroked-button color="accent" matTooltip="CI/CD">
+        <mat-icon svgIcon="AzurePipeline"></mat-icon>
+      </button>
+      <button  mat-stroked-button color="accent" matTooltip="E2E">
+        <mat-icon svgIcon="Cypress"></mat-icon>
+      </button>
+      <button  mat-stroked-button color="accent" matTooltip="Git">
+        <mat-icon svgIcon="Git"></mat-icon>
+      </button>
+    </mat-menu>
+    <app-shopping-cart-button></app-shopping-cart-button>
+  </mat-toolbar-row>
+</mat-toolbar>

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { ShoppingCartService } from './components/angular-elements/shopping-cart/shopping-cart.service';
+import { ShoppingCartService } from '@shared/services/shopping-cart.service';
 //import { AuthService } from './auth/auth.service';
 
 @Component({

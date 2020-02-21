@@ -1,0 +1,70 @@
+<mat-sidenav-container class="ymca-events-container">
+  <mat-sidenav-content class='ymca-events'>
+    <mat-spinner *ngIf='state.loaded'></mat-spinner>
+      <!-- <button mat-raised-button (click)='test()'>Events</button>
+      <button mat-button (click)="sidenav.toggle()">Cart</button> -->
+      <div class='ymca-filtered-events'infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50" >
+        <app-ng-mat-ymca-event-abnb *ngFor='let event of events$ | async' class='ymca-event'
+          id='{{ event.id }}'
+          description='{{ event.description }}'
+          startDate='{{ event.startDate }}'
+          endDate='{{ event.endDate }}'
+          startTime='{{ event.startTime }}'
+          endTime='{{ event.endTime }}'
+          locationName='{{ event.locationName }}'
+          memberOnly='{{ event.memberOnly }}'
+          memberPrice='{{ event.memberPrice }}'
+          startingAge='{{ event.startingAge }}'
+          startingAgeType='{{ event.lowAgeType }}'
+          endingAge='{{ event.endingAge }}'
+          endingAgeType='{{ event.highAgeType }}'
+          highGrade='{{ event.highGrade }}'
+          lowGrade='{{ event.lowGrade }}'
+          nonMemberPrice='{{ event.nonMemberPrice }}'
+          gender='{{ event.gender }}'
+          remainingSlots='{{ event.remainingSlots }}'
+          zipcode='{{ event.zipcode }}'
+          distanceToEvent='{{ event.distanceToEvent }}'
+          parentProduct='{{ event.parentProduct }}'
+          numberOfClassesPerWeek='{{ event.numberOfClassesPerWeek }}'
+          lowAge='{{ event.endingAge }}'
+          highAge='{{ event.startingAge }}'
+          >
+          <!-- monday='{{ event.dayAvailability.Monday }}'
+          tuesday='{{ event.dayAvailability.Tuesday }}'
+          wednesday='{{ event.dayAvailability.Wednesday }}'
+          thursday='{{ event.dayAvailability.Thursday }}'
+          friday='{{ event.dayAvailability.Friday }}'
+          saturday='{{ event.dayAvailability.Saturday }}'
+          sunday='{{ event.dayAvailability.Sunday }}' -->
+        </app-ng-mat-ymca-event-abnb>
+      </div>
+      <div class='ymca-empty-events-result' *ngIf='false'>
+        <h1 class='ymca-events-empty-msg'>No events were returned, try another filter setting.</h1>
+        <div class='ymca-scaling-svg-container'><span class='ymca-scaling-svg'></span></div>
+      </div>
+      <div class="ymca-maintenance" *ngIf='state.maintenance'>
+        <h2 class='ymca-motto'>Honesty. Respect. Caring. Faith. Responsibility</h2>
+        <p>We are excited to see you.</p>
+        <p> Please check back soon.</p>
+      </div>
+    <div class='ymca-browser-error' *ngIf='browserNotSupported'>
+      <div class=''>
+        oh oh we do not support your browser.
+      </div>
+    </div>
+    <div class='ymca-browser-error' *ngIf='browserErrorCookiesDisabled'>
+      <div class=''>
+        oh oh your cookies are disabled.
+      </div>
+    </div>
+    <div class='ymca-empty-events' *ngIf="!(events$ | async)?.length">
+      <div class=''>
+        No events were returned. Try expanding your filtering.
+      </div>
+    </div>
+    <div class='ymca-something-went-wrong' *ngIf='false'>
+
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
