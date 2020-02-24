@@ -9,60 +9,71 @@ import {
   debounceTime
 } from 'rxjs/operators';
 import { YMCAEvent } from '@shared/interfaces/ymca-event.interface';
-//import { SearchCriteria } from '';
+import { DayAvailability } from '@shared/interfaces/day-availability.interface';
+import { Gender } from '@shared/enums/gender.enum';
 
 export interface YMCAEventsResponse {
   results: YMCAEvent[];
 }
 
-export interface YMCAEventState {
+export interface SearchCriteria {
+  dayAvailability: DayAvailability;
+  zipCode: number;
+  age: number;
+  location: string;
+  time: string;
+  distance: number;
+  gender: Gender;
+  sortBy: string;
+  tag: string;
+}
+
+export interface YMCAEventsState {
   ymcaEvents: YMCAEvent[];
-  searchCriteria: string;
+  searchCriteria: SearchCriteria;
   loading: boolean;
 }
 
-let _state: YMCAEventState = {
+let _state: YMCAEventsState = {
   ymcaEvents: [],
-  searchCriteria: '',
+  searchCriteria: {
+    dayAvailability: null,
+    zipCode: null,
+    age: null,
+    location: null,
+    time: null,
+    distance: null,
+    gender: null,
+    sortBy: null,
+    tag: null,
+  },
   loading: false
 };
 
 @Injectable()
 export class YMCAEventFacade {
-  private store = new BehaviorSubject<YMCAEventState>(_state);
+  private store = new BehaviorSubject<YMCAEventsState>(_state);
   private state$ = this.store.asObservable();
 
-  ymcaEvents$ = this.state$.pipe(
-    map(state => state.ymcaEvents),
-    distinctUntilChanged()
-  );
-  searchCriteria$ = this.state$.pipe(
-    map(state => state.searchCriteria),
-    distinctUntilChanged()
-  );
-  loading$ = this.state$.pipe(map(state => state.loading));
-
-  /**
-   * Viewmodel that resolves once all the data is ready (or updated)...
-   */
-  vm$: Observable<YMCAEventState> = combineLatest(
+  public ymcaEvents$ = this.state$.pipe(map(state => state.ymcaEvents), distinctUntilChanged());
+  public searchCriteria$ = this.state$.pipe(map(state => state.searchCriteria), distinctUntilChanged());
+  public loading$ = this.state$.pipe(map(state => state.loading));
+  // Viewmodel that resolves once all the data is ready (or updated)...
+  public vm$: Observable<YMCAEventsState> = combineLatest([
     this.searchCriteria$,
     this.ymcaEvents$,
-    this.loading$
+    this.loading$]
   ).pipe(
     map(([searchCriteria, ymcaEvents, loading]) => {
       return {searchCriteria, ymcaEvents, loading };
     })
   );
-
-  /**
-   * Watch 2 streams to trigger user loads and state updates
-   */
+  // Watch 2 streams to trigger user loads and state updates
   constructor(private http: HttpClient) {
     combineLatest([this.searchCriteria$])
       .pipe(
         switchMap(([searchCriteria]) => {
-          return this.findAllYmcaEvents(searchCriteria);
+          return this.findYMCAEvents(searchCriteria);
         })
       )
       .subscribe(ymcaEvents => {
@@ -73,7 +84,7 @@ export class YMCAEventFacade {
   // ------- Public Methods ------------------------
 
   // Allows quick snapshot access to data for ngOnInit() purposes
-  // getStateSnapshot(): YMCAEventState {
+  // getStateSnapshot(): YMCAEventsState {
   //   return { ..._state, pagination: { ..._state.pagination } };
   // }
 
@@ -82,11 +93,10 @@ export class YMCAEventFacade {
     searchTerm.valueChanges
       .pipe(debounceTime(300), distinctUntilChanged())
       .subscribe(value => this.updateSearchsearchCriteria(value));
-
     return searchTerm;
   }
 
-  updateSearchsearchCriteria(searchCriteria: string) {
+  updateSearchsearchCriteria(searchCriteria: SearchCriteria) {
     this.updateState({ ..._state, searchCriteria, loading: true });
   }
 
@@ -98,13 +108,13 @@ export class YMCAEventFacade {
   // ------- Private Methods ------------------------
 
   /** Update internal state cache and emit from store... */
-  private updateState(state: YMCAEventState) {
+  private updateState(state: YMCAEventsState) {
     this.store.next((_state = state));
   }
 
   /** RandomUser REST call */
-  private findAllYmcaEvents(
-    searchCriteria: string
+  private findYMCAEvents(
+    searchCriteria: SearchCriteria
   ): Observable<YMCAEvent[]> {
     const url = buildUserUrl(searchCriteria);
     return this.http
@@ -113,9 +123,8 @@ export class YMCAEventFacade {
   }
 }
 
-function buildUserUrl(searchCriteria: string): string {
+function buildUserUrl(searchCriteria: SearchCriteria): string {
   const URL = 'https://randomuser.me/api/';
-  //const searchFor = `seed=${searchCriteria}`;
-
-  return `${URL}`;
+  const searchFor = `?tag=${searchCriteria.tag}&age=${searchCriteria.age}&zipcode=${searchCriteria.zipCode}&distance=${searchCriteria.distance}&startingTime=error&endingTime=error&geoFlag=error&lat=error&lon=error&monday=${searchCriteria.dayAvailability.Monday}&tuesday=${searchCriteria.dayAvailability.Tuesday}&wednesday=${searchCriteria.dayAvailability.Wednesday}&thursday=${searchCriteria.dayAvailability.Thursday}&friday=${searchCriteria.dayAvailability.Friday}&saturday=${searchCriteria.dayAvailability.Saturday}&sunday=${searchCriteria.dayAvailability.Sunday}&gender=${searchCriteria.gender}`;
+  return `${URL}?${searchFor}`;
 }

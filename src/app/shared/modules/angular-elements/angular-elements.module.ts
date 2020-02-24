@@ -2,7 +2,7 @@
 import { NgModule, Injector } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { createCustomElement } from '@angular/elements';
 // OutSide Modules
 import { NgMaterialModule } from '@shared/modules/ng-material/ng-material.module';
@@ -26,6 +26,7 @@ import { ActionFiltersComponent } from '@ymcaComponents/action-filters/action-fi
 import { YmcaEventCardComponent } from '@ymcaComponents/ymca-event-cards/ymca-event-card/ymca-event-card.component';
 import { NgMatYmcaEventCardComponent } from '@ymcaComponents/ymca-event-cards/material/ng-mat-ymca-event-card/ng-mat-ymca-event-card.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { YMCAEventFacade } from '@core/facades/ymca-event.facade';
 
 
 declare global {
@@ -93,7 +94,8 @@ declare global {
     NgMatYmcaEventCardComponent,
   ],
   providers: [
-    ShoppingCartService
+    ShoppingCartService,
+    YMCAEventFacade
   ]
 })
 export class AngularElementsModule {

@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SelectDropDown } from '@shared/interfaces/select-value.interface';
 import { FormControl } from '@angular/forms';
 import { FiltersConfigService } from '@shared/services/filters-config.service';
+import { YMCAEventFacade, YMCAEventsState } from '@core/facades/ymca-event.facade';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-action-filters',
@@ -33,7 +35,7 @@ export class ActionFiltersComponent implements OnInit {
   familyCenters: SelectDropDown[];
   sortEvents: SelectDropDown[];
   discounts: SelectDropDown[];
-  discountList: string[] = ['Any', 'Only Early Registration'];
+  discountList: string[] = ['Any', 'Early Registration'];
   days = new FormControl();
   daysList: string[] = [
     'Monday',
@@ -45,7 +47,12 @@ export class ActionFiltersComponent implements OnInit {
     'Sunday'
   ];
 
-  constructor(private filtersConfigService: FiltersConfigService, ) {
+  public vm$: Observable<YMCAEventsState> = this.ymcaEventsFacade.vm$;
+
+  constructor(private filtersConfigService: FiltersConfigService, private ymcaEventsFacade: YMCAEventFacade) {
+  }
+
+  ngOnInit() {
     this.distances = this.filtersConfigService.distances();
     this.ages = this.filtersConfigService.ages(99, true);
     this.times = this.filtersConfigService.times();
@@ -53,9 +60,6 @@ export class ActionFiltersComponent implements OnInit {
     this.zipcode = this.zipcode || '';
     this.toolbarConfiguration = this.toolbarConfiguration || '';
     this.setDefaultDaysofTheWeek();
-  }
-
-  ngOnInit() {
   }
 
   public setDefaultDaysofTheWeek() {
