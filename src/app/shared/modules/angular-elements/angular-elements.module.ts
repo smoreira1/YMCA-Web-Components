@@ -1,7 +1,9 @@
 // Angular Core
-import { NgModule } from '@angular/core';
+import { NgModule, Injector } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { createCustomElement } from '@angular/elements';
 // OutSide Modules
 import { NgMaterialModule } from '@shared/modules/ng-material/ng-material.module';
 // Core YMCA Web Components.
@@ -14,6 +16,24 @@ import { SearchResultsMetaDataComponent } from '@ymcaComponents/search-results-m
 import { ShoppingCartButtonComponent } from '@ymcaComponents/shopping-cart-button/shopping-cart-button.component';
 import { ShoppingCartComponent } from '@ymcaComponents/shopping-cart/shopping-cart.component';
 import { ShoppingCartService } from '@shared/services/shopping-cart.service';
+import { NgElement, WithProperties } from '@angular/elements';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { YmcaCatalogInitComponent } from '@ymcaComponents/ymca-catalog-init/ymca-catalog-init.component';
+import { NgMatYmcaEventAbnbComponent } from '@ymcaComponents/ymca-event-cards/material/ng-mat-ymca-event-abnb/ng-mat-ymca-event-abnb.component';
+import { ToolbarComponent } from '@ymcaComponents/toolbar/toolbar.component';
+import { FiltersSideNavComponent } from '@ymcaComponents/filters-side-nav/filters-side-nav.component';
+import { ActionFiltersComponent } from '@ymcaComponents/action-filters/action-filters.component';
+import { YmcaEventCardComponent } from '@ymcaComponents/ymca-event-cards/ymca-event-card/ymca-event-card.component';
+import { NgMatYmcaEventCardComponent } from '@ymcaComponents/ymca-event-cards/material/ng-mat-ymca-event-card/ng-mat-ymca-event-card.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'snack-bar': NgElement & WithProperties<{content: string}>;
+    'ymca-events': NgElement & WithProperties<{foo: 'bar'}>;
+  }
+}
 
 @NgModule({
   declarations: [
@@ -25,11 +45,22 @@ import { ShoppingCartService } from '@shared/services/shopping-cart.service';
     SearchResultsMetaDataComponent,
     ShoppingCartButtonComponent,
     ShoppingCartComponent,
+    YmcaCatalogInitComponent,
+    NgMatYmcaEventAbnbComponent,
+    NgMatYmcaEventCardComponent,
+    ToolbarComponent,
+    FiltersSideNavComponent,
+    ActionFiltersComponent,
+    YmcaEventCardComponent,
   ],
   imports: [
     CommonModule,
     BrowserModule,
-    NgMaterialModule
+    NgMaterialModule,
+    BrowserAnimationsModule,
+    InfiniteScrollModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     YmcaEventsComponent,
@@ -39,7 +70,12 @@ import { ShoppingCartService } from '@shared/services/shopping-cart.service';
     YmcaLoadingGraphicComponent,
     SearchResultsMetaDataComponent,
     ShoppingCartButtonComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    ToolbarComponent,
+    FiltersSideNavComponent,
+    ActionFiltersComponent,
+    YmcaEventCardComponent,
+    NgMatYmcaEventCardComponent,
   ],
   entryComponents: [
     YmcaEventsComponent,
@@ -49,10 +85,33 @@ import { ShoppingCartService } from '@shared/services/shopping-cart.service';
     YmcaLoadingGraphicComponent,
     SearchResultsMetaDataComponent,
     ShoppingCartButtonComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    ToolbarComponent,
+    FiltersSideNavComponent,
+    ActionFiltersComponent,
+    YmcaEventCardComponent,
+    NgMatYmcaEventCardComponent,
   ],
-  providers:[
+  providers: [
     ShoppingCartService
   ]
 })
-export class AngularElementsModule { }
+export class AngularElementsModule {
+
+  constructor(private injector: Injector){
+
+  }
+
+  ngDoBootstrap() {
+        const eventsElement = createCustomElement(YmcaEventsComponent, {injector : this.injector});
+        customElements.define('ymca-events',eventsElement);
+
+        window.ymcaComponent = window.ymcaComponent || {};
+        window.ymcaComponent.init = this.productCatalogInit.bind(this);
+  }
+
+  productCatalogInit():void{
+
+  }
+
+}

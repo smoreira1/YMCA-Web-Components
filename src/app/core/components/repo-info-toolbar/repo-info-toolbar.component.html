@@ -9,26 +9,32 @@
     </mat-menu>
     <button mat-button [matMenuTriggerFor]="references">References</button>
     <mat-menu #references="matMenu">
-      <button  mat-stroked-button color="accent" matTooltip="Documentation">
+      <button  mat-menu-item color="accent">
         Docs
       </button>
-      <button  mat-stroked-button color="accent" matTooltip="API Postman">
+      <button  mat-menu-item color="accent">
         <mat-icon svgIcon="API"></mat-icon>
+        RestAPI
       </button>
-      <button  mat-stroked-button color="accent" matTooltip="Storybook">
+      <button  mat-menu-item color="accent">
         <mat-icon svgIcon="Storybook"></mat-icon>
+        Storybook
       </button>
-      <button  mat-stroked-button color="accent" matTooltip="Unit Tests">
+      <button  mat-menu-item color="accent">
         <mat-icon svgIcon="Jest"></mat-icon>
+        Jest
       </button>
-      <button  mat-stroked-button color="accent" matTooltip="CI/CD">
+      <button  mat-menu-item color="accent">
         <mat-icon svgIcon="AzurePipeline"></mat-icon>
+        CI/CD
       </button>
-      <button  mat-stroked-button color="accent" matTooltip="E2E">
+      <button  mat-menu-item color="accent">
         <mat-icon svgIcon="Cypress"></mat-icon>
+        E2E
       </button>
-      <button  mat-stroked-button color="accent" matTooltip="Git">
+      <button  mat-menu-item color="accent">
         <mat-icon svgIcon="Git"></mat-icon>
+        Repo
       </button>
     </mat-menu>
     <app-shopping-cart-button></app-shopping-cart-button>

@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { ShoppingCartService } from '@shared/services/shopping-cart.service';
-//import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +11,7 @@ export class AppComponent implements OnInit {
   title = 'YMCA Components';
   @ViewChild('sidenav') public sidenav: MatSidenav;
 
-  constructor(private shoppingCartService: ShoppingCartService) { }
+  constructor() { }
 
   ngOnInit(): void {
     // const eventCard = document.createElement('app-ymca-event-card');

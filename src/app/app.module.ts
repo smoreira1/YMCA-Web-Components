@@ -22,6 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularElementsModule } from '@shared/modules/angular-elements/angular-elements.module';
 import { NgMaterialModule } from '@shared/modules/ng-material/ng-material.module';
 import { createCustomElement } from '@angular/elements';
+import { YmcaEventCardComponent } from '@shared/modules/angular-elements/components/ymca-event-cards/ymca-event-card/ymca-event-card.component';
 
 Sentry.init({
   dsn: 'https://f704f4b6e26b48abbe96280b3ad1f813@sentry.io/1484901'

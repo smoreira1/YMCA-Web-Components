@@ -8,7 +8,7 @@ import {
   switchMap,
   debounceTime
 } from 'rxjs/operators';
-import { YMCAEvent } from '../../shared/interfaces/ymca-event.interface';
+import { YMCAEvent } from '@shared/interfaces/ymca-event.interface';
 //import { SearchCriteria } from '';
 
 export interface YMCAEventsResponse {
