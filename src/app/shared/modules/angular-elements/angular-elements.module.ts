@@ -1,9 +1,11 @@
 // Angular Core
-import { NgModule, Injector } from '@angular/core';
+import { NgModule, Injector, DoBootstrap } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { createCustomElement } from '@angular/elements';
+import { APP_INITIALIZER } from '@angular/core';
+
 // OutSide Modules
 import { NgMaterialModule } from '@shared/modules/ng-material/ng-material.module';
 // Core YMCA Web Components.
@@ -95,25 +97,31 @@ declare global {
   ],
   providers: [
     ShoppingCartService,
-    YMCAEventFacade
-  ]
+    YMCAEventFacade,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (ds: ShoppingCartService) => function() {return ds.load()},
+      deps: [ShoppingCartService],
+      multi: true
+    }
+  ],
+  bootstrap: [YmcaCatalogInitComponent]
 })
-export class AngularElementsModule {
+export class AngularElementsModule implements DoBootstrap{
 
-  constructor(private injector: Injector){
-
-  }
+  constructor(private injector: Injector){}
 
   ngDoBootstrap() {
-        const eventsElement = createCustomElement(YmcaEventsComponent, {injector : this.injector});
-        customElements.define('ymca-events',eventsElement);
-
-        window.ymcaComponent = window.ymcaComponent || {};
-        window.ymcaComponent.init = this.productCatalogInit.bind(this);
+    console.log('Angular Elements Bootstrap');
+    const eventsElement = createCustomElement(YmcaEventsComponent, {injector : this.injector});
+    customElements.define('ymca-events',eventsElement);
+    window.ymcaComponent = window.ymcaComponent || {};
+    window.ymcaComponent.init = this.productCatalogInit.bind(this);
   }
 
   productCatalogInit():void{
-
+    console.log('Cooper:');
+    console.log('Woof Woof:');
   }
 
 }

@@ -26,4 +26,8 @@ export class ShoppingCartService {
     public getItemsInShoppingCart(): string{
         return '0';
     }
+
+    public load(){
+      console.log('woof woof ssss');
+    }
 }

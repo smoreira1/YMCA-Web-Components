@@ -10,6 +10,7 @@ export class AirBnbLayoutComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    //window.ymcaComponent.init();
   }
 
 }

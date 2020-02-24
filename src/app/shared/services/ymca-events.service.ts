@@ -38,8 +38,8 @@ export class YMCAEventsService {
           // Does something on response.data
           // modify the response.data as you see fit.
           // return the modified data:
-          console.log('Events!:');
-          console.log(response);
+          // console.log('Events!:');
+          // console.log(response);
           const newResponse = JSON.parse(response);
           return newResponse.data; // kind of useless
       }),

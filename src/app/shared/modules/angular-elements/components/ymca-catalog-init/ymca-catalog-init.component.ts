@@ -10,6 +10,7 @@ export class YmcaCatalogInitComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log('cooper');
     window.ymcaComponent = window.ymcaComponent || {};
     window.ymcaComponent.init = this.init.bind(this);
   }

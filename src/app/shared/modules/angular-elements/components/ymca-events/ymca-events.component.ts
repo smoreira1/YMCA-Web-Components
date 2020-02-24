@@ -102,8 +102,6 @@ export class YmcaEventsComponent implements OnInit {
       this.filters.age,
       this.filters.startingTime,
       this.filters.endingTime);
-      console.log('Events:');
-      console.log(this.events$);
   }
 
 
@@ -120,7 +118,7 @@ export class YmcaEventsComponent implements OnInit {
   }
 
   public test() {
-    console.log(this.events$);
+   // console.log(this.events$);
   }
 
   public setState(key, value) {

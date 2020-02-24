@@ -47,9 +47,9 @@ export class ActionFiltersComponent implements OnInit {
     'Sunday'
   ];
 
-  public vm$: Observable<YMCAEventsState> = this.ymcaEventsFacade.vm$;
+  //public vm$: Observable<YMCAEventsState> = this.ymcaEventsFacade.vm$;
 
-  constructor(private filtersConfigService: FiltersConfigService, private ymcaEventsFacade: YMCAEventFacade) {
+  constructor(private filtersConfigService: FiltersConfigService,) {
   }
 
   ngOnInit() {
