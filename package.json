@@ -12,7 +12,7 @@
     "docs": "compodoc -p src/tsconfig.app.json -s",
     "build:prod": "ng build --single-bundle --aot=true --prod=true",
     "build:test": "ng build --single-bundle --aot=true",
-    "start": "ng serve --aot --open --ssl --ssl-key c:\\certificates\\localhost.key  --ssl-cert c:\\certificates\\localhost.crt --port 3000",
+    "start": "ng serve --aot --open --ssl --ssl-key c:\\certificates\\localhost.key  --ssl-cert c:\\certificates\\localhost.crt --port 4100",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -46,6 +46,7 @@
     "rxjs": "^6.5.4",
     "sticky-js": "^1.2.2",
     "tslib": "^1.10.0",
+    "webpack-bundle-analyzer": "^3.6.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

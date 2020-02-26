@@ -10,12 +10,12 @@
     <button mat-button [matMenuTriggerFor]="references">References</button>
     <mat-menu #references="matMenu">
       <button  mat-menu-item color="accent">
-        Docs
+        CompDoc
       </button>
-      <button  mat-menu-item color="accent">
+      <a  mat-menu-item color="accent" href='https://documenter.getpostman.com/view/7628800/SW7UaVNo?version=latest'>
         <mat-icon svgIcon="API"></mat-icon>
         RestAPI
-      </button>
+      </a>
       <button  mat-menu-item color="accent">
         <mat-icon svgIcon="Storybook"></mat-icon>
         Storybook
@@ -35,6 +35,9 @@
       <button  mat-menu-item color="accent">
         <mat-icon svgIcon="Git"></mat-icon>
         Repo
+      </button>
+      <button  mat-menu-item color="accent">
+        Root Documention
       </button>
     </mat-menu>
     <app-shopping-cart-button></app-shopping-cart-button>
