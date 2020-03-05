@@ -8,7 +8,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 })
 export class AppComponent implements OnInit {
 
-  title = 'YMCA Components';
+  public title = 'YMCA Components';
   @ViewChild('sidenav') public sidenav: MatSidenav;
 
   constructor() { }

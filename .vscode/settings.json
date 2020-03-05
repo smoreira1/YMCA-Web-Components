@@ -1,21 +1,22 @@
 {
     "workbench.colorCustomizations": {
-        "activityBar.background": "#601ea7",
-        "activityBar.activeBorder": "#000000",
-        "activityBar.foreground": "#e7e7e7",
-        "activityBar.inactiveForeground": "#e7e7e799",
-        "activityBarBadge.background": "#000000",
-        "activityBarBadge.foreground": "#e7e7e7",
-        "titleBar.activeBackground": "#47167c",
-        "titleBar.inactiveBackground": "#47167c99",
-        "titleBar.activeForeground": "#e7e7e7",
-        "titleBar.inactiveForeground": "#e7e7e799",
-        "statusBar.background": "#47167c",
-        "statusBarItem.hoverBackground": "#601ea7",
-        "statusBar.foreground": "#e7e7e7"
+      "activityBar.background": "#601ea7",
+      "activityBar.activeBorder": "#000000",
+      "activityBar.foreground": "#e7e7e7",
+      "activityBar.inactiveForeground": "#e7e7e799",
+      "activityBarBadge.background": "#000000",
+      "activityBarBadge.foreground": "#e7e7e7",
+      "titleBar.activeBackground": "#47167c",
+      "titleBar.inactiveBackground": "#47167c99",
+      "titleBar.activeForeground": "#e7e7e7",
+      "titleBar.inactiveForeground": "#e7e7e799",
+      "statusBar.background": "#47167c",
+      "statusBarItem.hoverBackground": "#601ea7",
+      "statusBar.foreground": "#e7e7e7"
     },
     "peacock.color": "#47167c",
     "appService.defaultWebAppToDeploy": "/subscriptions/e2eed352-078b-4108-be70-5a7e74dbf03e/resourceGroups/ebusiness/providers/Microsoft.Web/sites/ymca-components",
     "appService.deploySubpath": "dist\\ebiz-elements",
     "explorer.compactFolders": false
+
 }
