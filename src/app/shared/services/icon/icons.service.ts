@@ -207,4 +207,14 @@ export class IconsService {
       )
     );
   }
+
+  loadShoppingCartIcon() {
+    this.iconRegistry.addSvgIcon(
+      "ShoppingCart",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/shopping-cart.svg"
+      )
+    );
+  }
+
 }
