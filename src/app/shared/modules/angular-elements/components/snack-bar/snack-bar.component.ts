@@ -1,4 +1,6 @@
-import { Component, OnInit, ChangeDetectorRef, ElementRef, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ShoppingCartFacade, ShoppingCartState } from '@core/facades/shopping-cart/shopping-cart.facade';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-snack-bar',
@@ -6,18 +8,11 @@ import { Component, OnInit, ChangeDetectorRef, ElementRef, Input } from '@angula
   styleUrls: ['./snack-bar.component.scss']
 })
 export class SnackBarComponent implements OnInit {
-  @Input() message: string;
 
-  public state: {};
-  constructor(private el: ElementRef, private cd: ChangeDetectorRef, ) { }
+  vm$: Observable<ShoppingCartState> = this.shoppingCartFacade.vm$;
+  constructor(private shoppingCartFacade: ShoppingCartFacade) { }
 
   ngOnInit() {
   }
-
-  public setState(key, value) {
-    this.state = { ...this.state, [key]: value };
-    this.cd.detectChanges();
-  }
-
 
 }

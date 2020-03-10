@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SelectDropDown } from '@shared/interfaces/select-value.interface';
-import { FormControl } from '@angular/forms';
-import { FiltersConfigService } from '@shared/services/filters-config.service';
-import { YMCAEventFacade, YMCAEventsState } from '@core/facades/ymca-event.facade';
+import { FormControl, FormGroup } from '@angular/forms';
+import { FiltersConfigService } from '@shared/services/filters-config/filters-config.service';
+import { YMCAEventFacade, YMCAEventsState } from '@core/facades/ymca-events/ymca-event.facade';
 import { Observable } from 'rxjs';
+import { combineLatest } from 'rxjs/operators';
+import { IconsService } from '@shared/services/icon/icons.service';
 
 @Component({
   selector: 'app-action-filters',
@@ -47,12 +49,44 @@ export class ActionFiltersComponent implements OnInit {
     'Sunday'
   ];
 
-  //public vm$: Observable<YMCAEventsState> = this.ymcaEventsFacade.vm$;
+  // *Note: We are gonna want side & over for our design styles.
+  mode = new FormControl('side');
+  // *All changable value props:
+  zipCodeControl = new FormControl();
+  distancesControl = new FormControl();
+  ageControl = new FormControl();
+  genderControl = new FormControl();
+  discountedControl = new FormControl();
+  timeControl = new FormControl();
 
-  constructor(private filtersConfigService: FiltersConfigService,) {
+  // actionFiltersFormGroup = new FormGroup({
+  //   zipCodeControl = new FormControl();
+  //   distancesControl = new FormControl();
+  //   ageControl = new FormControl();
+  //   genderControl = new FormControl();
+  //   discountedControl = new FormControl();
+  //   timeControl = new FormControl();
+  // });
+
+  public vm$: Observable<YMCAEventsState> = this.ymcaEventFacade.vm$;
+  constructor(private iconService: IconsService,
+    private filtersConfigService: FiltersConfigService, private ymcaEventFacade: YMCAEventFacade) {
+
+  }
+
+  private loadIcons() {
+    this.iconService.loadGenderIcon();
+    this.iconService.loadGeoLocationEnabledIcon();
+    this.iconService.loadDistanceIcon();
+    this.iconService.loadAgeIcon();
+    this.iconService.loadTimesIcon();
+    this.iconService.loadGenderIcon();
+    this.iconService.loadDaysIcon();
   }
 
   ngOnInit() {
+    console.log('Init Action Filters');
+    this.loadIcons();
     this.distances = this.filtersConfigService.distances();
     this.ages = this.filtersConfigService.ages(99, true);
     this.times = this.filtersConfigService.times();

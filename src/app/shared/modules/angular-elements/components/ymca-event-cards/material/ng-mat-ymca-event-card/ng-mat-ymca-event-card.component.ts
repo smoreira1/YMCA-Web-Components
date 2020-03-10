@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Inject } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from "@angular/material/dialog";
 import { MatIconRegistry } from "@angular/material/icon";
-import { CardIconService } from "@shared/services/card-icon.service";
+import { IconsService } from "@shared/services/icon/icons.service";
 
 export interface DialogData {
   animal: string;
@@ -55,10 +55,9 @@ export class NgMatYmcaEventCardComponent implements OnInit {
   @Input() earlyRegistrationMemberPrice: string;
 
   constructor(
-    private cardIconService: CardIconService,
+    private iconService: IconsService,
     public dialog: MatDialog
   ) {
-    this.cardIconService.loadEventCardIcons();
   }
 
   ngOnInit() {

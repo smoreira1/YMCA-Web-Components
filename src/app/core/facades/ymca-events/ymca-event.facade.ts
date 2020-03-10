@@ -37,9 +37,17 @@ export interface YMCAEventsState {
 let _state: YMCAEventsState = {
   ymcaEvents: [],
   searchCriteria: {
-    dayAvailability: null,
-    zipCode: null,
-    age: null,
+    dayAvailability: {
+      Monday: true,
+      Tuesday: true,
+      Wednesday: true,
+      Thursday: true,
+      Friday: true,
+      Saturday: true,
+      Sunday: true,
+    },
+    zipCode: 32825,
+    age: 18,
     location: null,
     time: null,
     distance: null,
@@ -84,26 +92,21 @@ export class YMCAEventFacade {
   // ------- Public Methods ------------------------
 
   // Allows quick snapshot access to data for ngOnInit() purposes
-  // getStateSnapshot(): YMCAEventsState {
-  //   return { ..._state, pagination: { ..._state.pagination } };
-  // }
+  getStateSnapshot(): YMCAEventsState {
+    return { ..._state };
+  }
 
-  buildSearchTermControl(): FormControl {
-    const searchTerm = new FormControl();
-    searchTerm.valueChanges
+  buildSearchTermControl(): Observable<SearchCriteria> {
+    const searchTerm = new Observable<any>();
+    searchTerm
       .pipe(debounceTime(300), distinctUntilChanged())
-      .subscribe(value => this.updateSearchsearchCriteria(value));
+      .subscribe(value => this.updateFilterCriteria(value));
     return searchTerm;
   }
 
-  updateSearchsearchCriteria(searchCriteria: SearchCriteria) {
+  updateFilterCriteria(searchCriteria: SearchCriteria) {
     this.updateState({ ..._state, searchCriteria, loading: true });
   }
-
-  // updatePagination(selectedSize: number, currentPage: number = 0) {
-  //   const pagination = { ..._state.pagination, currentPage, selectedSize };
-  //   this.updateState({ ..._state, pagination, loading: true });
-  // }
 
   // ------- Private Methods ------------------------
 
@@ -124,7 +127,7 @@ export class YMCAEventFacade {
 }
 
 function buildUserUrl(searchCriteria: SearchCriteria): string {
-  const URL = 'https://randomuser.me/api/';
+  const URL = 'https://build-ymcacf.cs17.force.com/services/apexrest/YmcaEvents';
   const searchFor = `?tag=${searchCriteria.tag}&age=${searchCriteria.age}&zipcode=${searchCriteria.zipCode}&distance=${searchCriteria.distance}&startingTime=error&endingTime=error&geoFlag=error&lat=error&lon=error&monday=${searchCriteria.dayAvailability.Monday}&tuesday=${searchCriteria.dayAvailability.Tuesday}&wednesday=${searchCriteria.dayAvailability.Wednesday}&thursday=${searchCriteria.dayAvailability.Thursday}&friday=${searchCriteria.dayAvailability.Friday}&saturday=${searchCriteria.dayAvailability.Saturday}&sunday=${searchCriteria.dayAvailability.Sunday}&gender=${searchCriteria.gender}`;
   return `${URL}?${searchFor}`;
 }

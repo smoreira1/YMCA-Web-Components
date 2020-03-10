@@ -8,7 +8,6 @@ import {
   switchMap,
   debounceTime
 } from 'rxjs/operators';
-import { YMCAEvent } from '@shared/interfaces/ymca-event.interface';
 import { CartItem } from '@shared/interfaces/cart-item.interface';
 
 
@@ -68,16 +67,31 @@ export class ShoppingCartFacade {
   // ------- Public Methods ------------------------
 
   // Allows quick snapshot access to data for ngOnInit() purposes
-  // getStateSnapshot(): YMCAEventState {
-  //   return { ..._state, pagination: { ..._state.pagination } };
-  // }
+  getStateSnapshot(): ShoppingCartState {
+    return { ..._state };
+  }
 
   buildSearchTermControl(): FormControl {
     const searchTerm = new FormControl();
     searchTerm.valueChanges
       .pipe(debounceTime(300), distinctUntilChanged())
       .subscribe(value => this.addCartItem(value));
+    return searchTerm;
+  }
 
+  buildAddToShoppingCartControl(): FormControl {
+    const searchTerm = new FormControl();
+    searchTerm.valueChanges
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe(value => this.addCartItem(value));
+    return searchTerm;
+  }
+
+  buildRemoveFromShoppingCartControl(): FormControl {
+    const searchTerm = new FormControl();
+    searchTerm.valueChanges
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe(value => this.addCartItem(value));
     return searchTerm;
   }
 
@@ -100,14 +114,36 @@ export class ShoppingCartFacade {
   private findAllCartItems(
     cartId: string,
   ): Observable<CartItem[]> {
-    const url = buildUserUrl(cartId);
+    const url = buildGetShoppingCartUrl(cartId);
     return this.http
       .get<ShoppingCartResponse>(url)
       .pipe(map(response => response.results));
   }
+
+  private updateCartId(cartId: string, cartItems: CartItem[]) {
+    this.updateState({'cartId': cartId, 'cartItems' : cartItems , 'loading': false});
+  }
+
 }
 
-function buildUserUrl(cartId: string): string {
-  const URL = 'https://randomuser.me/api/';
-  return `${URL}?${cartId}`;
+function buildGetShoppingCartUrl(cartId: string): string {
+  const URL = 'https://build-ymcacf.cs17.force.com/services/apexrest/ShoppingCarts';
+  const searchFor = `cartId=${cartId}`;
+  return `${URL}?${searchFor}`;
 }
+
+function buildCreateShoppingCartUrl(): string {
+  const URL = 'https://build-ymcacf.cs17.force.com/services/apexrest/ShoppingCarts';
+  return `${URL}`;
+}
+
+function buildCreateCartItemUrl(eventId: string): string {
+  const URL = 'https://build-ymcacf.cs17.force.com/services/apexrest/ShoppingCart';
+  return `${URL}`;
+}
+
+function buildDeleteCartItemUrl(cartId: string): string {
+  const URL = 'https://build-ymcacf.cs17.force.com/services/apexrest/ShoppingCart';
+  return `${URL}`;
+}
+

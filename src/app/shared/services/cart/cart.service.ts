@@ -1,6 +1,6 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
-import { CartItem } from '../interfaces/cart-item.interface';
+import { CartItem } from '../../interfaces/cart-item.interface';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '@environments/environment';
 import { catchError, map, tap } from 'rxjs/operators';

@@ -1,15 +1,15 @@
 <mat-drawer-container class="ymca-drawer-container" autosize>
-  <mat-drawer #drawer class="ymca-drawer" mode="side">
+  <mat-drawer #drawer class="ymca-drawer" [mode]="mode.value">
     <button (click)="drawer.toggle()" mat-raised-button>
       Toggle Nav
     </button>
     <mat-tab-group>
       <mat-tab label="Filter By">
-        <div class='ymca-reactive-form'>
+        <form class='ymca-reactive-form'>
           <span class="zip-code-entry">
             <mat-form-field class="ymca-zipcode-field">
               <span matPrefix>
-                <mat-icon svgIcon="geo"></mat-icon>
+                <mat-icon svgIcon="GeoLocationEnabled"></mat-icon>
               </span>
               <input
                 matInput
@@ -25,7 +25,7 @@
           </span>
           <span class="ymca-distance-flex-item">
             <mat-form-field class="ymca-distance-field">
-              <mat-icon svgIcon="distance" matPrefix></mat-icon>
+              <mat-icon svgIcon="Distance" matPrefix></mat-icon>
               <mat-label>Distance</mat-label>
               <mat-select>
                 <mat-option
@@ -39,7 +39,7 @@
           <span class="ymca-age-entry" *ngIf="toolbarConfiguration != 'Sports'">
             <mat-form-field class="ymca-age-field">
               <span matPrefix>
-                <mat-icon svgIcon="age"></mat-icon>
+                <mat-icon svgIcon="Age"></mat-icon>
               </span>
               <mat-label>Age</mat-label>
               <mat-select>
@@ -55,7 +55,7 @@
           >
             <mat-form-field class="ymca-time-field">
               <span matPrefix>
-                <mat-icon svgIcon="time"></mat-icon>
+                <mat-icon svgIcon="Time"></mat-icon>
               </span>
               <mat-label>Time</mat-label>
               <mat-select>
@@ -66,7 +66,7 @@
             </mat-form-field>
           </span>
           <mat-form-field class="ymca-distance-field">
-            <mat-icon svgIcon="distance" matPrefix></mat-icon>
+            <mat-icon svgIcon="Distance" matPrefix></mat-icon>
             <mat-label>Discounted</mat-label>
             <mat-select>
               <mat-option
@@ -82,7 +82,7 @@
           >
             <mat-form-field class="ymca-time-field">
               <span matPrefix>
-                <mat-icon svgIcon="gender"></mat-icon>
+                <mat-icon svgIcon="Gender"></mat-icon>
               </span>
               <mat-label>Gender</mat-label>
               <mat-select>
@@ -100,7 +100,7 @@
           >
           <mat-form-field>
             <span matPrefix>
-              <mat-icon svgIcon="days"></mat-icon>
+              <mat-icon svgIcon="Days"></mat-icon>
             </span>
             <mat-label>Days of the Week</mat-label>
             <mat-select [formControl]="days" multiple>
@@ -110,20 +110,20 @@
           </span>
           <mat-form-field>
             <span matPrefix>
-              <mat-icon svgIcon="days"></mat-icon>
+              <mat-icon svgIcon="Days"></mat-icon>
             </span>
             <mat-label>Location</mat-label>
             <mat-select [formControl]="days" multiple>
               <mat-option *ngFor="let day of daysList" [value]="day">{{day}}</mat-option>
             </mat-select>
           </mat-form-field>
-        </div>
+        </form>
       </mat-tab>
       <mat-tab label="Sort By" class='ymca-reactive-form'>
         <div class='ymca-reactive-form'>
         <mat-form-field>
           <span matPrefix>
-            <mat-icon svgIcon="days"></mat-icon>
+            <mat-icon svgIcon="Days"></mat-icon>
           </span>
           <mat-label>Distance</mat-label>
           <mat-select [formControl]="days" multiple>
@@ -132,7 +132,7 @@
         </mat-form-field>
         <mat-form-field>
           <span matPrefix>
-            <mat-icon svgIcon="days"></mat-icon>
+            <mat-icon svgIcon="Days"></mat-icon>
           </span>
           <mat-label>Event Name</mat-label>
           <mat-select [formControl]="days" multiple>
@@ -141,7 +141,7 @@
         </mat-form-field>
         <mat-form-field>
           <span matPrefix>
-            <mat-icon svgIcon="days"></mat-icon>
+            <mat-icon svgIcon="Days"></mat-icon>
           </span>
           <mat-label>Date</mat-label>
           <mat-select [formControl]="days" multiple>
@@ -150,7 +150,7 @@
         </mat-form-field>
         <mat-form-field>
           <span matPrefix>
-            <mat-icon svgIcon="days"></mat-icon>
+            <mat-icon svgIcon="Days"></mat-icon>
           </span>
           <mat-label>Age</mat-label>
           <mat-select [formControl]="days" multiple>

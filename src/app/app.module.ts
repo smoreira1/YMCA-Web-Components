@@ -9,12 +9,11 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RepoInfoToolbarComponent } from '@core/modules/core/components/repo-info-toolbar/repo-info-toolbar.component'
+import { RepoInfoToolbarComponent } from '@core/modules/core/components/repo-info-toolbar/repo-info-toolbar.component';
 // Other
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ErrorHandler } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
-import { AirBnbLayoutComponent } from '@core/modules/core/components/air-bnb-layout/air-bnb-layout.component';
 import { OriginalYmcaLayoutComponent } from '@core/modules/core/components/original-ymca-layout/original-ymca-layout.component';
 import { AppRoutingModule } from './app-routing.module';
 // Shared Modules
@@ -39,7 +38,6 @@ export class SentryErrorHandler implements ErrorHandler {
 @NgModule({
   declarations: [
     AppComponent,
-    AirBnbLayoutComponent,
     OriginalYmcaLayoutComponent,
     RepoInfoToolbarComponent
   ],

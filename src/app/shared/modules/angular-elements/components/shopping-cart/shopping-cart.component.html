@@ -1,4 +1,4 @@
-<mat-sidenav-container class="ymca-shopping-cart-container">
+<mat-sidenav-container class="ymca-shopping-cart-container" *ngIf="(vm$ | async) as vm">
   <mat-sidenav-content>
   </mat-sidenav-content>
   <mat-sidenav #sidenav mode="over" class='ymca-shopping-cart' [fixedInViewport]="true" [fixedTopGap]="0"
@@ -15,7 +15,7 @@
     </div>
     <span class='ymca-spacer'></span>
     <mat-accordion class='ymca-cart-body'>
-      <mat-expansion-panel *ngFor="let item of cartItems; let i = index" [attr.data-index]="i"
+      <mat-expansion-panel *ngFor="let item of vm.cartItems; let i = index" [attr.data-index]="i"
         class='ymca-shopping-cart-item'>
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -27,8 +27,8 @@
                 <path d="M0 0h24v24H0z" fill="none" />
               </svg>
             </button>
-            <p>{{ item.parentProduct }} </p>
-            <p>{{ item.dateRange }}</p>
+            <p>{{ item.eventTitle }} </p>
+            <p>{{ item.startDateTime }} - {{ item.endDateTime }} </p>
           </mat-panel-title>
           <mat-panel-description>
             {{ item.description }}
@@ -36,12 +36,12 @@
         </mat-expansion-panel-header>
       </mat-expansion-panel>
     </mat-accordion>
-    <div class='ymca-shopping-cart-empty-message' *ngIf='cartItems.length === 0'>
+    <div class='ymca-shopping-cart-empty-message' *ngIf='vm.cartItems.length === 0'>
       Your Cart is Empty.
     </div>
     <span class='ymca-spacer'></span>
     <div class='ymca-cart-footer'>
-      <a mat-button class='ymca-checkout' color='primary'>CheckOut</a>
+      <a mat-button class='ymca-checkout' color='primary' href='{{ communityURL }}'>CheckOut</a>
     </div>
   </mat-sidenav>
 </mat-sidenav-container>

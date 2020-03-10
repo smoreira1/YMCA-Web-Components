@@ -1,15 +1,11 @@
-import { Component, OnInit, Input, ChangeDetectorRef, ElementRef, ChangeDetectionStrategy, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { YMCAEvent } from '@shared/interfaces/ymca-event.interface';
-import { YMCAEventsService } from '@shared/services/ymca-events.service';
 import { GeoCode } from '@shared/interfaces/geocode.interface';
 import { DayAvailability } from '@shared/interfaces/day-availability.interface';
 import { Observable, Subject } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { APIResponse } from '@shared/interfaces/api-response.interface';
-import { ShoppingCartService } from '@shared//services/shopping-cart.service';
 import { MatSidenav } from '@angular/material/sidenav';
-import { BrowserConfigService } from '@shared/services/browser-config.service';
-
+import { BrowserConfigService } from '@shared/services/browser-config/browser-config.service';
+import { YMCAEventFacade, YMCAEventsState } from '@core/facades/ymca-events/ymca-event.facade';
 @Component({
   selector: 'app-ymca-events',
   templateUrl: './ymca-events.component.html',
@@ -50,7 +46,7 @@ export class YmcaEventsComponent implements OnInit {
     tag: '',
     startingTime: '12:00 AM',
     endingTime: '11:59 PM',
-  }
+  };
 
   public events$: Observable<YMCAEvent[]>;
   public loadingError$ = new Subject<boolean>();
@@ -61,12 +57,11 @@ export class YmcaEventsComponent implements OnInit {
   public browserErrorCookiesDisabled: boolean;
   @ViewChild('filtersnav') public sidenav: MatSidenav;
 
+
+  vm$: Observable<YMCAEventsState> = this.ymcaEventsFacade.vm$;
   constructor(
-    private el: ElementRef,
-    private cd: ChangeDetectorRef,
-    private eventsService: YMCAEventsService,
-    private shoppingCartService: ShoppingCartService,
-    private browserConfigService: BrowserConfigService) {
+    private browserConfigService: BrowserConfigService,
+    private ymcaEventsFacade: YMCAEventFacade) {
       this.browserErrorCookiesDisabled = false;
       this.browserNotSupported = false;
     }
@@ -79,33 +74,14 @@ export class YmcaEventsComponent implements OnInit {
       this.browserErrorCookiesDisabled = true;
     }
     else {
-      this.shoppingCartService.setSidenav(this.sidenav);
-      this.tag = 'Teen Adult Stroke Technique';
-      this.configureDays();
-      this.getEvents();
+
     }
   }
 
-  public getEvents() {
-    const geoCode = {
-      latitude: '80',
-      longitude: '20',
-    }
-    console.log('Getting Events:');
-    this.events$ = this.eventsService.getEvents(
-      this.tag,
-      this.geoCodeFlag,
-      geoCode,
-      this.dayAvailability,
-      this.filters.zipcode,
-      this.filters.distance,
-      this.filters.age,
-      this.filters.startingTime,
-      this.filters.endingTime);
-  }
 
 
-  configureDays() {
+
+  public configureDays() {
     this.dayAvailability = {
       Monday: false,
       Tuesday: false,
@@ -114,17 +90,7 @@ export class YmcaEventsComponent implements OnInit {
       Friday: false,
       Saturday: false,
       Sunday: false,
-    }
+    };
   }
-
-  public test() {
-   // console.log(this.events$);
-  }
-
-  public setState(key, value) {
-    this.state = { ...this.state, [key]: value };
-    this.cd.detectChanges();
-  }
-
 
 }

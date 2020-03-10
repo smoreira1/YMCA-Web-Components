@@ -28,6 +28,6 @@ export class ShoppingCartService {
     }
 
     public load(){
-      console.log('woof woof ssss');
+      console.log('Shopping Cart Service');
     }
 }

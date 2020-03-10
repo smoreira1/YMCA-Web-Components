@@ -9,7 +9,7 @@ import {
   ChangeDetectorRef,
   ElementRef,
 } from '@angular/core';
-import { CartService } from '@shared/services/cart.service';
+import { CartService } from '@shared/services/cart/cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackBarComponent } from '@shared/modules/angular-elements/components/snack-bar/snack-bar.component';
 
@@ -17,7 +17,7 @@ import { SnackBarComponent } from '@shared/modules/angular-elements/components/s
   selector: 'app-ymca-event-card',
   templateUrl: './ymca-event-card.component.html',
   styleUrls: ['./ymca-event-card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.ShadowDom
 })
 export class YmcaEventCardComponent implements OnInit {

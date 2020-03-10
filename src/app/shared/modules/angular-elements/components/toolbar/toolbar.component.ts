@@ -4,20 +4,19 @@ import {
   Input,
   SimpleChanges,
   OnChanges
-} from "@angular/core";
-import { YMCAEventsService } from "@shared/services/ymca-events.service";
-import { FiltersConfigService } from "@shared/services/filters-config.service";
-import { SelectDropDown } from "@shared/interfaces/select-value.interface";
-import { MatDialog } from "@angular/material/dialog";
-import { ShoppingCartService } from "@shared/services/shopping-cart.service";
-import * as Sticky from "sticky-js";
-import { FormControl } from "@angular/forms";
-import { CardIconService } from "@shared/services/card-icon.service";
+} from '@angular/core';
+import { YMCAEventsService } from '@shared/services/ymca-events.service';
+import { FiltersConfigService } from '@shared/services/filters-config/filters-config.service';
+import { SelectDropDown } from '@shared/interfaces/select-value.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { ShoppingCartService } from '@shared/services/shopping-cart.service';
+import * as Sticky from 'sticky-js';
+import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: "app-toolbar",
-  templateUrl: "./toolbar.component.html",
-  styleUrls: ["./toolbar.component.scss"]
+  selector: 'app-toolbar',
+  templateUrl: './toolbar.component.html',
+  styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit, OnChanges {
   public loadingDataFromServer = false;
@@ -42,27 +41,24 @@ export class ToolbarComponent implements OnInit, OnChanges {
   familyCenters: SelectDropDown[];
   sortEvents: SelectDropDown[];
   discounts: SelectDropDown[];
-  discountList: string[] = ["Any", "Only Early Registration"];
+  discountList: string[] = ['Any', 'Only Early Registration'];
   days = new FormControl();
   daysList: string[] = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday"
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday'
   ];
   constructor(
     private ymcaEventsService: YMCAEventsService,
     private filtersConfigService: FiltersConfigService,
     private shoppingCartService: ShoppingCartService,
     public dialog: MatDialog,
-    private iconService: CardIconService
   ) {
-    this.iconService.loadEventCardIcons();
-    this.iconService.loadToolbarIcons();
-    var sticky = new Sticky(".sticky");
+    //var sticky = new Sticky('.sticky');
   }
 
   ngOnInit() {
@@ -70,23 +66,23 @@ export class ToolbarComponent implements OnInit, OnChanges {
     this.ages = this.filtersConfigService.ages(99, true);
     this.times = this.filtersConfigService.times();
     this.genders = this.filtersConfigService.genders();
-    this.zipcode = this.zipcode || "";
-    this.toolbarConfiguration = this.toolbarConfiguration || "";
+    this.zipcode = this.zipcode || '';
+    this.toolbarConfiguration = this.toolbarConfiguration || '';
     this.setDefaultDaysofTheWeek();
   }
 
   public setDefaultDaysofTheWeek(){
-    this.monday = this.monday || "false";
-    this.tuesday = this.tuesday || "false";
-    this.wednesday = this.wednesday || "false";
-    this.thursday = this.thursday || "false";
-    this.friday = this.friday || "false";
-    this.saturday = this.saturday || "false";
-    this.sunday = this.sunday || "false";
+    this.monday = this.monday || 'false';
+    this.tuesday = this.tuesday || 'false';
+    this.wednesday = this.wednesday || 'false';
+    this.thursday = this.thursday || 'false';
+    this.friday = this.friday || 'false';
+    this.saturday = this.saturday || 'false';
+    this.sunday = this.sunday || 'false';
   }
 
   changedValue() {
-    console.log("value changed");
+    console.log('value changed');
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -94,11 +90,11 @@ export class ToolbarComponent implements OnInit, OnChanges {
   }
 
   openFiltersModal() {
-    console.log("Open filters button");
+    console.log('Open filters button');
   }
 
   search() {
-    console.log("Searching...");
+    console.log('Searching...');
   }
 
   private scrollToFilterNavigation() {}

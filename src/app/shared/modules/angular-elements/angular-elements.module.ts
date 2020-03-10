@@ -23,12 +23,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { YmcaCatalogInitComponent } from '@ymcaComponents/ymca-catalog-init/ymca-catalog-init.component';
 import { NgMatYmcaEventAbnbComponent } from '@ymcaComponents/ymca-event-cards/material/ng-mat-ymca-event-abnb/ng-mat-ymca-event-abnb.component';
 import { ToolbarComponent } from '@ymcaComponents/toolbar/toolbar.component';
-import { FiltersSideNavComponent } from '@ymcaComponents/filters-side-nav/filters-side-nav.component';
 import { ActionFiltersComponent } from '@ymcaComponents/action-filters/action-filters.component';
 import { YmcaEventCardComponent } from '@ymcaComponents/ymca-event-cards/ymca-event-card/ymca-event-card.component';
 import { NgMatYmcaEventCardComponent } from '@ymcaComponents/ymca-event-cards/material/ng-mat-ymca-event-card/ng-mat-ymca-event-card.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { YMCAEventFacade } from '@core/facades/ymca-event.facade';
+import { YMCAEventFacade } from '@core/facades/ymca-events/ymca-event.facade';
+import { ProductsCatalogJupiterComponent } from './components/products-catalog-jupiter/products-catalog-jupiter.component';
+import { ShoppingCartFacade } from '@core/facades/shopping-cart/shopping-cart.facade';
 
 
 declare global {
@@ -52,7 +53,8 @@ declare global {
     NgMatYmcaEventAbnbComponent,
     NgMatYmcaEventCardComponent,
     ToolbarComponent,
-    FiltersSideNavComponent,
+    // FiltersSideNavComponent,
+    ProductsCatalogJupiterComponent,
     ActionFiltersComponent,
     YmcaEventCardComponent,
   ],
@@ -75,7 +77,7 @@ declare global {
     ShoppingCartButtonComponent,
     ShoppingCartComponent,
     ToolbarComponent,
-    FiltersSideNavComponent,
+    ProductsCatalogJupiterComponent,
     ActionFiltersComponent,
     YmcaEventCardComponent,
     NgMatYmcaEventCardComponent,
@@ -90,17 +92,18 @@ declare global {
     ShoppingCartButtonComponent,
     ShoppingCartComponent,
     ToolbarComponent,
-    FiltersSideNavComponent,
+    ProductsCatalogJupiterComponent,
     ActionFiltersComponent,
     YmcaEventCardComponent,
     NgMatYmcaEventCardComponent,
   ],
   providers: [
     ShoppingCartService,
+    ShoppingCartFacade,
     YMCAEventFacade,
     {
       provide: APP_INITIALIZER,
-      useFactory: (ds: ShoppingCartService) => function() {return ds.load()},
+      useFactory: (ds: ShoppingCartService) => function() { return ds.load(); },
       deps: [ShoppingCartService],
       multi: true
     }
@@ -112,11 +115,11 @@ export class AngularElementsModule implements DoBootstrap{
   constructor(private injector: Injector){}
 
   ngDoBootstrap() {
-    console.log('Angular Elements Bootstrap');
-    const eventsElement = createCustomElement(YmcaEventsComponent, {injector : this.injector});
-    customElements.define('ymca-events',eventsElement);
-    window.ymcaComponent = window.ymcaComponent || {};
-    window.ymcaComponent.init = this.productCatalogInit.bind(this);
+    // console.log('Angular Elements Bootstrap');
+    // const eventsElement = createCustomElement(YmcaEventsComponent, {injector : this.injector});
+    // customElements.define('ymca-events',eventsElement);
+    // window.ymcaComponent = window.ymcaComponent || {};
+    // window.ymcaComponent.init = this.productCatalogInit.bind(this);
   }
 
   productCatalogInit():void{

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IconsService } from '@shared/services/icons.service';
+import { IconsService } from '@shared/services/icon/icons.service';
 
 @Component({
   selector: 'app-repo-info-toolbar',

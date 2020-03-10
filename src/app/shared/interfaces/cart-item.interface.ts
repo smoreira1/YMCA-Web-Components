@@ -12,4 +12,5 @@ export interface CartItem {
     memberOnly: boolean;
     memberPrice: number;
     nonMemberPrice: number;
+    eventTitle: string;
 }

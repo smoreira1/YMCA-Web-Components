@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter, ElementRef, ChangeDetectorRef } from '@angular/core';
-import { ShoppingCartService } from '@shared/services/shopping-cart.service';
+import { Component, OnInit } from '@angular/core';
+import { ShoppingCartFacade, ShoppingCartState } from '@core/facades/shopping-cart/shopping-cart.facade';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-shopping-cart-button',
@@ -9,20 +10,16 @@ import { ShoppingCartService } from '@shared/services/shopping-cart.service';
 export class ShoppingCartButtonComponent implements OnInit {
 
   // Note: this is of type string so we may easily interpolate empty string in the scenario of a zero item cart.
-  public amountOfItemsInCart: string;
+  vm$: Observable<ShoppingCartState> = this.shoppingCartFacade.vm$;
   constructor(
-    private el: ElementRef,
-    private cd: ChangeDetectorRef,
-    private shoppingCartService: ShoppingCartService
+    private shoppingCartFacade: ShoppingCartFacade
   ) { }
 
   ngOnInit() {
-    const itemsInCart = this.shoppingCartService.getItemsInShoppingCart() || '';
-    this.amountOfItemsInCart = itemsInCart == '0' ? '' : itemsInCart;
+
   }
 
-  openShoppingCart() {
-    this.shoppingCartService.toggle();
+  toggleShoppingCart(){
+    console.log('Toggle Shopping Cart');
   }
-
 }

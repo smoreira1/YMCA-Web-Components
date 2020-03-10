@@ -1,10 +1,10 @@
-<mat-sidenav-container class="ymca-events-container">
+<mat-sidenav-container class="ymca-events-container" *ngIf="(vm$ | async) as vm">
   <mat-sidenav-content class='ymca-events'>
-    <mat-spinner *ngIf='state.loaded'></mat-spinner>
+    <mat-spinner *ngIf='vm.loading'></mat-spinner>
       <!-- <button mat-raised-button (click)='test()'>Events</button>
       <button mat-button (click)="sidenav.toggle()">Cart</button> -->
       <div class='ymca-filtered-events'infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50" >
-        <app-ng-mat-ymca-event-abnb *ngFor='let event of events$ | async' class='ymca-event'
+        <app-ng-mat-ymca-event-abnb *ngFor="let event of vm.ymcaEvents" class='ymca-event'
           id='{{ event.id }}'
           description='{{ event.description }}'
           startDate='{{ event.startDate }}'
@@ -39,7 +39,7 @@
           sunday='{{ event.dayAvailability.Sunday }}' -->
         </app-ng-mat-ymca-event-abnb>
       </div>
-      <div class='ymca-empty-events-result' *ngIf='false'>
+      <div class='ymca-empty-events-result' *ngIf='vm.ymcaEvents.length == 0'>
         <h1 class='ymca-events-empty-msg'>No events were returned, try another filter setting.</h1>
         <div class='ymca-scaling-svg-container'><span class='ymca-scaling-svg'></span></div>
       </div>
@@ -56,11 +56,6 @@
     <div class='ymca-browser-error' *ngIf='browserErrorCookiesDisabled'>
       <div class=''>
         oh oh your cookies are disabled.
-      </div>
-    </div>
-    <div class='ymca-empty-events' *ngIf="!(events$ | async)?.length">
-      <div class=''>
-        No events were returned. Try expanding your filtering.
       </div>
     </div>
     <div class='ymca-something-went-wrong' *ngIf='false'>

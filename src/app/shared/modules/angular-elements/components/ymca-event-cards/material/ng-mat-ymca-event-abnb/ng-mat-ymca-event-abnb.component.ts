@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogData } from '../ng-mat-ymca-event-card/ng-mat-ymca-event-card.component';
-import { CardIconService } from '@shared/services/card-icon.service';
+import { IconsService } from '@shared/services/icon/icons.service';
+import { ShoppingCartFacade } from '@core/facades/shopping-cart/shopping-cart.facade';
+
 
 @Component({
   selector: 'app-ng-mat-ymca-event-abnb',
@@ -50,10 +52,10 @@ export class NgMatYmcaEventAbnbComponent implements OnInit {
   @Input() earlyRegistrationMemberPrice: string;
 
   constructor(
-    private cardIconService: CardIconService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private shoppingCartFacade: ShoppingCartFacade
   ) {
-    this.cardIconService.loadEventCardIcons();
+
   }
 
   ngOnInit() {
