@@ -53,8 +53,8 @@ export class YmcaEventsComponent implements OnInit {
   public geoCode: GeoCode;
   public dayAvailability: DayAvailability;
   public geoCodeFlag: string;
-  public browserNotSupported: boolean;
-  public browserErrorCookiesDisabled: boolean;
+  public browserNotSupported = false;
+  public browserErrorCookiesDisabled = false;
   @ViewChild('filtersnav') public sidenav: MatSidenav;
 
 
@@ -62,9 +62,8 @@ export class YmcaEventsComponent implements OnInit {
   constructor(
     private browserConfigService: BrowserConfigService,
     private ymcaEventsFacade: YMCAEventFacade) {
-      this.browserErrorCookiesDisabled = false;
-      this.browserNotSupported = false;
-    }
+
+  }
 
   ngOnInit() {
     if (this.browserConfigService.isInternetExplorer()) {

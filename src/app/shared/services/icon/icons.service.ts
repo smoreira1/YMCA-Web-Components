@@ -15,133 +15,133 @@ export class IconsService {
     this.iconRegistry.addSvgIcon(
       "GeoLocationEnabled",
       this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/toolbar/geo-location-enabled.svg"
+        "assets/icons/geo-location-enabled.svg"
       )
     );
   }
 
   loadDistanceIcon() {
     this.iconRegistry.addSvgIcon(
-      "distance",
+      "Distance",
       this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/toolbar/distance-2.svg"
+        "assets/icons/distance.svg"
       )
     );
   }
 
   loadTimesIcon() {
     this.iconRegistry.addSvgIcon(
-      "time",
+      "Time",
       this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/event-card/times.svg"
+        "assets/icons/times.svg"
       )
     );
   }
 
   loadGenderIcon() {
     this.iconRegistry.addSvgIcon(
-      "gender",
+      "Gender",
       this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/event-card/gender.svg"
+        "assets/icons/gender.svg"
       )
     );
   }
 
   loadFamilyCenterIcon() {
     this.iconRegistry.addSvgIcon(
-      "family-center",
+      "FamilyCenter",
       this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/event-card/family-center.svg"
+        "assets/icons/family-center.svg"
       )
     );
   }
 
   loadDaysIcon() {
     this.iconRegistry.addSvgIcon(
-      "days",
+      "Days",
       this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/event-card/days.svg"
+        "assets/icons/days.svg"
       )
     );
   }
 
   loadMaximizeIcon() {
     this.iconRegistry.addSvgIcon(
-      "maximize",
+      "Maximize",
       this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/event-card/maximize.svg"
+        "assets/icons/maximize.svg"
       )
     );
   }
 
   loadSportsIcon() {
     this.iconRegistry.addSvgIcon(
-      "sports",
+      "Sports",
       this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/event-card/sports.svg"
+        "assets/icons/sports.svg"
       )
     );
   }
 
   loadLocationIcon() {
     this.iconRegistry.addSvgIcon(
-      "location",
+      "Location",
       this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/event-card/location.svg"
+        "assets/icons/location.svg"
       )
     );
   }
 
   loadDateIcon() {
     this.iconRegistry.addSvgIcon(
-      "date",
+      "Date",
       this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/event-card/date.svg"
+        "assets/icons/date.svg"
       )
     );
   }
 
   loadGender2Icon() {
     this.iconRegistry.addSvgIcon(
-      "gender",
+      "Gender",
       this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/event-card/gender-2.svg"
+        "assets/icons/gender-2.svg"
       )
     );
   }
 
   loadPriceIcon() {
     this.iconRegistry.addSvgIcon(
-      "price",
+      "Price",
       this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/event-card/price.svg"
+        "assets/icons/price.svg"
       )
     );
   }
 
   loadRightArrowIcon() {
     this.iconRegistry.addSvgIcon(
-      "right-arrow",
+      "RightArrow",
       this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/event-card/right-arrow.svg"
+        "assets/icons/right-arrow.svg"
       )
     );
   }
 
   loadGradeIcon() {
     this.iconRegistry.addSvgIcon(
-      "grade",
+      "Grade",
       this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/event-card/grade.svg"
+        "assets/icons/grade.svg"
       )
     );
   }
 
   loadAgeIcon() {
     this.iconRegistry.addSvgIcon(
-      "age",
+      "Age",
       this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/event-card/age.svg"
+        "assets/icons/age.svg"
       )
     );
   }

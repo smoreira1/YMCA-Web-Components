@@ -18,7 +18,7 @@ import { SnackBarComponent } from '@shared/modules/angular-elements/components/s
   templateUrl: './aquatic-card.component.html',
   styleUrls: ['./aquatic-card.component.scss'],
   // changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.ShadowDom
+  // encapsulation: ViewEncapsulation.ShadowDom
 })
 export class AquaticCardComponent implements OnInit {
 
