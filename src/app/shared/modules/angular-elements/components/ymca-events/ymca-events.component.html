@@ -29,17 +29,17 @@
           numberOfClassesPerWeek='{{ event.numberOfClassesPerWeek }}'
           lowAge='{{ event.endingAge }}'
           highAge='{{ event.startingAge }}'
-          >
-          <!-- monday='{{ event.dayAvailability.Monday }}'
+          monday='{{ event.dayAvailability.Monday }}'
           tuesday='{{ event.dayAvailability.Tuesday }}'
           wednesday='{{ event.dayAvailability.Wednesday }}'
           thursday='{{ event.dayAvailability.Thursday }}'
           friday='{{ event.dayAvailability.Friday }}'
           saturday='{{ event.dayAvailability.Saturday }}'
-          sunday='{{ event.dayAvailability.Sunday }}' -->
+          sunday='{{ event.dayAvailability.Sunday }}'
+          >
         </app-ng-mat-ymca-event-abnb>
       </div>
-      <div class='ymca-empty-events-result' *ngIf='vm.ymcaEvents.length == 0'>
+      <div class='ymca-empty-events-result' *ngIf='vm.ymcaEvents?.length == 0'>
         <h1 class='ymca-events-empty-msg'>No events were returned, try another filter setting.</h1>
         <div class='ymca-scaling-svg-container'><span class='ymca-scaling-svg'></span></div>
       </div>

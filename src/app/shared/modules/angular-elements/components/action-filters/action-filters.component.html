@@ -121,7 +121,13 @@
       </mat-tab>
       <mat-tab label="Sort By" class='ymca-reactive-form'>
         <div class='ymca-reactive-form'>
-        <mat-form-field>
+          <mat-button-toggle-group class='sorting-options' name="sortOptions" aria-label="Sort Options">
+            <mat-button-toggle value="distance">Distance</mat-button-toggle>
+            <mat-button-toggle value="eventName">Event Name</mat-button-toggle>
+            <mat-button-toggle value="date">Date</mat-button-toggle>
+            <mat-button-toggle value="date">Price</mat-button-toggle>
+          </mat-button-toggle-group>
+        <!-- <mat-form-field>
           <span matPrefix>
             <mat-icon svgIcon="Days"></mat-icon>
           </span>
@@ -156,7 +162,7 @@
           <mat-select [formControl]="days" multiple>
             <mat-option *ngFor="let day of daysList" [value]="day">{{day}}</mat-option>
           </mat-select>
-        </mat-form-field>
+        </mat-form-field> -->
         </div>
       </mat-tab>
     </mat-tab-group>

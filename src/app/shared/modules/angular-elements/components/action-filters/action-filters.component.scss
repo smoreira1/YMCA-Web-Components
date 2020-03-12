@@ -4,6 +4,11 @@
     display: flex;
     flex-flow: column;
     margin: 8px;
+
+    .sorting-options{
+      display:flex;
+      flex-flow:column;
+    }
   }
 
 }

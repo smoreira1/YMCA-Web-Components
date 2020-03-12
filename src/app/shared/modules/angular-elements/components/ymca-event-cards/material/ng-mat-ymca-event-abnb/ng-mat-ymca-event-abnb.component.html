@@ -1,4 +1,4 @@
-<mat-card class="ng-mat-ymca-event-abnb">
+<mat-card class="ng-mat-ymca-event-abnb" *ngIf="(vm$ | async) as vm">
   <mat-card-header class="ymca-header">
     <mat-card-title>
       <mat-icon class="icon" svgIcon="Basketball" mat-card-avatar></mat-icon>
@@ -96,6 +96,6 @@
   </mat-card-content>
   <mat-card-actions class="actions">
     <span class="distance">5 Mi</span>
-    <button mat-raised-button color="primary">Add To Cart</button>
+    <button mat-raised-button color="primary" (click)='shoppingCartFacade.addCartItem(id)'>Add To Cart</button>
   </mat-card-actions>
 </mat-card>

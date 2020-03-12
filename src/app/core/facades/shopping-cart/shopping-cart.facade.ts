@@ -18,12 +18,14 @@ export interface ShoppingCartResponse {
 export interface ShoppingCartState {
   cartItems: CartItem[];
   cartId: string;
+  cartOpen: boolean;
   loading: boolean;
 }
 
 let _state: ShoppingCartState = {
   cartItems: [],
-  cartId: '',
+  cartId: localStorage.getItem('cartId') || '',
+  cartOpen: false,
   loading: false
 };
 
@@ -34,6 +36,7 @@ export class ShoppingCartFacade {
 
   cartItems$ = this.state$.pipe(map(state => state.cartItems), distinctUntilChanged());
   cartId$ = this.state$.pipe(map(state => state.cartId), distinctUntilChanged());
+  cartOpen$ = this.state$.pipe(map(state => state.cartOpen), distinctUntilChanged());
   loading$ = this.state$.pipe(map(state => state.loading));
 
   /**
@@ -42,10 +45,11 @@ export class ShoppingCartFacade {
   vm$: Observable<ShoppingCartState> = combineLatest(
     [this.cartId$,
     this.cartItems$,
+    this.cartOpen$,
     this.loading$]
   ).pipe(
-    map(([cartId, cartItems, loading]) => {
-      return { cartId, cartItems, loading };
+    map(([cartId, cartItems, cartOpen, loading]) => {
+      return { cartId, cartItems, cartOpen, loading };
     })
   );
 
@@ -95,13 +99,25 @@ export class ShoppingCartFacade {
     return searchTerm;
   }
 
-  removeCartItem(cartItemId: string) {
-    //this.updateState({ ..._state, searchCriteria, loading: true });
+  public removeCartItem(cartItemId: string) {
+
   }
 
-  addCartItem(eventId: string) {
-    //this.updateState({ ..._state, pagination, loading: true });
+  public addCartItem(eventId: string) {
+    console.log(eventId);
   }
+
+  public updateCartId(cartId: string) {
+    this.updateState({..._state, 'cartId': cartId, 'loading': true});
+  }
+
+  public toggleCartOpen() {
+    console.log('toggle cart open');
+    const cartOpen = !_state.cartOpen;
+    this.updateState({..._state, 'cartOpen': cartOpen,  'loading': false});
+  }
+
+
 
   // ------- Private Methods ------------------------
 
@@ -119,11 +135,6 @@ export class ShoppingCartFacade {
       .get<ShoppingCartResponse>(url)
       .pipe(map(response => response.results));
   }
-
-  private updateCartId(cartId: string, cartItems: CartItem[]) {
-    this.updateState({'cartId': cartId, 'cartItems' : cartItems , 'loading': false});
-  }
-
 }
 
 function buildGetShoppingCartUrl(cartId: string): string {

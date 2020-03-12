@@ -1,10 +1,9 @@
 <div *ngIf="(vm$ | async) as vm">
   <button
     mat-icon-button
-    color="primary"
     aria-label="shopping-cart-icon-button"
-    matBadge="{{ vm.cartItems.length }}"
-    (click)="toggleShoppingCart()"
+    matBadge="{{ vm.cartItems?.length }}"
+    (click)="shoppingCartFacade.toggleCartOpen()"
     type="button"
   >
     <mat-icon

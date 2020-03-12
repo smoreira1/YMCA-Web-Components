@@ -2,7 +2,8 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogData } from '../ng-mat-ymca-event-card/ng-mat-ymca-event-card.component';
 import { IconsService } from '@shared/services/icon/icons.service';
-import { ShoppingCartFacade } from '@core/facades/shopping-cart/shopping-cart.facade';
+import { ShoppingCartFacade, ShoppingCartState } from '@core/facades/shopping-cart/shopping-cart.facade';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -44,16 +45,17 @@ export class NgMatYmcaEventAbnbComponent implements OnInit {
   @Input() wednesday: string;
   @Input() thursday: string;
   @Input() friday: string;
-  @Input() satruday: string;
+  @Input() saturday: string;
   @Input() sunday: string;
 
   @Input() earlyRegistration: string;
   @Input() earlyRegistrationNonMemberPrice: string;
   @Input() earlyRegistrationMemberPrice: string;
 
+  vm$: Observable<ShoppingCartState> = this.shoppingCartFacade.vm$;
   constructor(
     public dialog: MatDialog,
-    private shoppingCartFacade: ShoppingCartFacade
+    public shoppingCartFacade: ShoppingCartFacade
   ) {
 
   }

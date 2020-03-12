@@ -6,14 +6,17 @@ import {
   map,
   distinctUntilChanged,
   switchMap,
-  debounceTime
+  debounceTime,
+  tap
 } from 'rxjs/operators';
 import { YMCAEvent } from '@shared/interfaces/ymca-event.interface';
 import { DayAvailability } from '@shared/interfaces/day-availability.interface';
 import { Gender } from '@shared/enums/gender.enum';
 
 export interface YMCAEventsResponse {
-  results: YMCAEvent[];
+  data: YMCAEvent[];
+  messages: string[];
+  success: boolean;
 }
 
 export interface SearchCriteria {
@@ -26,6 +29,8 @@ export interface SearchCriteria {
   gender: Gender;
   sortBy: string;
   tag: string;
+  startingTime: string;
+  endingTime: string;
 }
 
 export interface YMCAEventsState {
@@ -38,22 +43,24 @@ let _state: YMCAEventsState = {
   ymcaEvents: [],
   searchCriteria: {
     dayAvailability: {
-      Monday: true,
-      Tuesday: true,
-      Wednesday: true,
-      Thursday: true,
-      Friday: true,
-      Saturday: true,
-      Sunday: true,
+      Monday: false,
+      Tuesday: false,
+      Wednesday: false,
+      Thursday: false,
+      Friday: false,
+      Saturday: false,
+      Sunday: false,
     },
-    zipCode: 32825,
-    age: 18,
+    zipCode: null,
+    age: 99,
     location: null,
     time: null,
-    distance: null,
-    gender: null,
+    distance: 50,
+    gender: Gender.NONE,
     sortBy: null,
-    tag: null,
+    startingTime: '12:00AM',
+    endingTime: '11:59PM',
+    tag: 'Teen Adult Stroke Technique',
   },
   loading: false
 };
@@ -85,6 +92,8 @@ export class YMCAEventFacade {
         })
       )
       .subscribe(ymcaEvents => {
+        console.log('state updated');
+        console.log(ymcaEvents);
         this.updateState({ ..._state, ymcaEvents, loading: false });
       });
   }
@@ -119,15 +128,19 @@ export class YMCAEventFacade {
   private findYMCAEvents(
     searchCriteria: SearchCriteria
   ): Observable<YMCAEvent[]> {
-    const url = buildUserUrl(searchCriteria);
+    const url = buildYmcaEventsUrl(searchCriteria);
     return this.http
       .get<YMCAEventsResponse>(url)
-      .pipe(map(response => response.results));
+      .pipe(
+        tap(response => console.log(response)),
+        map(response => response.data)
+      );
   }
 }
 
-function buildUserUrl(searchCriteria: SearchCriteria): string {
+function buildYmcaEventsUrl(searchCriteria: SearchCriteria): string {
   const URL = 'https://build-ymcacf.cs17.force.com/services/apexrest/YmcaEvents';
-  const searchFor = `?tag=${searchCriteria.tag}&age=${searchCriteria.age}&zipcode=${searchCriteria.zipCode}&distance=${searchCriteria.distance}&startingTime=error&endingTime=error&geoFlag=error&lat=error&lon=error&monday=${searchCriteria.dayAvailability.Monday}&tuesday=${searchCriteria.dayAvailability.Tuesday}&wednesday=${searchCriteria.dayAvailability.Wednesday}&thursday=${searchCriteria.dayAvailability.Thursday}&friday=${searchCriteria.dayAvailability.Friday}&saturday=${searchCriteria.dayAvailability.Saturday}&sunday=${searchCriteria.dayAvailability.Sunday}&gender=${searchCriteria.gender}`;
+  const searchFor = `tag=${searchCriteria.tag}&age=${searchCriteria.age}&zipcode=${searchCriteria.zipCode}&distance=${searchCriteria.distance}&startingTime=${searchCriteria.startingTime}&endingTime=${searchCriteria.endingTime}&geoFlag=false&lat=error&lon=error&monday=${searchCriteria.dayAvailability.Monday}&tuesday=${searchCriteria.dayAvailability.Tuesday}&wednesday=${searchCriteria.dayAvailability.Wednesday}&thursday=${searchCriteria.dayAvailability.Thursday}&friday=${searchCriteria.dayAvailability.Friday}&saturday=${searchCriteria.dayAvailability.Saturday}&sunday=${searchCriteria.dayAvailability.Sunday}&gender=${searchCriteria.gender}`;
+  console.log(searchFor);
   return `${URL}?${searchFor}`;
 }
