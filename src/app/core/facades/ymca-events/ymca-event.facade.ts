@@ -37,6 +37,8 @@ export interface YMCAEventsState {
   ymcaEvents: YMCAEvent[];
   searchCriteria: SearchCriteria;
   loading: boolean;
+  eventsActionFilterOpened: boolean;
+  searchTimeDuration: any;
 }
 
 let _state: YMCAEventsState = {
@@ -52,17 +54,19 @@ let _state: YMCAEventsState = {
       Sunday: false,
     },
     zipCode: null,
-    age: 99,
+    age: 1,
     location: null,
     time: null,
-    distance: 50,
+    distance: 5,
     gender: Gender.NONE,
     sortBy: null,
     startingTime: '12:00AM',
     endingTime: '11:59PM',
     tag: 'Teen Adult Stroke Technique',
   },
-  loading: false
+  loading: true,
+  eventsActionFilterOpened: true,
+  searchTimeDuration: null
 };
 
 @Injectable()
@@ -73,14 +77,19 @@ export class YMCAEventFacade {
   public ymcaEvents$ = this.state$.pipe(map(state => state.ymcaEvents), distinctUntilChanged());
   public searchCriteria$ = this.state$.pipe(map(state => state.searchCriteria), distinctUntilChanged());
   public loading$ = this.state$.pipe(map(state => state.loading));
+  public eventsActionFilterOpened$ = this.state$.pipe(map(state => state.eventsActionFilterOpened));
+  public searchTimeDuration$ = this.state$.pipe(map(state => state.searchTimeDuration));
+
   // Viewmodel that resolves once all the data is ready (or updated)...
   public vm$: Observable<YMCAEventsState> = combineLatest([
     this.searchCriteria$,
     this.ymcaEvents$,
-    this.loading$]
+    this.loading$,
+    this.eventsActionFilterOpened$,
+    this.searchTimeDuration$]
   ).pipe(
-    map(([searchCriteria, ymcaEvents, loading]) => {
-      return {searchCriteria, ymcaEvents, loading };
+    map(([searchCriteria, ymcaEvents, loading, eventsActionFilterOpened, searchTimeDuration]) => {
+      return {searchCriteria, ymcaEvents, loading, eventsActionFilterOpened, searchTimeDuration };
     })
   );
   // Watch 2 streams to trigger user loads and state updates
@@ -117,6 +126,21 @@ export class YMCAEventFacade {
     this.updateState({ ..._state, searchCriteria, loading: true });
   }
 
+  toggleDrawer() {
+    const toggle = !_state.eventsActionFilterOpened;
+    console.log(toggle);
+    this.updateState({ ..._state, eventsActionFilterOpened: toggle});
+  }
+
+
+  setState(key, value) {
+    console.log(`Set State: ${key} & ${value}`);
+    const searchCriteria = {..._state.searchCriteria};
+    searchCriteria[key] = value;
+    console.log({ ..._state, searchCriteria });
+    this.updateState({ ..._state, searchCriteria, 'loading': true });
+  }
+
   // ------- Private Methods ------------------------
 
   /** Update internal state cache and emit from store... */
@@ -128,19 +152,33 @@ export class YMCAEventFacade {
   private findYMCAEvents(
     searchCriteria: SearchCriteria
   ): Observable<YMCAEvent[]> {
+    const startTime = new Date().getTime();
     const url = buildYmcaEventsUrl(searchCriteria);
     return this.http
-      .get<YMCAEventsResponse>(url)
+      .get<any>(url)
       .pipe(
-        tap(response => console.log(response)),
-        map(response => response.data)
+        tap(response => { this.getSearchTimeDuration(startTime ); }),
+        map(
+          response => { const data = JSON.parse(response); return data.data; }
+        )
       );
   }
+
+  private getSearchTimeDuration(startTime: any) {
+    const endTime = new Date().getTime() - startTime;
+    this.updateState({..._state, searchTimeDuration: endTime });
+  }
+
 }
 
 function buildYmcaEventsUrl(searchCriteria: SearchCriteria): string {
   const URL = 'https://build-ymcacf.cs17.force.com/services/apexrest/YmcaEvents';
-  const searchFor = `tag=${searchCriteria.tag}&age=${searchCriteria.age}&zipcode=${searchCriteria.zipCode}&distance=${searchCriteria.distance}&startingTime=${searchCriteria.startingTime}&endingTime=${searchCriteria.endingTime}&geoFlag=false&lat=error&lon=error&monday=${searchCriteria.dayAvailability.Monday}&tuesday=${searchCriteria.dayAvailability.Tuesday}&wednesday=${searchCriteria.dayAvailability.Wednesday}&thursday=${searchCriteria.dayAvailability.Thursday}&friday=${searchCriteria.dayAvailability.Friday}&saturday=${searchCriteria.dayAvailability.Saturday}&sunday=${searchCriteria.dayAvailability.Sunday}&gender=${searchCriteria.gender}`;
-  console.log(searchFor);
+  let searchFor = `tag=${searchCriteria.tag}&age=${searchCriteria.age}&zipcode=${searchCriteria.zipCode}&distance=${searchCriteria.distance}`;
+  searchFor += `&startingTime=${searchCriteria.startingTime}&endingTime=${searchCriteria.endingTime}&geoFlag=false&lat=error&lon=error`;
+  searchFor += `&monday=${searchCriteria.dayAvailability.Monday}&tuesday=${searchCriteria.dayAvailability.Tuesday}&wednesday=${searchCriteria.dayAvailability.Wednesday}`;
+  searchFor += `&thursday=${searchCriteria.dayAvailability.Thursday}&friday=${searchCriteria.dayAvailability.Friday}&saturday=${searchCriteria.dayAvailability.Saturday}`;
+  searchFor += `&sunday=${searchCriteria.dayAvailability.Sunday}&gender=${searchCriteria.gender}`;
+  console.log('URL GET:');
+  console.log(searchCriteria);
   return `${URL}?${searchFor}`;
 }

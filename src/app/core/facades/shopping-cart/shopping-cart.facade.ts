@@ -20,13 +20,15 @@ export interface ShoppingCartState {
   cartId: string;
   cartOpen: boolean;
   loading: boolean;
+  addToCartAttemptMessage: string;
 }
 
 let _state: ShoppingCartState = {
   cartItems: [],
   cartId: localStorage.getItem('cartId') || '',
-  cartOpen: false,
-  loading: false
+  cartOpen: true,
+  loading: true,
+  addToCartAttemptMessage: ''
 };
 
 @Injectable()
@@ -36,8 +38,9 @@ export class ShoppingCartFacade {
 
   cartItems$ = this.state$.pipe(map(state => state.cartItems), distinctUntilChanged());
   cartId$ = this.state$.pipe(map(state => state.cartId), distinctUntilChanged());
-  cartOpen$ = this.state$.pipe(map(state => state.cartOpen), distinctUntilChanged());
+  cartOpen$ = this.state$.pipe(map(state => state.cartOpen));
   loading$ = this.state$.pipe(map(state => state.loading));
+  addToCartAttemptMessage$ = this.state$.pipe(map(state => state.addToCartAttemptMessage));
 
   /**
    * Viewmodel that resolves once all the data is ready (or updated)...
@@ -46,10 +49,11 @@ export class ShoppingCartFacade {
     [this.cartId$,
     this.cartItems$,
     this.cartOpen$,
-    this.loading$]
+    this.loading$,
+    this.addToCartAttemptMessage$],
   ).pipe(
-    map(([cartId, cartItems, cartOpen, loading]) => {
-      return { cartId, cartItems, cartOpen, loading };
+    map(([cartId, cartItems, cartOpen, loading, addToCartAttemptMessage]) => {
+      return { cartId, cartItems, cartOpen, loading, addToCartAttemptMessage };
     })
   );
 
@@ -111,7 +115,7 @@ export class ShoppingCartFacade {
     this.updateState({..._state, 'cartId': cartId, 'loading': true});
   }
 
-  public toggleCartOpen() {
+  public toggleCart() {
     console.log('toggle cart open');
     const cartOpen = !_state.cartOpen;
     this.updateState({..._state, 'cartOpen': cartOpen,  'loading': false});

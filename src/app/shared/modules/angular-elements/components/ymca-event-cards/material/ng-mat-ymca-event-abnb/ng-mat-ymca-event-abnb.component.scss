@@ -3,6 +3,9 @@
   display:flex;
   flex-flow:row;
   justify-content: space-between;
+  border-radius: 20px;
+  padding:4px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 
   .ymca-header{
     display:flex;
@@ -12,6 +15,10 @@
   .location-image{
     height:auto;
     width:300px;
+  }
+
+  .add-to-cart{
+    margin:12px;
   }
 
   .details{

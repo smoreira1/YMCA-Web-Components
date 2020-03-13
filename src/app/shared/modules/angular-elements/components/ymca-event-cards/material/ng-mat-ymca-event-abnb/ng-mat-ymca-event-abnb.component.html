@@ -1,14 +1,13 @@
-<mat-card class="ng-mat-ymca-event-abnb" *ngIf="(vm$ | async) as vm">
+<mat-card class="ng-mat-ymca-event-abnb" *ngIf="vm$ | async as vm">
   <mat-card-header class="ymca-header">
     <mat-card-title>
-      <mat-icon class="icon" svgIcon="Basketball" mat-card-avatar></mat-icon>
+      <mat-icon class="icon" svgIcon="Sports" mat-card-avatar></mat-icon>
       {{ parentProduct }}
     </mat-card-title>
     <mat-card-subtitle>
       <a mat-button routerLink="." class="location">
-        <mat-icon class="icon" svgIcon="location"></mat-icon>
-        <span class="name">{{ locationName }}
-        </span>
+        <mat-icon class="icon" svgIcon="Location"></mat-icon>
+        <span class="name">{{ locationName }} </span>
       </a>
     </mat-card-subtitle>
     <mat-card-subtitle>
@@ -30,19 +29,19 @@
     <div class="priority-one">
       <div class="time-range detail-item">
         <span class="label">Time</span>
-        <mat-icon class="priority-one-icon" svgIcon="time"></mat-icon>
+        <mat-icon class="priority-one-icon" svgIcon="Time"></mat-icon>
         <div>
           <span>{{ startTime }}</span>
-          <mat-icon class="icon" svgIcon="right-arrow"></mat-icon>
+          <mat-icon class="icon" svgIcon="RightArrow"></mat-icon>
           <span>{{ endTime }}</span>
         </div>
       </div>
       <div class="date-range detail-item">
         <span class="label">Date</span>
-        <mat-icon class="priority-one-icon" svgIcon="date"></mat-icon>
+        <mat-icon class="priority-one-icon" svgIcon="Date"></mat-icon>
         <div>
           <span>{{ startDate }}</span>
-          <mat-icon class="icon" svgIcon="right-arrow"></mat-icon>
+          <mat-icon class="icon" svgIcon="RightArrow"></mat-icon>
           <span>{{ endDate }}</span>
         </div>
       </div>
@@ -61,14 +60,14 @@
     <div class="priority-three">
       <div class="age detail-item">
         <span class="label">Age</span>
-        <mat-icon class="icon" svgIcon="age"></mat-icon>
+        <mat-icon class="icon" svgIcon="Age"></mat-icon>
         <span class="value">
           <span class="ymca-event-info-high-light" *ngIf="lowAge != '0'"
             >{{ lowAge }} {{ startingAgeType }}</span
           >
           <span *ngIf="!highAge"> or older</span>
           <span *ngIf="lowAge && lowAge != '0'"
-            ><mat-icon class="icon" svgIcon="right-arrow"></mat-icon
+            ><mat-icon class="icon" svgIcon="RightArrow"></mat-icon
           ></span>
           <span class="ymca-event-info-high-light"
             >{{ highAge }} {{ endingAgeType }}</span
@@ -78,16 +77,16 @@
       </div>
       <div class="grade detail-item">
         <span class="label">Grade</span>
-        <mat-icon class="icon" svgIcon="grade"></mat-icon>
+        <mat-icon class="icon" svgIcon="Grade"></mat-icon>
         <span class="value">
           <span>{{ lowGrade }}</span>
-          <mat-icon class="icon" svgIcon="right-arrow"></mat-icon>
+          <mat-icon class="icon" svgIcon="RightArrow"></mat-icon>
           <span>{{ highGrade }}</span>
         </span>
       </div>
       <div class="gender detail-item">
         <span class="label" aria-label="Required gender for event">Gender</span>
-        <mat-icon class="icon" svgIcon="gender"></mat-icon>
+        <mat-icon class="icon" svgIcon="Gender"></mat-icon>
         <span class="value">
           <span>{{ gender }}</span>
         </span>
@@ -96,6 +95,13 @@
   </mat-card-content>
   <mat-card-actions class="actions">
     <span class="distance">5 Mi</span>
-    <button mat-raised-button color="primary" (click)='shoppingCartFacade.addCartItem(id)'>Add To Cart</button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="shoppingCartFacade.addCartItem(id)"
+      class='add-to-cart'
+    >
+      <mat-icon svgIcon="AddToCart"></mat-icon> Add
+    </button>
   </mat-card-actions>
 </mat-card>

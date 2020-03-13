@@ -1,17 +1,8 @@
-<div class='search-results-meta-data'>
-  <mat-card class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Results:</mat-card-title>
-      <mat-card-subtitle>Events</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content class='content'>
-      <div class='total-events-results'>
-        Events: {{ eventsAmount }}
-      </div>
-      <div class='different-location-results'>
-        Locations: {{ locationAmount }}
-      </div>
-    </mat-card-content>
-  </mat-card>
-</div>
+<mat-toolbar class="search-results-meta-data" *ngIf="vm$ | async as vm" color='primary'>
+  <button mat-icon-button (click)="ymcaEventFacade.toggleDrawer()">
+    <mat-icon svgIcon="Filter"></mat-icon>
+  </button>
+  <div class="total-events-results">
+    Events: {{ vm.ymcaEvents.length }} ({{ vm.searchTimeDuration / 1000 }} seconds)
+  </div>
+</mat-toolbar>

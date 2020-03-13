@@ -1,74 +1,45 @@
-<mat-drawer-container class="ymca-drawer-container" autosize>
-  <mat-drawer #drawer class="ymca-drawer" [mode]="mode.value">
-    <button (click)="drawer.toggle()" mat-raised-button>
-      Toggle Nav
-    </button>
+<mat-drawer-container
+  class="ymca-drawer-container"
+  autosize
+  *ngIf="vm$ | async as vm"
+>
+  <mat-drawer
+    #drawer
+    class="ymca-drawer"
+    [mode]="mode.value"
+    [(opened)]="vm.eventsActionFilterOpened"
+  >
     <mat-tab-group>
       <mat-tab label="Filter By">
-        <form class='ymca-reactive-form'>
-          <span class="zip-code-entry">
-            <mat-form-field class="ymca-zipcode-field">
-              <span matPrefix>
-                <mat-icon svgIcon="GeoLocationEnabled"></mat-icon>
-              </span>
-              <input
-                matInput
-                placeholder="ZipCode"
-                [value]="zipcode"
-                autocomplete="off"
-                maxlength="5"
-                (input)="search()"
-                #zipCode
-              />
-            </mat-form-field>
-            <!-- <button mat-button type='button' class='geolocation-button'>Use current location</button> -->
-          </span>
-          <span class="ymca-distance-flex-item">
-            <mat-form-field class="ymca-distance-field">
-              <mat-icon svgIcon="Distance" matPrefix></mat-icon>
-              <mat-label>Distance</mat-label>
-              <mat-select>
-                <mat-option
-                  *ngFor="let distance of distances"
-                  [value]="distance.value"
-                  >{{ distance.viewValue }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </span>
-          <span class="ymca-age-entry" *ngIf="toolbarConfiguration != 'Sports'">
-            <mat-form-field class="ymca-age-field">
-              <span matPrefix>
-                <mat-icon svgIcon="Age"></mat-icon>
-              </span>
-              <mat-label>Age</mat-label>
-              <mat-select>
-                <mat-option *ngFor="let age of ages" [value]="age.value">{{
-                  age.viewValue
-                }}</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </span>
-          <span
-            class="ymca-time-entry"
-            *ngIf="toolbarConfiguration != 'Sports'"
-          >
-            <mat-form-field class="ymca-time-field">
-              <span matPrefix>
-                <mat-icon svgIcon="Time"></mat-icon>
-              </span>
-              <mat-label>Time</mat-label>
-              <mat-select>
-                <mat-option *ngFor="let time of times" [value]="time.value">{{
-                  time.viewValue
-                }}</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </span>
+        <form class="ymca-reactive-form">
+          <mat-form-field class="ymca-zipcode-field">
+            <span matPrefix>
+              <mat-icon svgIcon="GeoLocationEnabled"></mat-icon>
+            </span>
+            <input
+              matInput
+              placeholder="ZipCode"
+              [value]="zipcode"
+              autocomplete="off"
+              maxlength="5"
+              (input)="search()"
+              pattern=”[0–9]*”
+              inputmode="numeric"
+              #zipCode
+            />
+          </mat-form-field>
+          <!-- <button mat-button type='button' class='geolocation-button'>Use current location</button> -->
           <mat-form-field class="ymca-distance-field">
             <mat-icon svgIcon="Distance" matPrefix></mat-icon>
-            <mat-label>Discounted</mat-label>
-            <mat-select>
+            <mat-label>Distance</mat-label>
+            <mat-select
+              (selectionChange)="
+                ymcaEventFacade.setState(
+                  'distance',
+                  $event.value
+                )
+              "
+            >
               <mat-option
                 *ngFor="let distance of distances"
                 [value]="distance.value"
@@ -76,101 +47,132 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-          <span
-            class="ymca-gender-entry"
+          <mat-form-field
+            class="ymca-age-field"
             *ngIf="toolbarConfiguration != 'Sports'"
           >
-            <mat-form-field class="ymca-time-field">
-              <span matPrefix>
-                <mat-icon svgIcon="Gender"></mat-icon>
-              </span>
-              <mat-label>Gender</mat-label>
-              <mat-select>
-                <mat-option
-                  *ngFor="let gender of genders"
-                  [value]="gender.value"
-                  >{{ gender.viewValue }}</mat-option
-                >
-              </mat-select>
-            </mat-form-field>
-          </span>
-          <span
-            class="ymca-days-entry"
+            <span matPrefix>
+              <mat-icon svgIcon="Age"></mat-icon>
+            </span>
+            <mat-label>Age</mat-label>
+            <mat-select
+              (selectionChange)="
+                ymcaEventFacade.setState('age', $event.value)
+              "
+            >
+              <mat-option *ngFor="let age of ages" [value]="age.value">{{
+                age.viewValue
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field
+            class="ymca-time-field"
             *ngIf="toolbarConfiguration != 'Sports'"
           >
-          <mat-form-field>
+            <span matPrefix>
+              <mat-icon svgIcon="Time"></mat-icon>
+            </span>
+            <mat-label>Time</mat-label>
+            <mat-select
+              (selectionChange)="
+                ymcaEventFacade.setState('searchCriteria.time', $event.value)
+              "
+            >
+              <mat-option *ngFor="let time of times" [value]="time.value">{{
+                time.viewValue
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="ymca-distance-field">
+            <mat-icon svgIcon="Distance" matPrefix></mat-icon>
+            <mat-label>Discounted</mat-label>
+            <mat-select
+              (selectionChange)="
+                ymcaEventFacade.setState(
+                  'searchCriteria.discounted',
+                  $event.value
+                )
+              "
+            >
+              <mat-option
+                *ngFor="let discount of discounts"
+                [value]="discount.value"
+                >{{ discount.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field
+            class="ymca-time-field"
+            *ngIf="toolbarConfiguration != 'Sports'"
+          >
+            <span matPrefix>
+              <mat-icon svgIcon="Gender"></mat-icon>
+            </span>
+            <mat-label>Gender</mat-label>
+            <mat-select
+              (selectionChange)="
+                ymcaEventFacade.setState('gender', $event.value)
+              "
+            >
+              <mat-option
+                *ngFor="let gender of genders"
+                [value]="gender.value"
+                >{{ gender.viewValue }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field *ngIf="toolbarConfiguration != 'Sports'">
             <span matPrefix>
               <mat-icon svgIcon="Days"></mat-icon>
             </span>
             <mat-label>Days of the Week</mat-label>
             <mat-select [formControl]="days" multiple>
-              <mat-option *ngFor="let day of daysList" [value]="day">{{day}}</mat-option>
+              <mat-option *ngFor="let day of daysList" [value]="day">{{
+                day
+              }}</mat-option>
             </mat-select>
           </mat-form-field>
-          </span>
           <mat-form-field>
             <span matPrefix>
               <mat-icon svgIcon="Days"></mat-icon>
             </span>
             <mat-label>Location</mat-label>
-            <mat-select [formControl]="days" multiple>
-              <mat-option *ngFor="let day of daysList" [value]="day">{{day}}</mat-option>
+            <mat-select
+              (selectionChange)="
+                ymcaEventFacade.setState(
+                  'searchCriteria.location',
+                  $event.value
+                )
+              "
+            >
+              <mat-option
+                *ngFor="let location of locations"
+                [value]="location.value"
+                >{{ location.viewValue }}</mat-option
+              >
             </mat-select>
           </mat-form-field>
         </form>
       </mat-tab>
-      <mat-tab label="Sort By" class='ymca-reactive-form'>
-        <div class='ymca-reactive-form'>
-          <mat-button-toggle-group class='sorting-options' name="sortOptions" aria-label="Sort Options">
+      <mat-tab label="Sort By" class="ymca-reactive-form">
+        <div class="ymca-reactive-form">
+          <mat-button-toggle-group
+            class="sorting-options"
+            name="sortOptions"
+            aria-label="Sort Options"
+          >
+          <mat-button-toggle value="age">Age</mat-button-toggle>
             <mat-button-toggle value="distance">Distance</mat-button-toggle>
             <mat-button-toggle value="eventName">Event Name</mat-button-toggle>
             <mat-button-toggle value="date">Date</mat-button-toggle>
             <mat-button-toggle value="date">Price</mat-button-toggle>
           </mat-button-toggle-group>
-        <!-- <mat-form-field>
-          <span matPrefix>
-            <mat-icon svgIcon="Days"></mat-icon>
-          </span>
-          <mat-label>Distance</mat-label>
-          <mat-select [formControl]="days" multiple>
-            <mat-option *ngFor="let day of daysList" [value]="day">{{day}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <span matPrefix>
-            <mat-icon svgIcon="Days"></mat-icon>
-          </span>
-          <mat-label>Event Name</mat-label>
-          <mat-select [formControl]="days" multiple>
-            <mat-option *ngFor="let day of daysList" [value]="day">{{day}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <span matPrefix>
-            <mat-icon svgIcon="Days"></mat-icon>
-          </span>
-          <mat-label>Date</mat-label>
-          <mat-select [formControl]="days" multiple>
-            <mat-option *ngFor="let day of daysList" [value]="day">{{day}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <span matPrefix>
-            <mat-icon svgIcon="Days"></mat-icon>
-          </span>
-          <mat-label>Age</mat-label>
-          <mat-select [formControl]="days" multiple>
-            <mat-option *ngFor="let day of daysList" [value]="day">{{day}}</mat-option>
-          </mat-select>
-        </mat-form-field> -->
         </div>
       </mat-tab>
     </mat-tab-group>
   </mat-drawer>
   <div class="example-sidenav-content">
-    <button type="button" mat-button (click)="drawer.toggle()">
-      Toggle sidenav
-    </button>
-    <app-ymca-events class='ymca-events'></app-ymca-events>
+    <app-search-results-meta-data></app-search-results-meta-data>
+    <app-ymca-events class="ymca-events"></app-ymca-events>
   </div>
 </mat-drawer-container>

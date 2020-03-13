@@ -22,6 +22,7 @@ import { NgMaterialModule } from '@shared/modules/ng-material/ng-material.module
 import { createCustomElement } from '@angular/elements';
 
 import * as Sentry from '@sentry/browser';
+import { DigitsOnlyDirective } from '@shared/directives/digitsonly.directive';
 Sentry.init({
   dsn: 'https://f704f4b6e26b48abbe96280b3ad1f813@sentry.io/1484901'
 });
@@ -39,7 +40,8 @@ export class SentryErrorHandler implements ErrorHandler {
   declarations: [
     AppComponent,
     OriginalYmcaLayoutComponent,
-    RepoInfoToolbarComponent
+    RepoInfoToolbarComponent,
+    DigitsOnlyDirective
   ],
   imports: [
     BrowserModule,

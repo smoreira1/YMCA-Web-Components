@@ -55,9 +55,28 @@ export class NgMatYmcaEventAbnbComponent implements OnInit {
   vm$: Observable<ShoppingCartState> = this.shoppingCartFacade.vm$;
   constructor(
     public dialog: MatDialog,
+    private iconService: IconsService,
     public shoppingCartFacade: ShoppingCartFacade
   ) {
+    this.loadIcons();
+  }
 
+  private loadIcons() {
+    this.iconService.loadDaysIcon();
+    this.iconService.loadDistanceIcon();
+    this.iconService.loadGenderIcon();
+    this.iconService.loadGradeIcon();
+    this.iconService.loadAgeIcon();
+    this.iconService.loadRightArrowIcon();
+    this.iconService.loadPriceIcon();
+    this.iconService.loadDateIcon();
+    this.iconService.loadAddToCartIcon();
+    this.iconService.loadLocationIcon();
+
+    this.iconService.loadSportsIcon();
+    this.iconService.loadSwimIcon();
+    this.iconService.loadCampsIcon();
+    this.iconService.loadGenericProductIcon();
   }
 
   ngOnInit() {

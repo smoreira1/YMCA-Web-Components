@@ -40,6 +40,20 @@ export class FiltersConfigService {
     ];
   }
 
+  discounted(): Array<SelectDropDown> {
+    return [
+      { value: null, viewValue: '' },
+      { value: 'earlyRegistration', viewValue: 'Early Registration' },
+    ];
+  }
+
+  locations(): Array<SelectDropDown> {
+    return [
+      { value: 'any', viewValue: 'Any' },
+      { value: 'downtown', viewValue: 'DownTown' },
+    ];
+  }
+
   genders(): Array<SelectDropDown> {
     return [
       { value: '', viewValue: 'Any' },

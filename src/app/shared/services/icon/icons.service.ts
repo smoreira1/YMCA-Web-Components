@@ -74,15 +74,6 @@ export class IconsService {
     );
   }
 
-  loadSportsIcon() {
-    this.iconRegistry.addSvgIcon(
-      "Sports",
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/sports.svg"
-      )
-    );
-  }
-
   loadLocationIcon() {
     this.iconRegistry.addSvgIcon(
       "Location",
@@ -213,6 +204,69 @@ export class IconsService {
       "ShoppingCart",
       this.sanitizer.bypassSecurityTrustResourceUrl(
         "assets/icons/shopping-cart.svg"
+      )
+    );
+  }
+
+  loadFilterIcon() {
+    this.iconRegistry.addSvgIcon(
+      "Filter",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/filter.svg"
+      )
+    );
+  }
+
+  loadAddToCartIcon() {
+    this.iconRegistry.addSvgIcon(
+      "AddToCart",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/add-to-cart.svg"
+      )
+    );
+  }
+
+  loadSportsIcon() {
+    this.iconRegistry.addSvgIcon(
+      "Sports",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/basketball.svg"
+      )
+    );
+  }
+
+  loadSwimIcon() {
+    this.iconRegistry.addSvgIcon(
+      "Swim",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/sports.svg"
+      )
+    );
+  }
+
+  loadCampsIcon() {
+    this.iconRegistry.addSvgIcon(
+      "Camps",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/sports.svg"
+      )
+    );
+  }
+
+  loadGenericProductIcon() {
+    this.iconRegistry.addSvgIcon(
+      "GenericProduct",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/sports.svg"
+      )
+    );
+  }
+
+  loadCloseIcon() {
+    this.iconRegistry.addSvgIcon(
+      "GenericProduct",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/sports.svg"
       )
     );
   }

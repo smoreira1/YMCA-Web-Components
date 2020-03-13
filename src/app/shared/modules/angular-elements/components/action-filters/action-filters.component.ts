@@ -6,6 +6,7 @@ import { YMCAEventFacade, YMCAEventsState } from '@core/facades/ymca-events/ymca
 import { Observable } from 'rxjs';
 import { combineLatest } from 'rxjs/operators';
 import { IconsService } from '@shared/services/icon/icons.service';
+import {} from '@shared/directives/digitsonly.directive';
 
 @Component({
   selector: 'app-action-filters',
@@ -37,6 +38,7 @@ export class ActionFiltersComponent implements OnInit {
   familyCenters: SelectDropDown[];
   sortEvents: SelectDropDown[];
   discounts: SelectDropDown[];
+  locations: SelectDropDown[];
   discountList: string[] = ['Any', 'Early Registration'];
   days = new FormControl();
   daysList: string[] = [
@@ -53,24 +55,9 @@ export class ActionFiltersComponent implements OnInit {
   mode = new FormControl('side');
   // *All changable value props:
   zipCodeControl = new FormControl();
-  distancesControl = new FormControl();
-  ageControl = new FormControl();
-  genderControl = new FormControl();
-  discountedControl = new FormControl();
-  timeControl = new FormControl();
-
-  // actionFiltersFormGroup = new FormGroup({
-  //   zipCodeControl = new FormControl();
-  //   distancesControl = new FormControl();
-  //   ageControl = new FormControl();
-  //   genderControl = new FormControl();
-  //   discountedControl = new FormControl();
-  //   timeControl = new FormControl();
-  // });
-
   public vm$: Observable<YMCAEventsState> = this.ymcaEventFacade.vm$;
   constructor(private iconService: IconsService,
-    private filtersConfigService: FiltersConfigService, private ymcaEventFacade: YMCAEventFacade) {
+    private filtersConfigService: FiltersConfigService, public ymcaEventFacade: YMCAEventFacade) {
 
   }
 
@@ -93,6 +80,8 @@ export class ActionFiltersComponent implements OnInit {
     this.genders = this.filtersConfigService.genders();
     this.zipcode = this.zipcode || '';
     this.toolbarConfiguration = this.toolbarConfiguration || '';
+    this.discounts = this.filtersConfigService.discounted();
+    this.locations = this.filtersConfigService.locations();
     this.setDefaultDaysofTheWeek();
   }
 
