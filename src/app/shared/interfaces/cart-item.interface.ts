@@ -3,8 +3,8 @@ export interface CartItem {
     description: string;
     createdDate: string;
     durationInMinutes: number;
-    startDateTime: Date;
-    endDateTime: Date;
+    startDate: Date;
+    endDate: Date;
     startingAge: number;
     endingAge: number;
     location: string;
@@ -13,4 +13,6 @@ export interface CartItem {
     memberPrice: number;
     nonMemberPrice: number;
     eventTitle: string;
+    parentProduct: string;
+    familyProduct: string;
 }

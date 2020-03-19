@@ -30,6 +30,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { YMCAEventFacade } from '@core/facades/ymca-events/ymca-event.facade';
 import { ProductsCatalogJupiterComponent } from './components/products-catalog-jupiter/products-catalog-jupiter.component';
 import { ShoppingCartFacade } from '@core/facades/shopping-cart/shopping-cart.facade';
+import { HttpHandleErrorService } from '@shared/services/http-handle-error/http-handle-error.service';
 
 
 declare global {
@@ -101,6 +102,7 @@ declare global {
     ShoppingCartService,
     ShoppingCartFacade,
     YMCAEventFacade,
+    HttpHandleErrorService,
     {
       provide: APP_INITIALIZER,
       useFactory: (ds: ShoppingCartService) => function() { return ds.load(); },

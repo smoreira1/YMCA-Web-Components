@@ -1,7 +1,11 @@
 <mat-sidenav-container class="ymca-events-container" *ngIf="(vm$ | async) as vm">
   <mat-sidenav-content class='ymca-events'>
     <mat-spinner *ngIf='vm.loading'></mat-spinner>
-    <div class='ymca-empty-events-result' *ngIf='vm.ymcaEvents?.length == 0 && !vm.loading'>
+    <div class='ymca-empty-events-result' *ngIf='vm.errored'>
+      <h1 class='ymca-events-empty-msg'>An error occured. Please check your network connection.</h1>
+      <div class='ymca-scaling-svg-container'><span class='ymca-scaling-svg'></span></div>
+    </div>
+    <div class='ymca-empty-events-result' *ngIf='vm.ymcaEvents?.length == 0 && !vm.loading && !vm.errored'>
       <h1 class='ymca-events-empty-msg'>No events were returned, try another filter setting.</h1>
       <div class='ymca-scaling-svg-container'><span class='ymca-scaling-svg'></span></div>
     </div>

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
-import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
+import { BehaviorSubject, Observable, combineLatest, of } from 'rxjs';
 import {
   map,
   distinctUntilChanged,
   switchMap,
   debounceTime,
-  tap
+  tap,
+  catchError
 } from 'rxjs/operators';
 import { YMCAEvent } from '@shared/interfaces/ymca-event.interface';
 import { DayAvailability } from '@shared/interfaces/day-availability.interface';
@@ -22,10 +23,10 @@ export interface YMCAEventsResponse {
 export interface SearchCriteria {
   dayAvailability: DayAvailability;
   zipCode: number;
-  age: number;
+  age: string;
   location: string;
   time: string;
-  distance: number;
+  distance: string;
   gender: Gender;
   sortBy: string;
   tag: string;
@@ -39,6 +40,7 @@ export interface YMCAEventsState {
   loading: boolean;
   eventsActionFilterOpened: boolean;
   searchTimeDuration: any;
+  errored: boolean;
 }
 
 let _state: YMCAEventsState = {
@@ -54,10 +56,10 @@ let _state: YMCAEventsState = {
       Sunday: false,
     },
     zipCode: null,
-    age: 1,
+    age: "5",
     location: null,
     time: null,
-    distance: 5,
+    distance: "5",
     gender: Gender.NONE,
     sortBy: null,
     startingTime: '12:00AM',
@@ -66,7 +68,8 @@ let _state: YMCAEventsState = {
   },
   loading: true,
   eventsActionFilterOpened: true,
-  searchTimeDuration: null
+  searchTimeDuration: null,
+  errored: false
 };
 
 @Injectable()
@@ -78,6 +81,7 @@ export class YMCAEventFacade {
   public searchCriteria$ = this.state$.pipe(map(state => state.searchCriteria), distinctUntilChanged());
   public loading$ = this.state$.pipe(map(state => state.loading));
   public eventsActionFilterOpened$ = this.state$.pipe(map(state => state.eventsActionFilterOpened));
+  public errored$ = this.state$.pipe(map(state => state.errored));
   public searchTimeDuration$ = this.state$.pipe(map(state => state.searchTimeDuration));
 
   // Viewmodel that resolves once all the data is ready (or updated)...
@@ -86,10 +90,11 @@ export class YMCAEventFacade {
     this.ymcaEvents$,
     this.loading$,
     this.eventsActionFilterOpened$,
-    this.searchTimeDuration$]
+    this.searchTimeDuration$,
+    this.errored$]
   ).pipe(
-    map(([searchCriteria, ymcaEvents, loading, eventsActionFilterOpened, searchTimeDuration]) => {
-      return {searchCriteria, ymcaEvents, loading, eventsActionFilterOpened, searchTimeDuration };
+    map(([searchCriteria, ymcaEvents, loading, eventsActionFilterOpened, searchTimeDuration, errored]) => {
+      return {searchCriteria, ymcaEvents, loading, eventsActionFilterOpened, searchTimeDuration, errored };
     })
   );
   // Watch 2 streams to trigger user loads and state updates
@@ -160,7 +165,11 @@ export class YMCAEventFacade {
         tap(response => { this.getSearchTimeDuration(startTime ); }),
         map(
           response => { const data = JSON.parse(response); return data.data; }
-        )
+        ),
+        catchError(error => {
+          this.updateState({..._state, 'loading': false, 'errored': true});
+          return error;
+        }),
       );
   }
 

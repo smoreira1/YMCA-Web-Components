@@ -19,7 +19,7 @@
             <input
               matInput
               placeholder="ZipCode"
-              [value]="zipcode"
+              [(value)]="vm.searchCriteria.zipCode"
               autocomplete="off"
               maxlength="5"
               (input)="search()"
@@ -39,6 +39,7 @@
                   $event.value
                 )
               "
+              [(value)]="vm.searchCriteria.distance"
             >
               <mat-option
                 *ngFor="let distance of distances"
@@ -59,6 +60,7 @@
               (selectionChange)="
                 ymcaEventFacade.setState('age', $event.value)
               "
+              [(value)]="vm.searchCriteria.age"
             >
               <mat-option *ngFor="let age of ages" [value]="age.value">{{
                 age.viewValue
@@ -113,6 +115,7 @@
               (selectionChange)="
                 ymcaEventFacade.setState('gender', $event.value)
               "
+              [(value)]="vm.searchCriteria.gender"
             >
               <mat-option
                 *ngFor="let gender of genders"

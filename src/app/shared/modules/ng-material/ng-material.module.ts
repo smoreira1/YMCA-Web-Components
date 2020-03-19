@@ -25,6 +25,7 @@ import { MatDividerModule } from "@angular/material/divider";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [],
@@ -50,7 +51,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
     MatMenuModule,
     MatToolbarModule,
     MatTabsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatListModule
   ],
   exports: [
     MatInputModule,
@@ -73,7 +75,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
     MatMenuModule,
     MatToolbarModule,
     MatTabsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatListModule
   ],
   providers: [
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }

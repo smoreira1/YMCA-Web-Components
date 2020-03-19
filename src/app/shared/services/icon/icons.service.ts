@@ -264,9 +264,9 @@ export class IconsService {
 
   loadCloseIcon() {
     this.iconRegistry.addSvgIcon(
-      "GenericProduct",
+      "Close",
       this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/sports.svg"
+        "assets/icons/close.svg"
       )
     );
   }

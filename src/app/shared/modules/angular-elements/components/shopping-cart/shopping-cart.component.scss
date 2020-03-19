@@ -1,18 +1,50 @@
 .shopping-cart {
 
-  min-width:500px;
-
   .ymca-shopping-cart {
+    display:flex;
+    flex-flow:column;
+    min-width: 400px;
+    height:100%;
+    overflow: auto;
+    align-content: space-between;
+  //  align-items: center;
+
+    * {
+    }
+  }
+
+  .emptyCart{
+    width: 100%;
+  }
+
+  svg{
+    width:100%;
+  }
+
+  .cart-item-line{
+    margin:4px;
+  }
+
+  .ymca-cart-header {
     display: flex;
-    flex-flow: column;
-    justify-content: space-between;
+    flex-wrap: nowrap;
   }
 
   .ymca-spacer {
-    flex-grow:1;
+    flex-grow: 1;
   }
 
   .ymca-check-out {
     width: 100%;
+  }
+
+  .ymca-cart-footer {
+    width: 100%;
+  }
+
+  a {
+    margin:4px;
+    width: calc(100% - 20px);
+    align-self: center;
   }
 }

@@ -98,7 +98,7 @@
     <button
       mat-raised-button
       color="primary"
-      (click)="shoppingCartFacade.addCartItem(id)"
+      (click)="shoppingCartFacade.addCartItem(id).subscribe()"
       class='add-to-cart'
     >
       <mat-icon svgIcon="AddToCart"></mat-icon> Add

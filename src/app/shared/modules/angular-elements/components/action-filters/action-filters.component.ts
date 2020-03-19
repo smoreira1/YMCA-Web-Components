@@ -85,6 +85,10 @@ export class ActionFiltersComponent implements OnInit {
     this.setDefaultDaysofTheWeek();
   }
 
+  private setInitialFormValues() {
+    const formState = this.ymcaEventFacade.getStateSnapshot();
+  }
+
   public setDefaultDaysofTheWeek() {
     this.monday = this.monday || 'false';
     this.tuesday = this.tuesday || 'false';
