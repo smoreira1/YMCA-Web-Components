@@ -6,6 +6,8 @@ import { Observable, Subject } from 'rxjs';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BrowserConfigService } from '@shared/services/browser-config/browser-config.service';
 import { YMCAEventFacade, YMCAEventsState } from '@core/facades/ymca-events/ymca-event.facade';
+import { IconsService } from '@shared/services/icon/icons.service';
+import { GraphicsService } from '@shared/services/graphics/graphics.service';
 @Component({
   selector: 'app-ymca-events',
   templateUrl: './ymca-events.component.html',
@@ -61,9 +63,16 @@ export class YmcaEventsComponent implements OnInit {
   vm$: Observable<YMCAEventsState> = this.ymcaEventsFacade.vm$;
   constructor(
     private browserConfigService: BrowserConfigService,
-    private ymcaEventsFacade: YMCAEventFacade) {
+    private ymcaEventsFacade: YMCAEventFacade,
+    private graphicsService: GraphicsService) {
 
   }
+
+  private loadGraphics(){
+    this.graphicsService.loadNoResultsGraphic();
+    this.graphicsService.loadNetworkErrorGraphic();
+  }
+
 
   ngOnInit() {
     if (this.browserConfigService.isInternetExplorer()) {
@@ -75,6 +84,7 @@ export class YmcaEventsComponent implements OnInit {
     else {
 
     }
+    this.loadGraphics();
   }
 
 

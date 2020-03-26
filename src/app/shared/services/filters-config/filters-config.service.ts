@@ -49,7 +49,7 @@ export class FiltersConfigService {
 
   locations(): Array<SelectDropDown> {
     return [
-      { value: 'any', viewValue: 'Any' },
+      { value: 'Any', viewValue: 'Any' },
       { value: 'downtown', viewValue: 'DownTown' },
     ];
   }

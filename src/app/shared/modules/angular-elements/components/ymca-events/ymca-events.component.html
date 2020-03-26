@@ -3,11 +3,17 @@
     <mat-spinner *ngIf='vm.loading'></mat-spinner>
     <div class='ymca-empty-events-result' *ngIf='vm.errored'>
       <h1 class='ymca-events-empty-msg'>An error occured. Please check your network connection.</h1>
-      <div class='ymca-scaling-svg-container'><span class='ymca-scaling-svg'></span></div>
+      <div class='ymca-scaling-svg-container'><span class='ymca-scaling-svg'>
+        <mat-icon svgIcon='NetworkError'></mat-icon>
+      </span></div>
     </div>
     <div class='ymca-empty-events-result' *ngIf='vm.ymcaEvents?.length == 0 && !vm.loading && !vm.errored'>
       <h1 class='ymca-events-empty-msg'>No events were returned, try another filter setting.</h1>
-      <div class='ymca-scaling-svg-container'><span class='ymca-scaling-svg'></span></div>
+      <div class='ymca-scaling-svg-container'>
+        <span class='ymca-scaling-svg'>
+          <mat-icon svgIcon='NoResults'></mat-icon>
+        </span>
+    </div>
     </div>
       <div class='ymca-filtered-events'infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50" *ngIf='!vm.loading'>
         <app-ng-mat-ymca-event-abnb *ngFor="let event of vm.ymcaEvents" class='ymca-event'

@@ -77,10 +77,11 @@
             <mat-label>Time</mat-label>
             <mat-select
               (selectionChange)="
-                ymcaEventFacade.setState('searchCriteria.time', $event.value)
+                ymcaEventFacade.setState('time', $event.value)
               "
+              [(value)]="vm.searchCriteria.time"
             >
-              <mat-option *ngFor="let time of times" [value]="time.value">{{
+              <mat-option *ngFor="let time of times"  [value]="time.value">{{
                 time.viewValue
               }}</mat-option>
             </mat-select>
@@ -147,6 +148,7 @@
                   $event.value
                 )
               "
+              [(value)]="vm.searchCriteria.location"
             >
               <mat-option
                 *ngFor="let location of locations"

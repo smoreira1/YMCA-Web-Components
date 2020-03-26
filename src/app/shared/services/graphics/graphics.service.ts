@@ -31,4 +31,25 @@ export class GraphicsService {
   }
 
 
+  loadNetworkErrorGraphic() {
+    this.iconRegistry.addSvgIcon(
+      "NetworkError",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/graphics/network-error.svg"
+      )
+    );
+  }
+
+
+  loadBrowserErrorGraphic() {
+    this.iconRegistry.addSvgIcon(
+      "BrowserError",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/graphics/browser-error.svg"
+      )
+    );
+  }
+
+
+
 }
