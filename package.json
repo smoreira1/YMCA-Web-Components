@@ -39,7 +39,7 @@
     "@sentry/browser": "^5.13.2",
     "@types/jest": "^25.1.4",
     "@webcomponents/custom-elements": "^1.4.0",
-    "auth0-js": "^9.12.2",
+    "auth0-js": "^9.13.2",
     "chance": "^1.1.4",
     "core-js": "^3.6.4",
     "cypress": "^4.1.0",
