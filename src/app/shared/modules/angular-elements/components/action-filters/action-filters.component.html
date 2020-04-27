@@ -10,11 +10,14 @@
     [(opened)]="vm.eventsActionFilterOpened"
   >
     <mat-tab-group>
-      <mat-tab label="Filter By">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon svgIcon="Filter"></mat-icon> Filter By
+        </ng-template>
         <form class="ymca-reactive-form">
           <mat-form-field class="ymca-zipcode-field">
             <span matPrefix>
-              <mat-icon svgIcon="GeoLocationEnabled"></mat-icon>
+              <mat-icon svgIcon="ZipCode"></mat-icon> &nbsp;
             </span>
             <input
               matInput
@@ -23,21 +26,20 @@
               autocomplete="off"
               maxlength="5"
               (input)="search()"
-              pattern=”[0–9]*”
+              pattern="”[0–9]*”"
               inputmode="numeric"
               #zipCode
             />
           </mat-form-field>
           <!-- <button mat-button type='button' class='geolocation-button'>Use current location</button> -->
           <mat-form-field class="ymca-distance-field">
-            <mat-icon svgIcon="Distance" matPrefix></mat-icon>
+            <span matPrefix>
+              <mat-icon svgIcon="Distance"></mat-icon>&nbsp;
+            </span>
             <mat-label>Distance</mat-label>
             <mat-select
               (selectionChange)="
-                ymcaEventFacade.setState(
-                  'distance',
-                  $event.value
-                )
+                ymcaEventFacade.setState('distance', $event.value)
               "
               [(value)]="vm.searchCriteria.distance"
             >
@@ -52,14 +54,10 @@
             class="ymca-age-field"
             *ngIf="toolbarConfiguration != 'Sports'"
           >
-            <span matPrefix>
-              <mat-icon svgIcon="Age"></mat-icon>
-            </span>
+            <span matPrefix> <mat-icon svgIcon="Age"></mat-icon>&nbsp;</span>
             <mat-label>Age</mat-label>
             <mat-select
-              (selectionChange)="
-                ymcaEventFacade.setState('age', $event.value)
-              "
+              (selectionChange)="ymcaEventFacade.setState('age', $event.value)"
               [(value)]="vm.searchCriteria.age"
             >
               <mat-option *ngFor="let age of ages" [value]="age.value">{{
@@ -71,23 +69,21 @@
             class="ymca-time-field"
             *ngIf="toolbarConfiguration != 'Sports'"
           >
-            <span matPrefix>
-              <mat-icon svgIcon="Time"></mat-icon>
-            </span>
+            <span matPrefix> <mat-icon svgIcon="Time"></mat-icon> &nbsp; </span>
             <mat-label>Time</mat-label>
             <mat-select
-              (selectionChange)="
-                ymcaEventFacade.setState('time', $event.value)
-              "
+              (selectionChange)="ymcaEventFacade.setState('time', $event.value)"
               [(value)]="vm.searchCriteria.time"
             >
-              <mat-option *ngFor="let time of times"  [value]="time.value">{{
+              <mat-option *ngFor="let time of times" [value]="time.value">{{
                 time.viewValue
               }}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field class="ymca-distance-field">
-            <mat-icon svgIcon="Distance" matPrefix></mat-icon>
+            <span matPrefix>
+              <mat-icon svgIcon="Discounted"></mat-icon>&nbsp;
+            </span>
             <mat-label>Discounted</mat-label>
             <mat-select
               (selectionChange)="
@@ -109,7 +105,7 @@
             *ngIf="toolbarConfiguration != 'Sports'"
           >
             <span matPrefix>
-              <mat-icon svgIcon="Gender"></mat-icon>
+              <mat-icon svgIcon="Gender"></mat-icon> &nbsp;
             </span>
             <mat-label>Gender</mat-label>
             <mat-select
@@ -126,9 +122,7 @@
             </mat-select>
           </mat-form-field>
           <mat-form-field *ngIf="toolbarConfiguration != 'Sports'">
-            <span matPrefix>
-              <mat-icon svgIcon="Days"></mat-icon>
-            </span>
+            <span matPrefix> <mat-icon svgIcon="Days"></mat-icon> &nbsp; </span>
             <mat-label>Days of the Week</mat-label>
             <mat-select [formControl]="days" multiple>
               <mat-option *ngFor="let day of daysList" [value]="day">{{
@@ -137,9 +131,7 @@
             </mat-select>
           </mat-form-field>
           <mat-form-field>
-            <span matPrefix>
-              <mat-icon svgIcon="Days"></mat-icon>
-            </span>
+            <span matPrefix> <mat-icon svgIcon="Days"></mat-icon> &nbsp; </span>
             <mat-label>Location</mat-label>
             <mat-select
               (selectionChange)="
@@ -159,18 +151,32 @@
           </mat-form-field>
         </form>
       </mat-tab>
-      <mat-tab label="Sort By" class="ymca-reactive-form">
+      <mat-tab class="ymca-reactive-form">
+        <ng-template mat-tab-label>
+          <mat-icon svgIcon="Sort"></mat-icon>Sort By
+        </ng-template>
         <div class="ymca-reactive-form">
           <mat-button-toggle-group
             class="sorting-options"
             name="sortOptions"
             aria-label="Sort Options"
           >
-          <mat-button-toggle value="age">Age</mat-button-toggle>
-            <mat-button-toggle value="distance">Distance</mat-button-toggle>
-            <mat-button-toggle value="eventName">Event Name</mat-button-toggle>
-            <mat-button-toggle value="date">Date</mat-button-toggle>
-            <mat-button-toggle value="date">Price</mat-button-toggle>
+            <mat-button-toggle value="age"
+              ><mat-icon svgIcon="Age"></mat-icon>Age</mat-button-toggle
+            >
+            <mat-button-toggle value="distance"
+              ><mat-icon svgIcon="Distance"></mat-icon
+              >Distance</mat-button-toggle
+            >
+            <mat-button-toggle value="eventName"
+              ><mat-icon svgIcon="Name"></mat-icon>Event Name</mat-button-toggle
+            >
+            <mat-button-toggle value="date"
+              ><mat-icon svgIcon="Date"></mat-icon>Date</mat-button-toggle
+            >
+            <mat-button-toggle value="date"
+              ><mat-icon svgIcon="Price"></mat-icon>Price</mat-button-toggle
+            >
           </mat-button-toggle-group>
         </div>
       </mat-tab>

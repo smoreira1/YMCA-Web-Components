@@ -69,6 +69,11 @@ export class ActionFiltersComponent implements OnInit {
     this.iconService.loadTimesIcon();
     this.iconService.loadGenderIcon();
     this.iconService.loadDaysIcon();
+    this.iconService.loadSortIcon();
+    this.iconService.loadFilterIcon();
+    this.iconService.loadLocationIcon();
+    this.iconService.loadZipCodeIcon();
+    this.iconService.loadDiscountedIcon();
   }
 
   ngOnInit() {

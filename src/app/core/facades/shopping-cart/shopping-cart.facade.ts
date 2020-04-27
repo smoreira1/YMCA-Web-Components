@@ -15,6 +15,7 @@ import {
 import { CartItem } from '@shared/interfaces/cart-item.interface';
 import { HttpHandleErrorService } from '@shared/services/http-handle-error/http-handle-error.service';
 import { ConstantPool } from '@angular/compiler';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 export interface ShoppingCartResponse {
@@ -73,7 +74,7 @@ export class ShoppingCartFacade {
   /**
    * Watch 2 streams to trigger user loads and state updates
    */
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, public snackbar: MatSnackBar) {
     console.log('State:!!!!!!!!!!!');
     console.log(_state);
     combineLatest([this.cartId$])
@@ -123,7 +124,12 @@ export class ShoppingCartFacade {
         tap(response => console.log('CartId:')),
         tap(response => console.log(response)),
         map(
-          response => {  this.updateState({ ..._state, loading: false }); const data = JSON.parse(response); return data.data; }
+          response => {
+            this.updateState({ ..._state, loading: false });
+            const data = JSON.parse(response);
+            this.openSnackBar('woof woof', 'succss');
+            return data.data;
+          }
         ),
         catchError(this.handleError)
       );
@@ -137,6 +143,12 @@ export class ShoppingCartFacade {
     // else if ( data.message === 'Invalid Cart Id.' ) {
     //   return this.createShoppingCart().pipe(tap(response => this.updateState({..._state, 'cartId': response.message[0]})));
     // }
+  }
+
+  private openSnackBar(message: string, action: string) {
+    this.snackbar.open(message, action, {
+      duration: 2000,
+    });
   }
 
   public updateCartId(cartId: string) {

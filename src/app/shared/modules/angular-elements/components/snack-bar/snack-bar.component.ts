@@ -9,8 +9,7 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class SnackBarComponent implements OnInit {
 
-  vm$: Observable<ShoppingCartState> = this.shoppingCartFacade.vm$;
-  constructor(private shoppingCartFacade: ShoppingCartFacade) { }
+  constructor() { }
 
   ngOnInit() {
   }

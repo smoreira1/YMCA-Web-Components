@@ -23,27 +23,21 @@ export class IconsService {
   loadDistanceIcon() {
     this.iconRegistry.addSvgIcon(
       "Distance",
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/distance.svg"
-      )
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/icons/distance.svg")
     );
   }
 
   loadTimesIcon() {
     this.iconRegistry.addSvgIcon(
       "Time",
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/times.svg"
-      )
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/icons/times.svg")
     );
   }
 
   loadGenderIcon() {
     this.iconRegistry.addSvgIcon(
       "Gender",
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/gender.svg"
-      )
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/icons/gender.svg")
     );
   }
 
@@ -59,54 +53,42 @@ export class IconsService {
   loadDaysIcon() {
     this.iconRegistry.addSvgIcon(
       "Days",
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/days.svg"
-      )
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/icons/days.svg")
     );
   }
 
   loadMaximizeIcon() {
     this.iconRegistry.addSvgIcon(
       "Maximize",
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/maximize.svg"
-      )
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/icons/maximize.svg")
     );
   }
 
   loadLocationIcon() {
     this.iconRegistry.addSvgIcon(
       "Location",
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/location.svg"
-      )
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/icons/location.svg")
     );
   }
 
   loadDateIcon() {
     this.iconRegistry.addSvgIcon(
       "Date",
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/date.svg"
-      )
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/icons/date.svg")
     );
   }
 
   loadGender2Icon() {
     this.iconRegistry.addSvgIcon(
       "Gender",
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/gender-2.svg"
-      )
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/icons/gender-2.svg")
     );
   }
 
   loadPriceIcon() {
     this.iconRegistry.addSvgIcon(
       "Price",
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/price.svg"
-      )
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/icons/price.svg")
     );
   }
 
@@ -122,18 +104,14 @@ export class IconsService {
   loadGradeIcon() {
     this.iconRegistry.addSvgIcon(
       "Grade",
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/grade.svg"
-      )
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/icons/grade.svg")
     );
   }
 
   loadAgeIcon() {
     this.iconRegistry.addSvgIcon(
       "Age",
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/age.svg"
-      )
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/icons/age.svg")
     );
   }
 
@@ -211,9 +189,7 @@ export class IconsService {
   loadFilterIcon() {
     this.iconRegistry.addSvgIcon(
       "Filter",
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/filter.svg"
-      )
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/icons/filter.svg")
     );
   }
 
@@ -238,37 +214,51 @@ export class IconsService {
   loadSwimIcon() {
     this.iconRegistry.addSvgIcon(
       "Swim",
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/sports.svg"
-      )
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/icons/sports.svg")
     );
   }
 
   loadCampsIcon() {
     this.iconRegistry.addSvgIcon(
       "Camps",
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/sports.svg"
-      )
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/icons/sports.svg")
     );
   }
 
   loadGenericProductIcon() {
     this.iconRegistry.addSvgIcon(
       "GenericProduct",
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/sports.svg"
-      )
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/icons/sports.svg")
     );
   }
 
   loadCloseIcon() {
     this.iconRegistry.addSvgIcon(
       "Close",
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/icons/close.svg"
-      )
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/icons/close.svg")
     );
   }
 
+  loadSortIcon() {
+    this.iconRegistry.addSvgIcon(
+      "Sort",
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/icons/sort-2.svg")
+    );
+  }
+
+  loadZipCodeIcon() {
+    this.iconRegistry.addSvgIcon(
+      "ZipCode",
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/icons/zipcode.svg")
+    );
+  }
+
+  loadDiscountedIcon() {
+    this.iconRegistry.addSvgIcon(
+      "Discounted",
+      this.sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/icons/discounted.svg"
+      )
+    );
+  }
 }

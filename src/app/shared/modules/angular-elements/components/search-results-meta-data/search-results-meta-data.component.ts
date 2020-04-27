@@ -23,8 +23,12 @@ export class SearchResultsMetaDataComponent implements OnInit {
     this.loadIcons();
   }
 
-  private loadIcons(){
+  private loadIcons() {
     this.iconService.loadFilterIcon();
+  }
+
+  private resetAncestorOverflows(){
+
   }
 
 }
