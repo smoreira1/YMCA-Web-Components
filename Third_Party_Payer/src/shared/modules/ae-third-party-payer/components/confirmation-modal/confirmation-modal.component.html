@@ -1,0 +1,28 @@
+<div class="confirmation-modal">
+  <h2 mat-dialog-title>Exclusive Content</h2>
+  <mat-dialog-content class="mat-typography content">
+    <h3>Please enter your third party payer membership code for access.</h3>
+    <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class=""></mat-icon>
+          Silver Sneakers
+        </ng-template>
+        <ng-template matTabContent class="content">
+          <form class="form">
+            <mat-form-field class="example-full-width">
+              <mat-label>Membership Id</mat-label>
+              <input matInput placeholder="" value="" maxlength="16" />
+            </mat-form-field>
+          </form>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-dialog-content>
+  <span style='height:100%;' class='spacer'></span>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close (click)="cancel()">Cancel</button>
+    <span class='spacer'></span>
+    <button mat-raised-button cdkFocusInitial (click)="submit()" color='primary'>Submit</button>
+  </mat-dialog-actions>
+</div>
