@@ -21,9 +21,7 @@ export class ConfirmationModalComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ConfirmationModalComponent>,
-    public dialog: MatDialog
   ) {
-    this.dialogRef.disableClose = true;
   }
 
   ngOnInit(): void {
@@ -43,7 +41,7 @@ export class ConfirmationModalComponent implements OnInit {
 
   public cancel() {
     console.log('Cancel');
-
+    this.dialogRef.close();
   }
 
   private readLocalStorage(): boolean {

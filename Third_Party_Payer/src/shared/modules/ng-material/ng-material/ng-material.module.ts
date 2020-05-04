@@ -80,7 +80,6 @@ import { ConfirmationModalComponent } from '../../ae-third-party-payer/component
     MatListModule
   ],
   providers: [
-    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: true } }
   ],
   entryComponents: [
     ConfirmationModalComponent

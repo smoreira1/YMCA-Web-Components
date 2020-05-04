@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-tpp-confirmation,tpp-confirmation',
@@ -10,7 +11,6 @@ import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 export class TppConfirmationComponent implements OnInit {
 
   constructor(
-    public dialogRef: MatDialogRef<ConfirmationModalComponent>,
     public dialog: MatDialog
   ) {}
 
@@ -23,7 +23,7 @@ export class TppConfirmationComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmationModalComponent, {
       width: '600px',
       height: '50vh',
-      disableClose: true,
+      //disableClose: true,
       backdropClass: 'backdropBackground'
     });
 
