@@ -26,7 +26,6 @@ import { MatChipsModule } from "@angular/material/chips";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatListModule } from '@angular/material/list';
-import { ConfirmationModalComponent } from '../../ae-third-party-payer/components/confirmation-modal/confirmation-modal.component';
 
 @NgModule({
   declarations: [],
@@ -82,7 +81,6 @@ import { ConfirmationModalComponent } from '../../ae-third-party-payer/component
   providers: [
   ],
   entryComponents: [
-    ConfirmationModalComponent
   ],
 })
 export class NgMaterialModule {}

@@ -11,7 +11,7 @@ import {
   MAT_DIALOG_DEFAULT_OPTIONS,
   MatDialogRef,
 } from '@angular/material/dialog';
-import { ConfirmationModalComponent } from 'src/shared/modules/ae-third-party-payer/components/confirmation-modal/confirmation-modal.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +23,7 @@ import { ConfirmationModalComponent } from 'src/shared/modules/ae-third-party-pa
     BrowserAnimationsModule,
     NgMaterialModule,
     AeThirdPartyPayerModule,
+    HttpClientModule
   ],
   providers: [
     {
@@ -30,7 +31,7 @@ import { ConfirmationModalComponent } from 'src/shared/modules/ae-third-party-pa
       useValue: {},
     },
   ],
-  entryComponents: [ConfirmationModalComponent],
+  entryComponents: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

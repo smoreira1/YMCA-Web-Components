@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
+// import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { NgMaterialModule } from '../ng-material/ng-material/ng-material.module';
-import { TppConfirmationComponent } from './components/tpp-confirmation/tpp-confirmation.component';
+import { TppConfirmationComponent, ConfirmationModalComponent } from './components/tpp-confirmation/tpp-confirmation.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { ConfirmationBottomSheetComponent } from './components/confirmation-bottom-sheet/confirmation-bottom-sheet.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 
 
 
 @NgModule({
-  declarations: [ConfirmationModalComponent, TppConfirmationComponent],
+  declarations: [ConfirmationModalComponent, TppConfirmationComponent, ConfirmationBottomSheetComponent],
   imports: [
     CommonModule,
-    NgMaterialModule
+    NgMaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports : [
     ConfirmationModalComponent,
