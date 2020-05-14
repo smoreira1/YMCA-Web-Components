@@ -19,7 +19,7 @@ console.log('Main TS');
 // Create element
 const tppElement: NgElement &
   WithProperties<TppConfirmationComponent> = document.createElement(
-  'ymca-tpp-confirmation'
+  'tpp-confirmation'
 ) as any;
 // Add to the DOM
 document.body.appendChild(tppElement);

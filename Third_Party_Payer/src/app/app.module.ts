@@ -35,6 +35,6 @@ import { MatButtonModule } from '@angular/material/button';
     },
   ],
   entryComponents: [TppConfirmationComponent, ConfirmationBottomSheetComponent, ConfirmationModalComponent, MatButtonModule ],
-  bootstrap: [AppComponent],
+  bootstrap: [TppConfirmationComponent],
 })
 export class AppModule {}

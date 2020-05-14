@@ -12,9 +12,6 @@ export interface DialogData {
   name: string;
 }
 
-/**
- * @title Dialog Overview
- */
 @Component({
   selector: 'app-tpp-confirmation, tpp-confirmation',
   templateUrl: 'tpp-confirmation.component.html',
@@ -27,7 +24,10 @@ export class TppConfirmationComponent {
   constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
-    this.openDialog();
+    if (!this.accessDurationValid()) {
+      console.log(this.accessDurationValid());
+      this.openDialog();
+    }
   }
 
   openDialog(): void {
@@ -42,6 +42,25 @@ export class TppConfirmationComponent {
       console.log('Confirmation Dialog was closed.');
     });
   }
+
+  private accessDurationValid(): boolean {
+    if (localStorage.getItem('memberConfirmationDate')) {
+      const lastMemberConfirmationDateTime = new Date(
+        localStorage.getItem('memberConfirmationDate')
+      );
+      return this.isToday(lastMemberConfirmationDateTime);
+    }
+    return false;
+  }
+
+  private isToday = (someDate) => {
+    const today = new Date();
+    return (
+      someDate.getDate() == today.getDate() &&
+      someDate.getMonth() == today.getMonth() &&
+      someDate.getFullYear() == today.getFullYear()
+    );
+  };
 }
 
 @Component({
@@ -91,19 +110,5 @@ export class ConfirmationModalComponent {
       console.log('Error');
       this.errorMessage = 'This member id was not recognized.';
     }
-  }
-
-  private readLocalStorage(): boolean {
-    if (localStorage.getItem('memberConfirmation')) {
-      const currentDateTime = new Date();
-      const lastMemberConfirmationDateTime = new Date(
-        localStorage.getItem('memberConfirmation')
-      );
-    }
-    return false;
-  }
-
-  private setLocalStorage(){
-    
   }
 }

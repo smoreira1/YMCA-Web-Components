@@ -2,6 +2,7 @@
   <h2 mat-dialog-title>Exclusive Content</h2>
   <mat-dialog-content class="mat-typography content" mat-dialog-content>
     <h3>Please enter your third party payer membership code for access.</h3>
+    <mat-error *ngIf='errorMessage'>{{errorMessage}}</mat-error>
     <mat-tab-group>
       <mat-tab>
         <ng-template mat-tab-label>
@@ -33,7 +34,6 @@
                 Id must be 16 characters long.
               </mat-error>
             </mat-form-field>
-            <mat-error *ngIf='errorMessage'>{{errorMessage}}</mat-error>
           </form>
         </ng-template>
       </mat-tab>
