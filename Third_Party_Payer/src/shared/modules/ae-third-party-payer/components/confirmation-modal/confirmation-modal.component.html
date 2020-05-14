@@ -1,6 +1,6 @@
 <div class="confirmation-modal">
   <h2 mat-dialog-title>Exclusive Content</h2>
-  <mat-dialog-content class="mat-typography content">
+  <mat-dialog-content class="mat-typography content" mat-dialog-content>
     <h3>Please enter your third party payer membership code for access.</h3>
     <mat-tab-group>
       <mat-tab>
@@ -23,6 +23,7 @@
                 [formControl]="memberIdFormControl"
                 cdkFocusInitial
                 focus
+                autocomplete="off"
               />
               <mat-hint align="end">{{ memberId.value.length }} / 16</mat-hint>
               <mat-error *ngIf="memberIdFormControl.hasError('required')">
@@ -37,7 +38,7 @@
       </mat-tab>
     </mat-tab-group>
   </mat-dialog-content>
-  <mat-dialog-actions align="end">
+  <mat-dialog-actions align="end" mat-dialog-actions>
     <button
       mat-raised-button
       cdkFocusInitial

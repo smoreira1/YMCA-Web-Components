@@ -41,9 +41,11 @@
  *
  * The following flags will work for all browsers.
  *
- * (window as any).__Zone_disable_requestAnimationFrame = true; // disable patch requestAnimationFrame
+ * (window as any).__Zone_disable_requestAnimationFrame = true; // disable patch
+ * requestAnimationFrame
  * (window as any).__Zone_disable_on_property = true; // disable patch onProperty such as onclick
- * (window as any).__zone_symbol__UNPATCHED_EVENTS = ['scroll', 'mousemove']; // disable patch specified eventNames
+ * (window as any).__zone_symbol__UNPATCHED_EVENTS = ['scroll', 'mousemove']; // disable patch
+ * specified eventNames
  *
  *  in IE/Edge developer tools, the addEventListener will also be wrapped by zone.js
  *  with the following flag, it will bypass `zone.js` patch for IE/Edge
@@ -55,14 +57,20 @@
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
-import 'zone.js/dist/zone';  // Included with Angular CLI.
+import 'zone.js/dist/zone'; // Included with Angular CLI.
 
-// import '@webcomponents/webcomponents/custom-elements-es5-adaptor.js';
+/***************************************************************************************************
+ * APPLICATION IMPORTS
+ */
+// Custom Elements polyfill. Required for browsers that do not natively support Custom Elements.
+import '@webcomponents/custom-elements';
+// Custom Elements ES5 shim. Required when using ES5 bundles on browsers that natively support
+// Custom Elements (either because the browser does not support ES2015 modules or because the app
+// is explicitly configured to generate ES5 only bundles).
+import '@webcomponents/custom-elements/src/native-shim';
 
-// /***************************************************************************************************
-//  * APPLICATION IMPORTS
-//  */
-
-// if (!window['customElements']) {
-//   document.write(`<script src='/assets/webcomponentsjs/webcomponentjs-loader.js'></script>`);
-// }
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/

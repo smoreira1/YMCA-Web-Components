@@ -12,6 +12,9 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
+import { TppConfirmationComponent, ConfirmationModalComponent } from 'src/shared/modules/ae-third-party-payer/components/tpp-confirmation/tpp-confirmation.component';
+import { ConfirmationBottomSheetComponent } from 'src/shared/modules/ae-third-party-payer/components/confirmation-bottom-sheet/confirmation-bottom-sheet.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,7 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
       useValue: {},
     },
   ],
-  entryComponents: [],
+  entryComponents: [TppConfirmationComponent, ConfirmationBottomSheetComponent, ConfirmationModalComponent, MatButtonModule ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

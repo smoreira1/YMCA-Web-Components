@@ -1,51 +1,55 @@
-import { Component, OnInit } from '@angular/core';
-// import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
-import { MatDialogRef, MatDialog } from '@angular/material/dialog';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { Component, Inject } from '@angular/core';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
 import { IconsService } from 'src/services/icons.service';
 
+export interface DialogData {
+  animal: string;
+  name: string;
+}
+
+/**
+ * @title Dialog Overview
+ */
 @Component({
-  selector: 'app-tpp-confirmation,tpp-confirmation',
-  templateUrl: './tpp-confirmation.component.html',
-  styleUrls: ['./tpp-confirmation.component.scss']
+  selector: 'app-tpp-confirmation, tpp-confirmation',
+  templateUrl: 'tpp-confirmation.component.html',
+  styleUrls: ['tpp-confirmation.component.scss'],
 })
-export class TppConfirmationComponent implements OnInit {
+export class TppConfirmationComponent {
+  animal: string;
+  name: string;
 
-  constructor(
-    public dialog: MatDialog
-  ) {}
+  constructor(public dialog: MatDialog) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.openDialog();
   }
 
-
-  public openDialog() {
+  openDialog(): void {
     const dialogRef = this.dialog.open(ConfirmationModalComponent, {
       width: '600px',
       disableClose: true,
-      backdropClass: 'backdropBackground'
+      backdropClass: 'backdropBackground',
+      data: { name: this.name, animal: this.animal },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('Confirmation Dialog was closed.');
     });
   }
-
-
 }
 
-
 @Component({
-  selector: 'app-confirmation-modal, confirmation-modal',
-  templateUrl: './confirmation-modal.component.html',
+  selector: 'confirmation-modal',
+  templateUrl: 'confirmation-modal.component.html',
   styleUrls: ['./confirmation-modal.component.scss'],
-  providers: [
-    { provide: MatDialogRef, useValue: { hasBackdrop: true } },
-  ]
 })
-export class ConfirmationModalComponent implements OnInit {
+export class ConfirmationModalComponent {
   public membershipNumber: string;
   public memberConfirmed = false;
   public errorMessage: string;
@@ -58,8 +62,12 @@ export class ConfirmationModalComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ConfirmationModalComponent>,
-    private iconsService: IconsService
-  ) {
+    public iconsService: IconsService,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
   ngOnInit(): void {
@@ -67,42 +75,35 @@ export class ConfirmationModalComponent implements OnInit {
     this.loadIcons();
   }
 
-  private loadIcons(){
+  private loadIcons() {
     this.iconsService.loadSilverSneakersIcon();
     this.iconsService.loadMemberIdIcon();
   }
 
   public submit(): void {
     console.log('submit');
-    if(this.memberIdFormControl.value=== '1111111111111111'){
+    if (this.memberIdFormControl.value === '1111111111111111') {
       this.memberConfirmed = true;
-      localStorage.setItem('memberConfirmationDate' , new Date().toString());
+      localStorage.setItem('memberConfirmationDate', new Date().toString());
       console.log(this.dialogRef);
       this.dialogRef.close();
-    }
-    else{
+    } else {
       console.log('Error');
       this.errorMessage = 'This member id was not recognized.';
     }
   }
 
-  public cancel() {
-    console.log('Cancel');
-    this.dialogRef.close();
-  }
-
   private readLocalStorage(): boolean {
-    if (localStorage.getItem('memberConfirmation')){
+    if (localStorage.getItem('memberConfirmation')) {
       const currentDateTime = new Date();
-      const lastMemberConfirmationDateTime = new Date (localStorage.getItem('memberConfirmation'));
+      const lastMemberConfirmationDateTime = new Date(
+        localStorage.getItem('memberConfirmation')
+      );
     }
     return false;
   }
 
-  onNoClick(): void {
-    console.log(this.dialogRef);
-    this.dialogRef.close();
+  private setLocalStorage(){
+    
   }
-
 }
-

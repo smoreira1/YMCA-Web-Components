@@ -16,7 +16,7 @@
     "docs": "compodoc -p src/tsconfig.app.json -s",
     "build:prod": "ng build --single-bundle --aot=true --prod=true",
     "build:test": "ng build --single-bundle --aot=true",
-    "start": "ng serve --aot --open --ssl --ssl-key c:\\certificates\\localhost.key  --ssl-cert c:\\certificates\\localhost.crt --port 4100",
+    "start": "ng serve --aot --open --ssl --ssl-key c:\\certificates\\localhost.key  --ssl-cert c:\\certificates\\localhost.crt --port 4500",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
